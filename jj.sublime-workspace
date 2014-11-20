@@ -67,6 +67,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 12788,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -75,8 +83,36 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"cop",
+				"Copy File Path"
+			],
+			[
 				"in",
 				"Package Control: Install Package"
+			],
+			[
+				"openurl ",
+				"Open URL"
+			],
+			[
+				"op",
+				"Open URL"
+			],
+			[
+				"open",
+				"Open: Browse"
+			],
+			[
+				"find",
+				"Find: In..."
+			],
+			[
+				"find:",
+				"Find: In Project"
 			],
 			[
 				"list",
@@ -191,7 +227,7 @@
 				"Set Syntax: Markdown"
 			]
 		],
-		"width": 560.0
+		"width": 570.0
 	},
 	"console":
 	{
@@ -224,6 +260,14 @@
 	],
 	"file_history":
 	[
+		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Path Tools/Default (OSX).sublime-keymap",
+		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
+		"/Users/gaoyan/站点/other/济南机件/jj/sftp-config.json",
+		"/Users/gaoyan/站点/other/济南机件/jj/data/feedbackimg/index.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/favourable_info.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/flow.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/alipay.html",
+		"/Users/gaoyan/站点/other/济南机件/jj/jj.sublime-project",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/AwardAction.class.php",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Lib/Core/Model.class.php",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Runtime/Logs/14_11_18.log",
@@ -343,15 +387,7 @@
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/index.php",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/ActivityAction.class.php",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/gjsShop/register.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Common/runtime.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/css/boc/shop_order.css",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Vendor/Smarty/sysplugins/smarty_internal_filter_handler.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/conf/siteconfig.inc.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Runtime/Cache/01fb6739da9c24faf58de9a8123a116c.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Vendor/Smarty/sysplugins/smarty_resource_uncompiled.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/README.txt",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/Wxhmember/score_use.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Vendor/Smarty/plugins/shared.mb_unicode.php"
+		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Common/runtime.php"
 	],
 	"find":
 	{
@@ -362,6 +398,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"<open files>",
 			"/Users/gaoyan/站点/微信海/中国银行独立项目/web",
 			"/Users/gaoyan/站点/微信海/中国银行独立项目/web/",
 			"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/",
@@ -375,6 +412,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Find",
 			"addAll",
 			"current_cjList",
 			"where(",
@@ -501,8 +539,7 @@
 			"n getads",
 			"getads",
 			"banner1",
-			"page",
-			"order"
+			"page"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -523,7 +560,7 @@
 			"showsite",
 			"Show"
 		],
-		"reverse": false,
+		"reverse": true,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -532,14 +569,219 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								982,
+								982
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"force_encoding": "GBK",
+							"function_name_status_row": 33,
+							"in_converting": true,
+							"incomplete_sync": null,
+							"is_xml": false,
+							"origin_encoding": "GBK",
+							"remote_loading": false,
+							"side_bar_folders_auto_load_folder": 1,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"tabs_extra_last_activated": 1416365938.62,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -835,7 +1077,7 @@
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 210.0,
-	"status_bar_visible": false,
+	"status_bar_visible": true,
 	"template_settings":
 	{
 	}
