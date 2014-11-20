@@ -1,0 +1,1 @@
+order_info>change_status 判断1为采购单2为报价单 ,订单属性

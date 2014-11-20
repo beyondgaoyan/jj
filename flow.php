@@ -1666,7 +1666,20 @@ elseif ($_REQUEST['step'] == 'done')
         $sql = "UPDATE ". $ecs->table('goods_activity') ." SET is_finished='2' WHERE act_id=".$order['extension_id'];
         $db->query($sql);
     }
-
+    /*by gaoyan   如果商品存在0价格改为采购单*/
+    $sqlgoods = 'SELECT goods_price FROM ' . $ecs->table('order_goods') . " WHERE `order_id` = '" . $new_order_id. "' ";
+    $ordergoods = $db->getAll($sqlgoods);
+    
+    if(!empty($ordergoods)){
+        foreach($ordergoods AS $v){
+            if($v['goods_price']=='0.00' || $v['goods_price']<=0){
+                $sqlc = "UPDATE ". $ecs->table('order_info') ." SET change_status='1' WHERE order_id=".$new_order_id;
+                $db->query($sqlc);
+                $change_status = 1;
+                break;
+            }
+        }
+    }
     /* 处理余额、积分、红包 */
     if ($order['user_id'] > 0 && $order['surplus'] > 0)
     {
@@ -1800,6 +1813,7 @@ elseif ($_REQUEST['step'] == 'done')
     unset($_SESSION['flow_consignee']); // 清除session中保存的收货人信息
     unset($_SESSION['flow_order']);
     unset($_SESSION['direct_shopping']);
+    $smarty->assign('change_status',      $change_status);
 }
 
 /*------------------------------------------------------ */

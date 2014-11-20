@@ -1255,6 +1255,7 @@ elseif ($_REQUEST['act'] == 'step_post')
     /* 编辑商品信息 */
     elseif ('edit_goods' == $step)
     {
+
         if (isset($_POST['rec_id']))
         {
             foreach ($_POST['rec_id'] AS $key => $rec_id)
@@ -1297,7 +1298,26 @@ elseif ($_REQUEST['act'] == 'step_post')
             $goods_amount = order_amount($order_id);
             update_order($order_id, array('goods_amount' => $goods_amount));
             update_order_amount($order_id);
-
+                /*by gaoyan   如果商品存在0价格改为采购单*/
+                $change_status = 2;
+                $sqlgoods = 'SELECT goods_price FROM ' . $ecs->table('order_goods') . " WHERE `order_id` = '" . $order_id. "' ";
+                $ordergoods = $db->getAll($sqlgoods);
+                
+                if(!empty($ordergoods)){
+                    foreach($ordergoods AS $v){
+                        if($v['goods_price']=='0.00' || $v['goods_price']<=0){
+                            $change_status=1;
+                            break;
+                        }
+                    }
+                    if($change_status=='2'){
+                            $sqlc = "UPDATE ". $ecs->table('order_info') ." SET change_status='2' WHERE change_status=1 AND order_id=".$order_id;
+                            $db->query($sqlc);
+                    } elseif($change_status=='1') {
+                            $sqlc = "UPDATE ". $ecs->table('order_info') ." SET change_status='1' WHERE (change_status=1 or change_status=2) AND  order_id=".$order_id;
+                            $db->query($sqlc);                    
+                    }
+                }
             /* 更新 pay_log */
             update_pay_log($order_id);
 
@@ -4877,7 +4897,8 @@ function order_list()
 
         $filter['start_time'] = empty($_REQUEST['start_time']) ? '' : (strpos($_REQUEST['start_time'], '-') > 0 ?  local_strtotime($_REQUEST['start_time']) : $_REQUEST['start_time']);
         $filter['end_time'] = empty($_REQUEST['end_time']) ? '' : (strpos($_REQUEST['end_time'], '-') > 0 ?  local_strtotime($_REQUEST['end_time']) : $_REQUEST['end_time']);
-
+        //by gaoyan
+        $filter['change_status'] = isset($_REQUEST['change_status']) ? intval($_REQUEST['change_status']) :'';
         $where = 'WHERE 1 ';
         if ($filter['order_sn'])
         {
@@ -4959,7 +4980,11 @@ function order_list()
         {
             $where .= " AND o.add_time <= '$filter[end_time]'";
         }
-
+        //by gaoyan
+        if ($filter['change_status'])
+        {
+            $where .= " AND o.change_status = '$filter[change_status]'";
+        }
         //综合状态
         switch($filter['composite_status'])
         {
@@ -5042,7 +5067,7 @@ function order_list()
         $sql = "SELECT o.order_id, o.order_sn, o.add_time, o.order_status, o.shipping_status, o.order_amount, o.money_paid," .
                     "o.pay_status, o.consignee, o.address, o.email, o.tel, o.extension_code, o.extension_id, " .
                     "(" . order_amount_field('o.') . ") AS total_fee, " .
-                    "IFNULL(u.user_name, '" .$GLOBALS['_LANG']['anonymous']. "') AS buyer ".
+                    "IFNULL(u.user_name, '" .$GLOBALS['_LANG']['anonymous']. "') AS buyer,o.change_status ".
                 " FROM " . $GLOBALS['ecs']->table('order_info') . " AS o " .
                 " LEFT JOIN " .$GLOBALS['ecs']->table('users'). " AS u ON u.user_id=o.user_id ". $where .
                 " ORDER BY $filter[sort_by] $filter[sort_order] ".

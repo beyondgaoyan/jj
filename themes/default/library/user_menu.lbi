@@ -3,6 +3,8 @@
 <a href="user.php" {if $action eq 'default'}class="curs"{/if}><img src="../images/u1.gif"> {$lang.label_welcome}</a>
 <a href="user.php?act=profile"{if $action eq 'profile'}class="curs"{/if}><img src="../images/u2.gif"> {$lang.label_profile}</a>
 <a href="user.php?act=order_list"{if $action eq 'order_list'|| $action eq 'order_detail'}class="curs"{/if}><img src="../images/u3.gif"> {$lang.label_order}</a>
+<a href="user.php?act=order_list_c1"{if $action eq 'order_list_c1'}class="curs"{/if}><img src="../images/u3.gif"> 采购单</a>
+<a href="user.php?act=order_list_c2"{if $action eq 'order_list_c2'}class="curs"{/if}><img src="../images/u3.gif"> 报价单</a>
 <a href="user.php?act=address_list"{if $action eq 'address_list'}class="curs"{/if}><img src="../images/u4.gif"> {$lang.label_address}</a>
 <a href="user.php?act=collection_list"{if $action eq 'collection_list'}class="curs"{/if}><img src="../images/u5.gif"> {$lang.label_collection}</a>
 <a href="user.php?act=message_list"{if $action eq 'message_list'}class="curs"{/if}><img src="../images/u6.gif"> {$lang.label_message}</a>

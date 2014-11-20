@@ -175,12 +175,13 @@
     <!-- {/if} -->
    <!--用户红包结束-->
       <!--#订单列表界面 start-->
-       <!-- {if $action eq 'order_list'} -->
+       <!-- {if $action eq 'order_list' || $action eq 'order_list_c1' || $action eq 'order_list_c2'} -->
        <h5><span>{$lang.label_order}</span></h5>
        <div class="blank"></div>
        <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
           <tr align="center">
             <td bgcolor="#ffffff">{$lang.order_number}</td>
+            <td bgcolor="#ffffff">订单属性</td>
             <td bgcolor="#ffffff">{$lang.order_addtime}</td>
             <td bgcolor="#ffffff">{$lang.order_money}</td>
             <td bgcolor="#ffffff">{$lang.order_status}</td>
@@ -189,6 +190,7 @@
           <!--{foreach from=$orders item=item}-->
           <tr>
             <td align="center" bgcolor="#ffffff"><a href="user.php?act=order_detail&order_id={$item.order_id}" class="f6">{$item.order_sn}</a></td>
+            <td align="center" bgcolor="#ffffff" style="color:red; font-weight: bold">{if $item.change_status==1}采购单{/if}{if $item.change_status==2}报价单{/if}</td>
             <td align="center" bgcolor="#ffffff">{$item.order_time}</td>
             <td align="right" bgcolor="#ffffff">{$item.total_fee}</td>
             <td align="center" bgcolor="#ffffff">{$item.order_status}</td>
@@ -199,39 +201,7 @@
         <div class="blank5"></div>
        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
        <div class="blank5"></div>
-       <h5><span>{$lang.merge_order}</span></h5>
-       <div class="blank"></div>
-        <script type="text/javascript">
-        {foreach from=$lang.merge_order_js item=item key=key}
-          var {$key} = "{$item}";
-        {/foreach}
-        </script>
-        <form action="user.php" method="post" name="formOrder" onsubmit="return mergeOrder()">
-          <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
-            <tr>
-              <td width="22%" align="right" bgcolor="#ffffff">{$lang.first_order}:</td>
-              <td width="12%" align="left" bgcolor="#ffffff"><select name="to_order">
-              <option value="0">{$lang.select}</option>
 
-                  {html_options options=$merge}
-
-                </select></td>
-              <td width="19%" align="right" bgcolor="#ffffff">{$lang.second_order}:</td>
-              <td width="11%" align="left" bgcolor="#ffffff"><select name="from_order">
-              <option value="0">{$lang.select}</option>
-
-                  {html_options options=$merge}
-
-                </select></td>
-              <td width="36%" bgcolor="#ffffff">&nbsp;<input name="act" value="merge_order" type="hidden" />
-              <input type="submit" name="Submit"  class="bnt_blue_1" style="border:none;"  value="{$lang.merge_order}" /></td>
-            </tr>
-            <tr>
-              <td bgcolor="#ffffff">&nbsp;</td>
-              <td colspan="4" align="left" bgcolor="#ffffff">{$lang.merge_order_notice}</td>
-            </tr>
-          </table>
-        </form>
        <!--{/if}-->
       <!--#订单列表界面 end-->
        <!--#包裹状态查询界面 start-->
@@ -277,7 +247,8 @@
 					<!-- {elseif $order.extension_code eq "exchange_goods"} -->
 					<a href="./exchange.php?act=view&id={$order.extension_id}" class="f6"><strong>{$lang.order_is_exchange}</strong></a>
 					<!--{/if}-->  
-					<a href="user.php?act=message_list&order_id={$order.order_id}" class="f6">[{$lang.business_message}]</a>
+					<a href="user.php?act=message_list&order_id={$order.order_id}" class="f6">[{$lang.business_message}]</a> 
+          <span style="color:red;font-weight: bold;"> {if $order.change_status==1}采购单{/if}{if $order.change_status==2}报价单{/if}</span>
 					</td>
         </tr>
         <tr>
@@ -286,7 +257,7 @@
         </tr>
         <tr>
           <td align="right" bgcolor="#ffffff">{$lang.detail_pay_status}：</td>
-          <td align="left" bgcolor="#ffffff">{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;{if $order.order_amount gt 0}{$order.pay_online}{/if}{$order.pay_time}</td>
+          <td align="left" bgcolor="#ffffff">{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;{if $order.order_amount gt 0 && $order.change_status==2}{$order.pay_online}{/if}{$order.pay_time}</td>
         </tr>
         <tr>
           <td align="right" bgcolor="#ffffff">{$lang.detail_shipping_status}：</td>

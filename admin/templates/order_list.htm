@@ -12,6 +12,12 @@
       <option value="-1">{$lang.select_please}</option>
       {html_options options=$status_list}
     </select>
+    订单属性
+        <select name="change_status" id="change_status">
+      <option value="">{$lang.select_please}</option>
+      <option value="1">采购单</option>
+      <option value="2">报价单</option>
+    </select>
     <input type="submit" value="{$lang.button_search}" class="button" />
     <a href="order.php?act=list&composite_status={$os_unconfirmed}">{$lang.cs.$os_unconfirmed}</a>
     <a href="order.php?act=list&composite_status={$cs_await_pay}">{$lang.cs.$cs_await_pay}</a>
@@ -34,6 +40,7 @@
     <th><a href="javascript:listTable.sort('total_fee', 'DESC'); ">{$lang.total_fee}</a>{$sort_total_fee}</th>
     <th><a href="javascript:listTable.sort('order_amount', 'DESC'); ">{$lang.order_amount}</a>{$sort_order_amount}</th>
     <th>{$lang.all_status}</th>
+    <th>采购单</th>
     <th>{$lang.handler}</th>
   <tr>
   {foreach from=$order_list item=order key=okey}
@@ -44,6 +51,7 @@
     <td align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
     <td align="right" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
     <td align="center" valign="top" nowrap="nowrap">{$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}</td>
+    <td align="center" valign="top" nowrap="nowrap">{if $order.change_status>0}是{/if}</td>
     <td align="center" valign="top"  nowrap="nowrap">
      <a href="order.php?act=info&order_id={$order.order_id}">{$lang.detail}</a>
      {if $order.can_remove}
@@ -98,6 +106,7 @@ listTable.filter.{$key} = '{$item}';
         listTable.filter['order_sn'] = Utils.trim(document.forms['searchForm'].elements['order_sn'].value);
         listTable.filter['consignee'] = Utils.trim(document.forms['searchForm'].elements['consignee'].value);
         listTable.filter['composite_status'] = document.forms['searchForm'].elements['status'].value;
+        listTable.filter['change_status'] = document.forms['searchForm'].elements['change_status'].value;
         listTable.filter['page'] = 1;
         listTable.loadList();
     }

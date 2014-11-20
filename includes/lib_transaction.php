@@ -281,15 +281,15 @@ function add_bonus($user_id, $bouns_sn)
  * @param   int         $start          列表起始位置
  * @return  array       $order_list     订单列表
  */
-function get_user_orders($user_id, $num = 10, $start = 0)
+function get_user_orders($user_id, $num = 10, $start = 0,$change_status=0)
 {
     /* 取得订单列表 */
     $arr    = array();
-
+    $where = " change_status={$change_status}  AND " ;
     $sql = "SELECT order_id, order_sn, order_status, shipping_status, pay_status, add_time, " .
-           "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee ".
+           "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee,change_status ".
            " FROM " .$GLOBALS['ecs']->table('order_info') .
-           " WHERE user_id = '$user_id' ORDER BY add_time DESC";
+           " WHERE $where user_id = '$user_id' ORDER BY add_time DESC";
     $res = $GLOBALS['db']->SelectLimit($sql, $num, $start);
 
     while ($row = $GLOBALS['db']->fetchRow($res))
@@ -335,7 +335,8 @@ function get_user_orders($user_id, $num = 10, $start = 0)
                        'order_time'     => local_date($GLOBALS['_CFG']['time_format'], $row['add_time']),
                        'order_status'   => $row['order_status'],
                        'total_fee'      => price_format($row['total_fee'], false),
-                       'handler'        => $row['handler']);
+                       'handler'        => $row['handler'],
+                       'change_status' => $row['change_status']);
     }
 
     return $arr;
