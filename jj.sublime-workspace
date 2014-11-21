@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"max-width:   (property)"
+			],
+			[
+				"c",
+				"colspan	Attr"
+			],
+			[
+				"PRIN",
+				"print_r"
+			],
+			[
 				"acd",
 				"act_id"
 			],
@@ -36,10 +48,6 @@
 				"target	Attr"
 			],
 			[
-				"c",
-				"center"
-			],
-			[
 				"s",
 				"scroll"
 			],
@@ -68,10 +76,34 @@
 	"buffers":
 	[
 		{
-			"file": "index.php",
+			"file": "admin/order.php",
 			"settings":
 			{
-				"buffer_size": 12788,
+				"buffer_size": 229904,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sql.txt",
+			"settings":
+			{
+				"buffer_size": 43,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user.php",
+			"settings":
+			{
+				"buffer_size": 97398,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "themes/default/user_transaction.dwt",
+			"settings":
+			{
+				"buffer_size": 55214,
 				"line_ending": "Windows"
 			}
 		}
@@ -83,16 +115,40 @@
 		"selected_items":
 		[
 			[
-				"re",
-				"Package Control: Remove Package"
-			],
-			[
-				"cop",
-				"Copy File Path"
+				"upload",
+				"SFTP: Upload Open Files"
 			],
 			[
 				"in",
 				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"status",
+				"StatusMessage: Toggle default status"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"BracketHighlighter: Remove Brackets"
+			],
+			[
+				"macx",
+				"Bookmarks: Select Next"
+			],
+			[
+				"cop",
+				"Copy File Path"
 			],
 			[
 				"openurl ",
@@ -227,7 +283,7 @@
 				"Set Syntax: Markdown"
 			]
 		],
-		"width": 570.0
+		"width": 489.0
 	},
 	"console":
 	{
@@ -256,16 +312,64 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/gaoyan/站点/other/济南机件/jj"
+		"/Users/gaoyan/站点/other/济南机件/jj",
+		"/Users/gaoyan/站点/other/济南机件/jj/data",
+		"/Users/gaoyan/站点/other/济南机件/jj/js"
 	],
 	"file_history":
 	[
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_info.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/article_info.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/article.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_step.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/article_cat.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/article.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/temp/static_caches/art_cat_pid_releate.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/article_auto.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/virtual_card_change.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/sms_charge_history.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/category.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/goods_info.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/ads.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/admin_logs.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/activity.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/js/calendar.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/goods_script.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/gallery.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_query.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/js/calendar/calendar.js",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_list.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/user.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/flow.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/flow.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_order.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/user.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/library/user_menu.lbi",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/user_transaction.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_transaction.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/js/common.js",
+		"/Users/gaoyan/站点/other/济南机件/jj/temp/compiled/user_menu.lbi.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/user_msg.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/user_account.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/mobile/templates/order_done.html",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_refund.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/pick_out.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/order.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/index.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/login.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/robots.txt",
+		"/Users/gaoyan/站点/other/济南机件/jj/htaccess.txt",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/help/zh_cn/template.xml",
+		"/Users/gaoyan/站点/other/济南机件/jj/topic.php",
 		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Path Tools/Default (OSX).sublime-keymap",
+		"/Users/gaoyan/站点/other/济南机件/jj/sql.txt",
 		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
 		"/Users/gaoyan/站点/other/济南机件/jj/sftp-config.json",
 		"/Users/gaoyan/站点/other/济南机件/jj/data/feedbackimg/index.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/favourable_info.htm",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/flow.dwt",
 		"/Users/gaoyan/站点/other/济南机件/jj/alipay.html",
 		"/Users/gaoyan/站点/other/济南机件/jj/jj.sublime-project",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/AwardAction.class.php",
@@ -341,63 +445,21 @@
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Bank/statistics.html",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Library/ORG/Util/Date.class.php",
 		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Model/PhotoModel.class.php",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Status Bar Weather/StatusBarWeather.sublime-settings",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Choujiang/zjList.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Choujiang/tabmenu.html",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/User/FileDiffs.sublime-settings",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/css/mobile/dell/dell.css",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/CommonModel.class.php",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/FileDiffs/FileDiffs.sublime-settings",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/third_party/jqueryUI/development-bundle/ui/minified/jquery.ui.accordion.min.js",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Choujiang/cjList.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Tool/Requirements-Checker/checker.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/CJRecordViewModel.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Lib/Core/Db.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/WxhactiveAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/WxhactiveModel.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/GyChoujiangRecordViewModel.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/CjAwardViewModel.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/InstalmentAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Boc/view.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/EbankAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/msgImage2/4wrBGywictFRXX9W4aNvwWyWcQwMiaHk8Wib7NeiarQFtcW4lgjabkeY3lsLJZjTXIhiaudS7Idxx38RzGg4gkJ85yQ",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/css/boc/ebank.css",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/third_party/ueditor/_src/core/EventBase.js",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/CommonAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Model/ManagerModel.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/css/boc/shop.css",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/Rotate/showresult.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/shopAction.class.php.mine",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Library/ORG/Util/Input.class.php",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Tpl/Bank/newScratchList (2).html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/gjsShopAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/shopAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/config_db_host.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/ButtonAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/shop/register.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/testAction.class.php",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/File History/README.md",
-		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/SVN/SVN.sublime-settings",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/gquizReportAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Library/ORG/PHPExcel/Calculation/FormulaParser.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Mode/phprpc.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Library/ORG/PHPExcel/Shared/PasswordHasher.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/index.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Lib/Action/ActivityAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/gjsShop/register.html",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Common/runtime.php"
+		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Status Bar Weather/StatusBarWeather.sublime-settings"
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"<open files>",
+			"/Users/gaoyan/站点/other/济南机件/jj",
+			"<open files>",
+			"/Users/gaoyan/站点/other/济南机件/jj",
 			"<open files>",
 			"/Users/gaoyan/站点/微信海/中国银行独立项目/web",
 			"/Users/gaoyan/站点/微信海/中国银行独立项目/web/",
@@ -412,6 +474,68 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"change",
+			"order_detail",
+			"file_url",
+			"upload_change_file",
+			"'change'",
+			">",
+			"'change'",
+			"upload_article_file",
+			"allow_file_types",
+			"'change'",
+			"goods_img",
+			"\"change\"",
+			"UPDATE",
+			"order_id",
+			"UPDATE \" . $ecs->table('goods_info') .",
+			"region",
+			".js",
+			"calendar.css",
+			"calendar.php",
+			"calendar.js",
+			"showCalendar",
+			"start_time_id",
+			"showCalendar",
+			"../js/region.js",
+			"选择",
+			"选饿",
+			"order_query",
+			"\"money\"",
+			"'money'",
+			"'money",
+			"money",
+			"invoice",
+			"'edit'",
+			"order.php?act=operate",
+			"order.php?act=edit&order_id=16&step=money",
+			"order_info.htm",
+			"order.php?act=operate",
+			"order_list_c1",
+			"label_collection",
+			"order_detail",
+			"采购单",
+			"order_detail",
+			"order_list",
+			"order_info",
+			"'edit'",
+			"('edit' == $step)",
+			"elseif ('edit' == $step)",
+			"elseif ('e di t' == $step)",
+			"step_post",
+			"status",
+			"get_user_orders",
+			"order_list",
+			"order_submit_back",
+			"done",
+			"'done'",
+			"get",
+			"getal",
+			"$GLOBALS['db']->",
+			"select",
+			"shipping_list",
+			"checkout",
+			"\"done\"",
 			"Find",
 			"addAll",
 			"current_cjList",
@@ -477,69 +601,7 @@
 			"未中奖",
 			"select()",
 			"function select",
-			"_tokens",
-			"getToken",
-			"extends",
-			"CommonAction",
-			"api.weixin.qq.com",
-			"api",
-			"M('Choujiang');",
-			"add",
-			"ajaxReturn",
-			"array_",
-			"register",
-			"_send_msg",
-			"update_business",
-			"del_info",
-			".xm-goods-item .item-price del",
-			".site-header .header-nav",
-			"SuperSlide",
-			".my_left_category",
-			"$brand",
-			"alt=\"\"></td>",
-			"images/",
-			"images",
-			"colspan=\"3\"",
-			"colspan=\"2\"",
-			"background",
-			".header .back",
-			"order_bonus",
-			"gaoyan",
-			"n order_bonus",
-			"n send_order_bonus",
-			"money",
-			"INSERT",
-			"in",
-			"user_bonus",
-			"send_order_bonus",
-			"INSERT INTO \" . $GLOBALS['ecs']->table('user_bonus')",
-			"user_bonus",
-			":",
-			".floor1_right ul",
-			".footer",
-			"site-header",
-			".root61 .footer",
-			".hm_floor_box",
-			".hm_floor_box li",
-			".hm_floor_box .nav5",
-			".xm-goods-item .item-price .sep",
-			".floor1_right ul",
-			".clear",
-			".right",
-			"nav_hover",
-			"goodsItem",
-			"TemplateEndEditable",
-			"TemplateBeginEditable",
-			"current_cat_pr_id",
-			"get_parent_cats",
-			".focus .shadow",
-			"images",
-			"$smarty.",
-			"$smarty.section",
-			"n getads",
-			"getads",
-			"banner1",
-			"page"
+			"_tokens"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -547,6 +609,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"showCalendar",
 			" userExport\n ",
 			" \n ",
 			" ",
@@ -560,7 +623,7 @@
 			"showsite",
 			"Show"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -569,24 +632,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.php",
+					"file": "admin/order.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12788,
+						"buffer_size": 229904,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								982,
-								982
+								76594,
+								76594
 							]
 						],
 						"settings":
@@ -594,61 +657,61 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -753,27 +816,526 @@
 								"Python Django": "Python"
 							},
 							"codeintel_tooltips": "popup",
-							"force_encoding": "GBK",
-							"function_name_status_row": 33,
-							"in_converting": true,
+							"function_name_status_row": 2070,
 							"incomplete_sync": null,
 							"is_xml": false,
-							"origin_encoding": "GBK",
 							"remote_loading": false,
 							"side_bar_folders_auto_load_folder": 1,
 							"sublime_auto_complete": true,
 							"synced": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
-							"tabs_extra_last_activated": 1416365938.62,
+							"tabs_extra_last_activated": 1416473359.18,
 							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_moving":
+							[
+								2,
+								0
+							],
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 40998.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sql.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"function_name_status_row": 0,
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"side_bar_folders_auto_load_folder": 1,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tabs_extra_last_activated": 1416474212.37,
+							"tabs_extra_last_activated_sheet_index": 1
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "user.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 97398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32358,
+								32358
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content"
+							],
+							"function_name_status_row": 910,
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"side_bar_folders_auto_load_folder": 1,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"tabs_extra_last_activated": 1416539325.62,
+							"tabs_extra_last_activated_sheet_index": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 2.0,
+						"translation.y": 17859.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "themes/default/user_transaction.dwt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 55214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15735,
+								15735
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"function_name_status_row": 316,
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"side_bar_folders_auto_load_folder": 1,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1416476599.67,
+							"tabs_extra_last_activated_sheet_index": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5931.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -829,6 +1391,82 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"ser_transaction.d",
+				"themes/default/user_transaction.dwt"
+			],
+			[
+				"user",
+				"user.php"
+			],
+			[
+				"article_in",
+				"admin/templates/article_info.htm"
+			],
+			[
+				"admin/artic",
+				"admin/article.php"
+			],
+			[
+				"goods.php",
+				"admin/goods.php"
+			],
+			[
+				"goods_info",
+				"admin/templates/goods_info.htm"
+			],
+			[
+				"order_query",
+				"admin/templates/order_query.htm"
+			],
+			[
+				"order_step",
+				"admin/templates/order_step.htm"
+			],
+			[
+				"order_info.htm",
+				"admin/templates/order_info.htm"
+			],
+			[
+				"user_men",
+				"themes/default/library/user_menu.lbi"
+			],
+			[
+				"r_transaction.dwt",
+				"themes/default/user_transaction.dwt"
+			],
+			[
+				"user.php",
+				"user.php"
+			],
+			[
+				"order_list.htm",
+				"admin/templates/order_list.htm"
+			],
+			[
+				"order",
+				"admin/order.php"
+			],
+			[
+				"er_transaction.dwt",
+				"themes/default/user_transaction.dwt"
+			],
+			[
+				"flow.dwt",
+				"themes/default/flow.dwt"
+			],
+			[
+				"txt",
+				"sql.txt"
+			],
+			[
+				"flow.php",
+				"flow.php"
+			],
+			[
+				"flow",
+				"themes/default/flow.dwt"
+			],
 			[
 				"1706210fa50fcf6c498fa7ec01d10730.php",
 				"boc/Runtime/Cache/1706210fa50fcf6c498fa7ec01d10730.php"
@@ -1016,10 +1654,6 @@
 			[
 				"category.php",
 				"category.php"
-			],
-			[
-				"flow.dwt",
-				"themes/default/flow.dwt"
 			]
 		],
 		"width": 0.0
@@ -1034,9 +1668,25 @@
 	},
 	"select_symbol":
 	{
-		"height": 159.0,
+		"height": 49.0,
 		"selected_items":
 		[
+			[
+				"upload_article_file",
+				"upload_article_file"
+			],
+			[
+				"showCalendar",
+				"showCalendar"
+			],
+			[
+				"get_user_orders",
+				"get_user_orders"
+			],
+			[
+				"order_info",
+				"order_info"
+			],
 			[
 				"insertAll",
 				"insertAll"
@@ -1066,7 +1716,7 @@
 				"firstDayOfMonth"
 			]
 		],
-		"width": 570.0
+		"width": 381.0
 	},
 	"selected_group": 0,
 	"settings":

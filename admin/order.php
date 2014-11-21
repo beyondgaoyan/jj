@@ -18,7 +18,10 @@ define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
 require_once(ROOT_PATH . 'includes/lib_order.php');
 require_once(ROOT_PATH . 'includes/lib_goods.php');
-
+//by gaoyan
+include_once(ROOT_PATH . '/includes/cls_image.php');
+/* 允许上传的文件类型 */
+$allow_file_types = '|GIF|JPG|PNG|BMP|';
 /*------------------------------------------------------ */
 //-- 订单查询
 /*------------------------------------------------------ */
@@ -1191,7 +1194,7 @@ elseif ($_REQUEST['act'] == 'step_post')
     admin_priv('order_edit');
 
     /* 取得参数 step */
-    $step_list = array('user', 'edit_goods', 'add_goods', 'goods', 'consignee', 'shipping', 'payment', 'other', 'money', 'invoice');
+    $step_list = array('user', 'edit_goods', 'add_goods', 'goods', 'consignee', 'shipping', 'payment', 'other', 'money', 'invoice','change');
     $step = isset($_REQUEST['step']) && in_array($_REQUEST['step'], $step_list) ? $_REQUEST['step'] : 'user';
 
     /* 取得参数 order_id */
@@ -1586,6 +1589,7 @@ elseif ($_REQUEST['act'] == 'step_post')
             }
             exit;
         }
+
     }
     /* 保存配送信息 */
     elseif ('shipping' == $step)
@@ -2046,6 +2050,42 @@ elseif ($_REQUEST['act'] == 'step_post')
             exit;
         }
     }
+    //by gaoyan
+            elseif ('change' == $step)
+        {
+            /* 取得文件地址 */
+            $file_url = '';
+            if ((isset($_FILES['file']['error']) && $_FILES['file']['error'] == 0) || (!isset($_FILES['file']['error']) && isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != 'none'))
+            {
+                // 检查文件格式
+                if (!check_file_type($_FILES['file']['tmp_name'], $_FILES['file']['name'], $allow_file_types))
+                {
+                    sys_msg($_LANG['invalid_file']);
+                }
+
+                // 复制文件
+                $res = upload_change_file($_FILES['file']);
+                if ($res != false)
+                {
+                    $file_url = $res;
+                }
+            }
+            if ($file_url == '')
+            {
+                $file_url = $_POST['file_url'];
+            }
+            $change_date = isset($_POST['change_date']) ? $_POST['change_date'] : '0000-00-00';
+            $change_name = isset($_POST['change_name']) ? $_POST['change_name'] : '无';
+            $change_tel = isset($_POST['change_tel']) ? $_POST['change_tel'] : '无';
+            $change_fax = isset($_POST['change_fax']) ? $_POST['change_fax'] : '无';
+            $change_img = isset($file_url) ? $file_url : '无';
+            $sql = "UPDATE " . $ecs->table('order_info') .
+                    " SET `change_date` = '" . $change_date . "' ,`change_name` = '" . $change_name . "',`change_tel` = '" . $change_tel . "',`change_fax` = '" . $change_fax . "',`change_img` = '" . $change_img . "'" .
+                    " WHERE `order_id` = '" . $order_id . "' LIMIT 1";
+            $db->query($sql);
+            ecs_header("Location: order.php?act=info&order_id=" . $order_id . "\n");
+            exit;
+        }
 }
 
 /*------------------------------------------------------ */
@@ -2062,7 +2102,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
     $smarty->assign('order_id', $order_id);
 
     /* 取得参数 step */
-    $step_list = array('user', 'goods', 'consignee', 'shipping', 'payment', 'other', 'money');
+    $step_list = array('user', 'goods', 'consignee', 'shipping', 'payment', 'other', 'money','change');
     $step = isset($_GET['step']) && in_array($_GET['step'], $step_list) ? $_GET['step'] : 'user';
     $smarty->assign('step', $step);
 
@@ -2326,6 +2366,15 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
 //            $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
 //        }
         $smarty->assign('shipping_list', $shipping_list);
+    }
+    //by gaoyan  编辑报价单合同
+    elseif ('change' == $step)
+    {
+        /* 如果不存在实体商品 */
+        if (!exist_real_goods($order_id))
+        {
+            die ('Hacking Attemp');
+        }
     }
 
     /* 显示模板 */
@@ -6362,5 +6411,26 @@ function get_site_root_url()
 {
     return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/order.php', '', PHP_SELF);
 
+}
+/* 上传合同附件 by gaoyan*/
+function upload_change_file($upload)
+{
+    if (!make_dir("../" . DATA_DIR . "/change"))
+    {
+        /* 创建目录失败 */
+        return false;
+    }
+
+    $filename = cls_image::random_filename() . substr($upload['name'], strpos($upload['name'], '.'));
+    $path     = ROOT_PATH. DATA_DIR . "/change/" . $filename;
+
+    if (move_upload_file($upload['tmp_name'], $path))
+    {
+        return DATA_DIR . "/change/" . $filename;
+    }
+    else
+    {
+        return false;
+    }
 }
 ?>

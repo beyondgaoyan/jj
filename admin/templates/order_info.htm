@@ -261,7 +261,34 @@
   </tr>
 </table>
 </div>
+<!-- by gaoyan 报价单编辑 -startt-->
+<!-- {if $order.change_status=='2'} -->
+<div class="list-div" style="margin-bottom: 5px">
+<table width="100%" cellpadding="3" cellspacing="1">
+  <tr>
+    <th colspan="4">报价单合同信息<a href="order.php?act=edit&order_id={$order.order_id}&step=change" class="special">{$lang.edit}</a></th>
+  </tr>
+    <tr>
+    <td width="18%"><div align="right"><strong>报价日期</strong></div></td>
+    <td width="34%">{if $order.change_date!='0000-00-00'}{$order.change_date}{/if}</td>
+    <td width="15%"><div align="right"><strong>联系人</strong></div></td>
+    <td>{$order.change_name}</td>
+  </tr>
+    <tr>
+    <td width="18%"><div align="right"><strong>联系电话</strong></div></td>
+    <td width="34%">{$order.change_tel}</td>
+    <td width="15%"><div align="right"><strong>传真</strong></div></td>
+    <td>{$order.change_fax}</td>
+  </tr>
+      <tr>
+    <td width="18%"><div align="right"><strong>合同附件</strong></div></td>
+    <td colspan="3">{if $order.change_img!='无'}<img src="/{$order.change_img}" style="max-width: 600px;">{/if}</td>
+  </tr>
 
+</table>
+</div>
+<!-- {/if} -->
+<!-- by gaoyan 报价单编辑 -end-->
 <div class="list-div" style="margin-bottom: 5px">
 <table cellpadding="3" cellspacing="1">
   <tr>

@@ -291,6 +291,33 @@
         </tr>
         <!--{/if}-->
       </table>
+      {if $order.change_status==2}
+      <div class="blank"></div>
+        <h5><span>报价单资料</span></h5>
+        <div class="blank"></div>
+         <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+          <tr>
+            <td width="15%" align="right" bgcolor="#ffffff">报价日期：</td>
+          <td align="left" bgcolor="#ffffff">{$order.change_date}</td>
+          </tr>
+                    <tr>
+            <td width="15%" align="right" bgcolor="#ffffff">联系人：</td>
+          <td align="left" bgcolor="#ffffff">{$order.change_name}</td>
+          </tr>
+                    <tr>
+            <td width="15%" align="right" bgcolor="#ffffff">联系电话：</td>
+          <td align="left" bgcolor="#ffffff">{$order.change_tel}</td>
+          </tr>
+                    <tr>
+            <td width="15%" align="right" bgcolor="#ffffff">传真：</td>
+          <td align="left" bgcolor="#ffffff">{$order.change_fax}</td>
+          </tr>
+                    <tr>
+            <td width="15%" align="right" bgcolor="#ffffff">合同附件：</td>
+            <td align="left" bgcolor="#ffffff">{if $order.change_img!='无'}<a href="{$order.change_img}" target="_blank"><img style="max-width:400px;" src="{$order.change_img}"></a>{else}暂无{/if}</td>
+          </tr>
+        </table>
+      {/if}
         <div class="blank"></div>
         <h5><span>{$lang.goods_list}</span>
         <!-- {if $allow_to_cart} -->
