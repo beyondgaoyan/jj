@@ -5,3 +5,5 @@ data
 languages/en_us
 languages/zh_tw
 temp
+.tags
+.tags_sorted_by_file
