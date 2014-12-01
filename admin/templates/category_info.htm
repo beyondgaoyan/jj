@@ -144,6 +144,24 @@
           <textarea name='cat_desc' rows="6" cols="48">{$cat_info.cat_desc}</textarea>
         </td>
       </tr>
+	  {if $cat_info.parent_id eq 0}
+      <tr>
+        <td class="label" style="color:#FF0000">是否启用封面顶级页:</td>
+        <td>
+           <input type="radio" name="is_wshow" value="1" {if $cat_info.is_wshow neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_wshow" value="0" {if $cat_info.is_wshow eq 0} checked="true"{/if} /> {$lang.no}
+        </td>
+      </tr>
+	  {else}
+	    <tr>
+        <td class="label" style="color:#FF0000">小分类是否在封面页:</td>
+        <td>
+           <input type="radio" name="is_wshow" value="1" {if $cat_info.is_wshow neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_wshow" value="0" {if $cat_info.is_wshow eq 0} checked="true"{/if} /> {$lang.no}
+		  （可以选择是否显示在顶级封面页下的子类里面）
+        </td>
+      </tr>
+	  {/if}
       </table>
       <div class="button-div">
         <input type="submit" value="{$lang.button_submit}" />

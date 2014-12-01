@@ -242,6 +242,10 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         //获取tag
         $tag_array = get_tags($goods_id);
         $smarty->assign('tags',                $tag_array);                                       // 商品的标记
+		
+
+		$parent_id=$db->getOne('SELECT parent_id FROM ' . $GLOBALS['ecs']->table('category') ." WHERE cat_id = '".$goods['cat_id']."'");
+		$smarty->assign('parent_id',  $parent_id); 
 
         //获取关联礼包
         $package_goods_list = get_package_goods_list($goods['goods_id']);
@@ -535,17 +539,18 @@ function get_attr_amount($goods_id, $attr)
 function get_package_goods_list($goods_id)
 {
     $now = gmtime();
-    $sql = "SELECT pg.goods_id, ga.act_id, ga.act_name, ga.act_desc, ga.goods_name, ga.start_time,
-                   ga.end_time, ga.is_finished, ga.ext_info
-            FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS ga, " . $GLOBALS['ecs']->table('package_goods') . " AS pg
-            WHERE pg.package_id = ga.act_id
-            AND ga.start_time <= '" . $now . "'
-            AND ga.end_time >= '" . $now . "'
-            AND pg.goods_id = " . $goods_id . "
-            GROUP BY ga.act_id
-            ORDER BY ga.act_id ";
+    $sql = "SELECT ga.act_id, ga.act_name, ga.act_desc, ga.goods_id, ga.goods_name, ga.start_time, ".
+           " ga.end_time, ga.is_finished, ga.ext_info ".
+           " FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS ga".
+           ", " . $GLOBALS['ecs']->table('package_goods') . " AS pg".
+        "   LEFT JOIN ". $GLOBALS['ecs']->table('goods') . " AS g ".
+               "   ON g.goods_id = pg.goods_id ".
+        /**此部分可以只在主体商品下显示套装（不能和绿色的同时使用）*/
+        " WHERE pg.package_id = ga.act_id AND ga.start_time <= '" . $now . "' AND ga.end_time >= '" . $now . "'  AND ga.goods_id = '" . $goods_id . "' AND ga.goods_id = pg.goods_id".
+          // " WHERE pg.package_id = ga.act_id AND ga.start_time <= '" . $now . "' AND ga.end_time >= '" . $now . "'  AND pg.goods_id = " . $goods_id .
+           " ORDER BY ga.act_id";
+		   
     $res = $GLOBALS['db']->getAll($sql);
-
     foreach ($res as $tempkey => $value)
     {
         $subtotal = 0;
@@ -577,6 +582,7 @@ function get_package_goods_list($goods_id)
             $goods_id_array[] = $val['goods_id'];
             $goods_res[$key]['goods_thumb']  = get_image_path($val['goods_id'], $val['goods_thumb'], true);
             $goods_res[$key]['market_price'] = price_format($val['market_price']);
+			$goods_res[$key]['shop_price'] = price_format($val['shop_price']);
             $goods_res[$key]['rank_price']   = price_format($val['rank_price']);
             $subtotal += $val['rank_price'] * $val['goods_number'];
         }

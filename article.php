@@ -121,6 +121,12 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
     assign_dynamic('article');
 }
 if(isset($article) && $article['cat_id'] > 2)
+
+if($pcat_id == 3)
+{
+    $smarty->display('article_help.dwt', $cache_id);
+}
+elseif(isset($article) && $article['cat_id'] > 2)
 {
     $smarty->display('article.dwt', $cache_id);
 }

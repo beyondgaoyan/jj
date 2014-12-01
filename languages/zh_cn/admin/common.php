@@ -293,9 +293,6 @@ $_LANG['04_sms_charge'] = '账户充值';
 $_LANG['05_sms_send_history'] = '发送记录';
 $_LANG['06_sms_charge_history'] = '充值记录';
 
-
-
-
 $_LANG['affiliate'] = '推荐设置';
 $_LANG['affiliate_ck'] = '分成管理';
 $_LANG['flashplay'] = '首页主广告管理';

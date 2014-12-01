@@ -1,4 +1,32 @@
 /* $Id : common.js 4865 2007-01-31 14:04:10Z paulgao $ */
+function addToCartNums(goodsId, parentId)
+{
+        var goodsIds=goodsId.substr(0,goodsId.length-1).split(',');
+        var buynum=goodsIds.length-1;
+        for(i=0;i<goodsIds.length;i++)
+        {                
+         var goods  = new Object();
+         var spec_arr     = new Array();
+          var fittings_arr = new Array();
+          var number       = 1; 
+          var quick           = 1; 
+          goods.quick    = quick;
+          goods.spec     = spec_arr;
+          goods.goods_id = goodsIds[i];
+          goods.number   = 1;
+          goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+
+		  if(i==buynum)
+		  {
+			Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), addToCartResponse, 'POST', 'JSON');
+		  }
+		  else
+		  {
+				Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), '', 'POST', 'JSON');
+		  }
+
+        }
+}
 
 /* *
  * 添加商品到购物车 
@@ -101,7 +129,8 @@ function addToCartResponse(result)
       switch(result.confirm_type)
       {
         case '1' :
-          if (confirm(result.message)) location.href = cart_url;
+          //if (confirm(result.message)) location.href = cart_url;
+		  opencartDiv(result.shop_price,result.goods_name,result.goods_thumb,result.goods_brief,result.goods_id,result.goods_price,result.goods_number);
           break;
         case '2' :
           if (!confirm(result.message)) location.href = cart_url;
@@ -154,6 +183,7 @@ function signInResponse(result)
 
 /* *
  * 评论的翻页函数
+
  */
 function gotoPage(page, id, type)
 {
@@ -258,6 +288,7 @@ function bidResponse(result)
     alert(result.content);
   }
 }
+
 /* *
  * 夺宝奇兵最新出价
  */
@@ -875,7 +906,7 @@ function openSpeDiv(message, goods_id, parent)
   newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
   newDiv.style.overflow = "auto"; 
   newDiv.style.background = "#FFF";
-  newDiv.style.border = "3px solid #59B0FF";
+  newDiv.style.border = "3px solid #B3B3B3";
   newDiv.style.padding = "5px";
 
   //生成层内内容
@@ -987,4 +1018,76 @@ function cancel_div()
     sel_obj[i].style.visibility = "";
     i++;
   }
+}
+
+function opencartDiv(price,name,pic,goods_brief,goods_id,total,number)
+{
+var _id = "speDiv";
+var m = "mask";
+
+if (docEle(_id)) document.removeChild(docEle(_id));
+if (docEle(m)) document.removeChild(docEle(m));
+//计算上卷元素值
+var scrollPos; 
+if (typeof window.pageYOffset != 'undefined') 
+{ 
+scrollPos = window.pageYOffset; 
+} 
+else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') 
+{ 
+scrollPos = document.documentElement.scrollTop; 
+} 
+else if (typeof document.body != 'undefined') 
+{ 
+scrollPos = document.body.scrollTop; 
+}
+
+var i = 0;
+var sel_obj = document.getElementsByTagName('select');
+while (sel_obj[i])
+{
+sel_obj[i].style.visibility = "hidden";
+i++;
+}
+
+// 新激活图层
+var newDiv = document.createElement("div");
+newDiv.id = _id;
+newDiv.style.position = "absolute";
+newDiv.style.zIndex = "10000";
+newDiv.style.width = "500px";
+newDiv.style.height = "270px";
+newDiv.style.top = (parseInt(scrollPos + 250)) + "px";
+newDiv.style.left = (parseInt(document.body.offsetWidth) - 400) / 2 + "px"; // 屏幕居中
+newDiv.style.background = "#fff";
+newDiv.style.border = "3px solid #B3B3B3";
+var html = '';
+
+//生成层内内容
+html = '<div style="font-size:14;background:#990100;width:480px;height:30px;line-height:30px;padding:0 10px;font-size:14px;"><span style="float:left; font-weight:bold;color:#ffffff;">商品已成功添加至购物车</span><a href=\'javascript:cancel_div()\' style="float:right;padding:0 20px 0 0;background:url(images/ico_closebig.gif) right center no-repeat;cursor:pointer;color:#fff;" >关闭</a></div><div class="cartpopDiv"><div class="toptitle"><a href="goods.php?id='+goods_id+'" class="pic"><img src='+pic+' width="100" height="100"/></a><p class="namec"><a href="goods.php?id='+goods_id+'">'+name+'</a></p><p class="briefc">'+goods_brief+'</p><p class="pricec"><font style="font-size:12px;">商品价格：<font style="color:#ff6701">'+price+'</font></font></p></div>';
+
+html += '<div class="coninfo">';
+html +='<table cellpadding="0" height="30"><tr><td align="center"><div class="carti">购物车共有<font style="color:#ff6701;"><strong>'+number+'</strong></font>种商品：合计：<font style="color:#ff6701;"><strong>'+total+'</strong></font></div></td></tr>';
+html += '</table>';
+html +='</div>'; 
+
+
+html +="<div style='float:left;width:450px;text-align:center;padding:15px 0 0;'><a href='flow.php'><img src='images/jsico.gif'></a> <a href=\'javascript:cancel_div()\'><img src='images/goon_ico.gif'></a></div>";
+html +='</div></div>';
+newDiv.innerHTML = html;
+document.body.appendChild(newDiv);
+// mask图层
+var newMask = document.createElement("div");
+newMask.id = m;
+newMask.style.position = "absolute";
+newMask.style.zIndex = "9999";
+newMask.style.width = document.body.scrollWidth + "px";
+newMask.style.height = document.body.scrollHeight + "px";
+newMask.style.top = "0px";
+newMask.style.left = "0px";
+newMask.style.background = "#FFF";
+newMask.style.filter = "alpha(opacity=30)";
+newMask.style.opacity = "0.40";
+document.body.appendChild(newMask);
+
 }

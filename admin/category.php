@@ -77,7 +77,8 @@ if ($_REQUEST['act'] == 'add')
 
     $smarty->assign('cat_select',   cat_list(0, 0, true));
     $smarty->assign('form_act',     'insert');
-    $smarty->assign('cat_info',     array('is_show' => 1));
+    $smarty->assign('cat_info',     array('is_show' => 1,'is_wshow' => 1));
+	//$smarty->assign('cat_info',     array('is_wshow' => 1));
 
 
 
@@ -105,6 +106,7 @@ if ($_REQUEST['act'] == 'insert')
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;
+	$cat['is_wshow']      = !empty($_POST['is_wshow'])      ? intval($_POST['is_wshow'])    : 0;
     $cat['grade']        = !empty($_POST['grade'])        ? intval($_POST['grade'])      : 0;
     $cat['filter_attr']  = !empty($_POST['filter_attr'])  ? implode(',', array_unique(array_diff($_POST['filter_attr'],array(0)))) : 0;
 
@@ -230,7 +232,7 @@ elseif($_REQUEST['act'] == 'add_category')
     }
     else
     {
-        $sql = "INSERT INTO " . $ecs->table('category') . "(cat_name, parent_id, is_show)" .
+        $sql = "INSERT INTO " . $ecs->table('category') . "(cat_name, parent_id, is_show,is_wshow)" .
                "VALUES ( '$category', '$parent_id', 1)";
 
         $db->query($sql);
@@ -262,6 +264,7 @@ if ($_REQUEST['act'] == 'update')
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;
+	$cat['is_wshow']      = !empty($_POST['is_wshow'])      ? intval($_POST['is_wshow'])    : 0;
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
     $cat['grade']        = !empty($_POST['grade'])        ? intval($_POST['grade'])      : 0;

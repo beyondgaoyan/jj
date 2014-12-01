@@ -170,6 +170,28 @@ if ($_REQUEST['step'] == 'add_to_cart')
             }
         }
     }
+	
+	$rows = $GLOBALS['db']->getRow("select goods_brief,shop_price,goods_name,goods_thumb,promote_price from ".$GLOBALS['ecs']->table('goods')." where goods_id=".$goods->goods_id);
+	$result['shop_price'] = price_format($rows['shop_price']);
+	$result['goods_name'] = $rows['goods_name'];
+	$result['goods_thumb'] = $rows['goods_thumb'];
+	$result['goods_brief'] = $rows['goods_brief'];
+	if ($rows['promote_price'] > 0)
+	{
+		$result['shop_price'] = price_format($rows['promote_price']);
+	}
+	else
+	{
+		$result['shop_price'] = price_format($rows['shop_price']);
+	}
+	
+	$result['goods_id'] = $goods->goods_id;
+	$sql = 'SELECT SUM(goods_number) AS number, SUM(goods_price * goods_number) AS amount' .
+	' FROM ' . $GLOBALS['ecs']->table('cart') .
+	" WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'";
+	$rowss = $GLOBALS['db']->GetRow($sql);
+	$result['goods_price'] = price_format($rowss['amount']);
+	$result['goods_number'] = $rowss['number'];
 
     $result['confirm_type'] = !empty($_CFG['cart_confirm']) ? $_CFG['cart_confirm'] : 2;
     die($json->encode($result));
@@ -1826,8 +1848,8 @@ elseif ($_REQUEST['step'] == 'update_cart')
     {
         flow_update_cart($_POST['goods_number']);
     }
-
-    show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
+    ecs_header("Location: flow.php?step=cart\n");
+   // show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
     exit;
 }
 
@@ -2118,6 +2140,7 @@ else
 
     //购物车的描述的格式化
     $smarty->assign('shopping_money',         sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_price']));
+	$smarty->assign('shopping_money',         sprintf($cart_goods['total']['goods_price']));
     $smarty->assign('market_price_desc',      sprintf($_LANG['than_market_price'],
         $cart_goods['total']['market_price'], $cart_goods['total']['saving'], $cart_goods['total']['save_rate']));
 

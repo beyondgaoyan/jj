@@ -224,6 +224,7 @@ function get_recommend_goods($type = '', $cats = '')
                     }
                     if ($data['is_hot'] == 1)
                     {
+
                         $goods_data['hot'][] = array('goods_id' => $data['goods_id'], 'sort_order' => $data['sort_order']);
                     }
                     if ($data['brand_name'] != '')
@@ -337,6 +338,7 @@ function get_recommend_goods($type = '', $cats = '')
             {
                 $type_goods['hot'][] = $goods[$idx];
             }
+			
         }
     }
     return $type_goods[$type];
@@ -394,6 +396,21 @@ function get_promote_goods($cats = '')
         $goods[$idx]['thumb']        = get_image_path($row['goods_id'], $row['goods_thumb'], true);
         $goods[$idx]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
         $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+		
+		if($row['market_price']>0 and $row['shop_price']>0){
+		  $goods[$idx]['dz_price']     = round(($row['promote_price']/$row['market_price'])*100)/10+"";
+		  $goods[$idx]['js_price']     = $row['market_price']-$row['promote_price'];
+		}
+		/* 促销时间倒计时 */
+        $time = gmtime();
+        if ($time >= $row['promote_start_date'] && $time <= $row['promote_end_date'])
+        {
+             $goods[$idx]['gmt_end_time']  = local_date('M d, Y H:i:s',$row['promote_end_date']);
+        }
+        else
+        {
+            $goods[$idx]['gmt_end_time'] = 0;
+        }
     }
 
     return $goods;
@@ -411,7 +428,7 @@ function get_promote_goods($cats = '')
  * @param   string      $ext        商品扩展查询
  * @return  array
  */
-function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =0,  $max = 0, $ext='')
+function get_category_recommend_goods($type = '', $cats = '', $cat_num = 0,$brand = 0, $min =0,  $max = 0, $ext='')
 {
     $brand_where = ($brand > 0) ? " AND g.brand_id = '$brand'" : '';
 
@@ -428,7 +445,10 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
             'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 ' . $brand_where . $price_where . $ext;
     $num = 0;
     $type2lib = array('best'=>'recommend_best', 'new'=>'recommend_new', 'hot'=>'recommend_hot', 'promote'=>'recommend_promotion');
-    $num = get_library_number($type2lib[$type]);
+    if($cat_num==0)
+	$num = get_library_number($type2lib[$type]);
+	else
+	$num = $cat_num;
 
     switch ($type)
     {
@@ -481,9 +501,19 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
         $goods[$idx]['thumb']        = get_image_path($row['goods_id'], $row['goods_thumb'], true);
         $goods[$idx]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
         $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
-
+		/* 促销时间倒计时 */
+        $time = gmtime();
+        if ($time >= $row['promote_start_date'] && $time <= $row['promote_end_date'])
+        {
+             $goods[$idx]['gmt_end_time']  = local_date('M d, Y H:i:s',$row['promote_end_date']);
+        }
+        else
+        {
+            $goods[$idx]['gmt_end_time'] = 0;
+        }
         $goods[$idx]['short_style_name'] = add_style($goods[$idx]['short_name'], $row['goods_name_style']);
         $idx++;
+
     }
 
     return $goods;
@@ -519,6 +549,23 @@ function get_goods_info($goods_id)
     {
         /* 用户评论级别取整 */
         $row['comment_rank']  = ceil($row['comment_rank']) == 0 ? 5 : ceil($row['comment_rank']);
+		if ($row['promote_price']>0 )
+		{
+		  $row['pj_price'] = intval($row['promote_price']);
+		}
+		else
+		{
+		  $row['pj_price'] = intval($row['shop_price']);
+		}
+		
+		 /* 获得商品的销售价格 */
+        if($row['market_price']>0 and $row['shop_price']>0)
+        {		
+	    $row['sheng_price'] = $row['market_price']-$row['shop_price'];
+        $row['zhekou_price'] = round(($row['shop_price']/$row['market_price'])*100)/10+"";
+        $row['cuxiao_sheng_price'] = $row['market_price']-$row['promote_price'];
+        $row['cuxiao_zhekou_price'] = round(($row['promote_price']/$row['market_price'])*100)/10+"";
+        }
 
         /* 获得商品的销售价格 */
         $row['market_price']        = price_format($row['market_price']);
@@ -650,11 +697,15 @@ function get_goods_properties($goods_id)
         {
             $arr['spe'][$row['attr_id']]['attr_type'] = $row['attr_type'];
             $arr['spe'][$row['attr_id']]['name']     = $row['attr_name'];
+            $arr['spe'][$row['attr_id']]['pic']=get_same_name_pic($goods_id,$row['attr_value']);
             $arr['spe'][$row['attr_id']]['values'][] = array(
                                                         'label'        => $row['attr_value'],
                                                         'price'        => $row['attr_price'],
                                                         'format_price' => price_format(abs($row['attr_price']), false),
-                                                        'id'           => $row['goods_attr_id']);
+                                                        'id'           => $row['goods_attr_id'],
+														'img_thumb'    => $arr['spe'][$row['attr_id']]['pic']['img_url'],
+                                                        'pic_thumb'    => $arr['spe'][$row['attr_id']]['pic']['thumb_url'],
+                                                        'pic_id'        => $arr['spe'][$row['attr_id']]['pic']['img_id']);
         }
 
         if ($row['is_linked'] == 1)
@@ -666,6 +717,13 @@ function get_goods_properties($goods_id)
     }
 
     return $arr;
+}
+function get_same_name_pic($goods_id,$name){
+    $sql = "SELECT img_url,thumb_url,img_id ".
+            'FROM ' . $GLOBALS['ecs']->table('goods_gallery').
+            "WHERE goods_id = '$goods_id' AND img_desc='$name' " ;
+    $pic = $GLOBALS['db']->getRow($sql);
+    return $pic;
 }
 
 /**
@@ -979,8 +1037,10 @@ function group_buy_info($group_buy_id, $current_num = 0)
 {
     /* 取得团购活动信息 */
     $group_buy_id = intval($group_buy_id);
-    $sql = "SELECT *, act_id AS group_buy_id, act_desc AS group_buy_desc, start_time AS start_date, end_time AS end_date " .
-            "FROM " . $GLOBALS['ecs']->table('goods_activity') .
+    $sql = "SELECT *, act_id AS group_buy_id,act_desc AS group_buy_desc, start_time AS start_date, end_time AS end_date " .
+            //"FROM " . $GLOBALS['ecs']->table('goods_activity') .
+			"FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS b " .
+                "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON b.goods_id = g.goods_id " .
             "WHERE act_id = '$group_buy_id' " .
             "AND act_type = '" . GAT_GROUP_BUY . "'";
     $group_buy = $GLOBALS['db']->getRow($sql);
@@ -1035,12 +1095,16 @@ function group_buy_info($group_buy_id, $current_num = 0)
         }
     }
     $group_buy['cur_price'] = $cur_price;
-    $group_buy['formated_cur_price'] = price_format($cur_price, false);
+    $group_buy['formated_cur_price'] = $cur_price;
 
     /* 最终价 */
     $group_buy['trans_price'] = $group_buy['cur_price'];
     $group_buy['formated_trans_price'] = $group_buy['formated_cur_price'];
     $group_buy['trans_amount'] = $group_buy['valid_goods'];
+	
+	$group_buy['formated_rebate_price'] = price_format($group_buy['market_price'] - $cur_price);
+	$group_buy['t_discount'] = sprintf ("%01.1f", $cur_price/$group_buy['market_price']*10);
+	$group_buy['market_price'] = price_format($group_buy['market_price']);
 
     /* 状态 */
     $group_buy['status'] = group_buy_status($group_buy);
@@ -1051,10 +1115,10 @@ function group_buy_info($group_buy_id, $current_num = 0)
 
     $group_buy['start_time'] = $group_buy['formated_start_date'];
     $group_buy['end_time'] = $group_buy['formated_end_date'];
+	$group_buy['isg_new'] = $group_buy['isg_new'];
 
     return $group_buy;
 }
-
 /*
  * 取得某团购活动统计信息
  * @param   int     $group_buy_id   团购活动id
@@ -1355,6 +1419,7 @@ function wholesale_info($act_id)
     $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('wholesale') .
             " WHERE act_id = '$act_id'";
     $row = $GLOBALS['db']->getRow($sql);
+
     if (!empty($row))
     {
         $row['price_list'] = unserialize($row['prices']);

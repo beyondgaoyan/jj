@@ -415,14 +415,17 @@ else
         elseif ($row['is_new'] != 0)
         {
             $watermark_img = "watermark_new_small";
+			$arr[$row['goods_id']]['watermark_img1'] =  $watermark_img1;
         }
         elseif ($row['is_best'] != 0)
         {
             $watermark_img = "watermark_best_small";
+			$arr[$row['goods_id']]['watermark_img2'] =  $watermark_img2;
         }
         elseif ($row['is_hot'] != 0)
         {
             $watermark_img = 'watermark_hot_small';
+			$arr[$row['goods_id']]['watermark_img3'] =  $watermark_img3;
         }
 
         if ($watermark_img != '')

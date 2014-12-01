@@ -242,7 +242,7 @@ function index_get_group_buy()
     $group_buy_list = array();
     if ($limit > 0)
     {
-        $sql = 'SELECT gb.act_id AS group_buy_id, gb.goods_id, gb.ext_info, gb.goods_name, g.goods_thumb, g.goods_img ' .
+        $sql = 'SELECT gb.act_id AS group_buy_id, gb.goods_id, gb.ext_info, gb.goods_name, gb.group_rs,gb.isg_rs,gb.start_time, gb.end_time,g.market_price,g.goods_thumb, g.goods_img ' .
                 'FROM ' . $GLOBALS['ecs']->table('goods_activity') . ' AS gb, ' .
                     $GLOBALS['ecs']->table('goods') . ' AS g ' .
                 "WHERE gb.act_type = '" . GAT_GROUP_BUY . "' " .
@@ -260,8 +260,19 @@ function index_get_group_buy()
             $row['goods_img'] = get_image_path($row['goods_id'], $row['goods_img']);
             $row['thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
 
+			/*新团购模板加入 时间倒计时 */
+			$row['gmt_end_date']     = $row['end_time'];
+			if ($time >= $row['start_time'] && $time <= $row['end_time'])
+			{
+				 $row['gmt_end_time']  = local_date('M d, Y H:i:s',$row['end_time']);
+			}
+			else
+			{
+				$row['gmt_end_time'] = 0;
+			}
             /* 根据价格阶梯，计算最低价 */
             $ext_info = unserialize($row['ext_info']);
+			$stat = group_buy_stat($row['group_buy_id'], $ext_info['deposit']);  
             $price_ladder = $ext_info['price_ladder'];
             if (!is_array($price_ladder) || empty($price_ladder))
             {
@@ -275,11 +286,16 @@ function index_get_group_buy()
                 }
             }
             ksort($price_ladder);
-            $row['last_price'] = price_format(end($price_ladder));
+			$row['valid_goods'] = $stat['valid_goods'];
+            $row['last_price'] = end($price_ladder);
             $row['url'] = build_uri('group_buy', array('gbid' => $row['group_buy_id']));
             $row['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
                                            sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
             $row['short_style_name']   = add_style($row['short_name'],'');
+			$row['market_price']   = $row['market_price'];
+			$row['s_price'] = $row['market_price']-end($price_ladder);
+			$row['isg_rs']   = $row['isg_rs'];
+			$row['group_rs']   = $row['group_rs'];
             $group_buy_list[] = $row;
         }
     }

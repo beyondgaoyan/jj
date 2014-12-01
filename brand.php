@@ -279,7 +279,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
     $cate_where = ($cate > 0) ? 'AND ' . get_children($cate) : '';
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.goods_id, g.goods_name, g.is_new, g.is_best, g.is_hot,g.market_price,  g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -300,6 +300,30 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
         else
         {
             $promote_price = 0;
+        }
+				/* 处理商品水印图片 */
+        $watermark_img = '';
+
+        if ($promote_price != 0)
+        {
+            $watermark_img = "watermark_promote_small";
+        }
+        elseif ($row['is_new'] != 0)
+        {
+            $watermark_img = "watermark_new_small";
+        }
+        elseif ($row['is_best'] != 0)
+        {
+            $watermark_img = "watermark_best_small";
+        }
+        elseif ($row['is_hot'] != 0)
+        {
+            $watermark_img = 'watermark_hot_small';
+        }
+
+        if ($watermark_img != '')
+        {
+            $arr[$row['goods_id']]['watermark_img'] =  $watermark_img;
         }
 
         $arr[$row['goods_id']]['goods_id']      = $row['goods_id'];

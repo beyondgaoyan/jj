@@ -62,7 +62,7 @@ $default_display_type = $_CFG['show_order_type'] == '0' ? 'list' : ($_CFG['show_
 $default_sort_order_method = $_CFG['sort_order_method'] == '0' ? 'DESC' : 'ASC';
 $default_sort_order_type   = $_CFG['sort_order_type'] == '0' ? 'goods_id' : ($_CFG['sort_order_type'] == '1' ? 'shop_price' : 'last_update');
 
-$sort  = (isset($_REQUEST['sort'])  && in_array(trim(strtolower($_REQUEST['sort'])), array('goods_id', 'shop_price', 'last_update'))) ? trim($_REQUEST['sort'])  : $default_sort_order_type;
+$sort  = (isset($_REQUEST['sort'])  && in_array(trim(strtolower($_REQUEST['sort'])), array('goods_id', 'shop_price', 'last_update', 'click_count'))) ? trim($_REQUEST['sort'])  : $default_sort_order_type;
 $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), array('ASC', 'DESC')))                              ? trim($_REQUEST['order']) : $default_sort_order_method;
 $display  = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), array('list', 'grid', 'text'))) ? trim($_REQUEST['display'])  : (isset($_COOKIE['ECS']['display']) ? $_COOKIE['ECS']['display'] : $default_display_type);
 $display  = in_array($display, array('list', 'grid', 'text')) ? $display : 'text';
@@ -88,6 +88,9 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         $smarty->assign('keywords',    htmlspecialchars($cat['keywords']));
         $smarty->assign('description', htmlspecialchars($cat['cat_desc']));
         $smarty->assign('cat_style',   htmlspecialchars($cat['style']));
+		$smarty->assign('cat_name',   htmlspecialchars($cat['cat_name']));
+		$smarty->assign('cat_parent_id', $cat['parent_id']); //是否顶级分类
+		$smarty->assign('is_wshow', $cat['is_wshow']);
     }
     else
     {
@@ -374,6 +377,7 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     $smarty->assign('best_goods',      get_category_recommend_goods('best', $children, $brand, $price_min, $price_max, $ext));
     $smarty->assign('promotion_goods', get_category_recommend_goods('promote', $children, $brand, $price_min, $price_max, $ext));
     $smarty->assign('hot_goods',       get_category_recommend_goods('hot', $children, $brand, $price_min, $price_max, $ext));
+	$smarty->assign('new_goods',       get_category_recommend_goods('new', $children, $brand, $price_min, $price_max, $ext));
 
     $count = get_cagtegory_goods_count($children, $brand, $price_min, $price_max, $ext);
     $max_page = ($count> 0) ? ceil($count / $size) : 1;
@@ -393,11 +397,29 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     $smarty->assign('category',         $cat_id);
     $smarty->assign('script_name', 'category');
 
+	/* 获得顶级分类 */
+	$cat_arr = get_parent_cats($cat_id);
+	foreach ($cat_arr AS $val)
+	{
+			$topcat_id=$val['cat_id'];
+			$topcat_name=$val['cat_name'];
+	}
+	$smarty->assign('topcat_id', $topcat_id);
+	$smarty->assign('topcat_name', $topcat_name);
+	$smarty->assign('ecy_adpicr', get_ecy_classpic($cat_id,3));
+	$smarty->assign('ecy_adflash', get_ecy_classpic($cat_id,2));
+	$smarty->assign('ecy_adpicl', get_ecy_classpic($cat_id,4));
+	$smarty->assign('ecy_adtext', get_ecy_classpic($cat_id,6));
+
     assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
     assign_dynamic('category'); // 动态内容
 }
-
-$smarty->display('category.dwt', $cache_id);
+if ($cat['is_wshow'] ==1 and $cat['parent_id'] == 0){
+  $smarty->display('channel.dwt', $cache_id);
+}
+else{
+  $smarty->display('category.dwt', $cache_id);
+}
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION
@@ -412,7 +434,7 @@ $smarty->display('category.dwt', $cache_id);
  */
 function get_cat_info($cat_id)
 {
-    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
+    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id,is_wshow FROM ' . $GLOBALS['ecs']->table('category') .
         " WHERE cat_id = '$cat_id'");
 }
 
@@ -596,5 +618,145 @@ function get_parent_grade($cat_id)
 
 }
 
+/**
+ * 获得指定商品分类图片
+ */
+function get_ecy_classpic($cat,$pclassid)
+{
+    $sql = "SELECT brand_name,brand_logo,site_url,sort_order,brand_desc FROM ".$GLOBALS['ecs']->table('ecyclass')." WHERE porduct_id=$cat and pclassid=$pclassid and is_show=1 ORDER BY sort_order ASC";
+
+    $row = $GLOBALS['db']->getAll($sql);
+    foreach ($row AS $key => $val)
+    {
+        $row[$key]['brand_name'] = $val['brand_name'];
+		$row[$key]['site_url'] = $val['site_url'];
+		$row[$key]['brand_logo'] = $val['brand_logo'];
+    }
+    return $row;
+
+}
+
+function get_child_treec($tree_id = 0)
+{
+    $three_arr = array();
+    $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = '$tree_id' AND is_show = 1 ";
+    if ($GLOBALS['db']->getOne($sql) || $tree_id == 0)
+    {
+        $child_sql = 'SELECT cat_id, cat_name, parent_id, is_show,is_wshow ' .
+                'FROM ' . $GLOBALS['ecs']->table('category') .
+                "WHERE parent_id = '$tree_id' AND is_show = 1 AND is_wshow=1 ORDER BY sort_order ASC, cat_id ASC";
+        $res = $GLOBALS['db']->getAll($child_sql);
+        foreach ($res AS $row)
+        {
+            if ($row['is_show'])
+
+               $three_arr[$row['cat_id']]['id']   = $row['cat_id'];
+               $three_arr[$row['cat_id']]['name'] = $row['cat_name'];
+               $three_arr[$row['cat_id']]['url']  = build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']);
+
+               if (isset($row['cat_id']) != NULL)
+                   {
+                       $three_arr[$row['cat_id']]['cat_id'] = get_child_tree($row['cat_id']);
+
+            }
+        }
+    }
+    return $three_arr;
+}
+
+
+/**
+ * 获得指定分类下的商品
+ *
+ * @access  public
+ * @param   integer     $cat_id     分类ID
+ * @param   integer     $num        数量
+ * @param   string      $from       来自web/wap的调用
+ * @param   string      $order_rule 指定商品排序规则
+ * @return  array
+ */
+function ecy_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '')
+{
+    $children = get_children($cat_id);
+
+    $sql = 'SELECT g.goods_id, g.goods_name, g.market_price,g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
+               'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img ' .
+            "FROM " . $GLOBALS['ecs']->table('goods') . ' AS g '.
+            "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
+                    "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
+            'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND '.
+                'g.is_delete = 0 AND (' . $children . 'OR ' . get_extension_goods($children) . ') ';
+
+    $order_rule = empty($order_rule) ? 'ORDER BY g.sort_order, g.goods_id DESC' : $order_rule;
+    $sql .= $order_rule;
+    if ($num > 0)
+    {
+        $sql .= ' LIMIT ' . $num;
+    }
+    $res = $GLOBALS['db']->getAll($sql);
+
+    $goods = array();
+    foreach ($res AS $idx => $row)
+    {
+        if ($row['promote_price'] > 0)
+        {
+            $promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
+            $goods[$idx]['promote_price'] = $promote_price > 0 ? price_format($promote_price) : '';
+        }
+        else
+        {
+            $goods[$idx]['promote_price'] = '';
+        }
+		
+		 $watermark_img = '';
+
+        if ($promote_price != 0)
+        {
+            $watermark_img = "watermark_promote_small";
+        }
+        if ($row['is_new'] != 0)
+        {
+            $watermark_img1 = "watermark_new_small";
+			$goods[$idx]['watermark_img1'] =  $watermark_img1;
+        }
+        if ($row['is_best'] != 0)
+        {
+            $watermark_img2 = "watermark_best_small";
+			$goods[$idx]['watermark_img2'] =  $watermark_img2;
+        }
+        if ($row['is_hot'] != 0)
+        {
+            $watermark_img3 = 'watermark_hot_small';
+			$goods[$idx]['watermark_img3'] =  $watermark_img3;
+        }
+
+        if ($watermark_img != '')
+        {
+            $goods[$idx]['watermark_img'] =  $watermark_img;
+        }
+
+        $goods[$idx]['id']           = $row['goods_id'];
+        $goods[$idx]['name']         = $row['goods_name'];
+        $goods[$idx]['brief']        = $row['goods_brief'];
+        $goods[$idx]['market_price'] = price_format($row['market_price']);
+        $goods[$idx]['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
+                                        sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+        $goods[$idx]['shop_price']   = price_format($row['shop_price']);
+        $goods[$idx]['thumb']        = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+        $goods[$idx]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
+        $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+    }
+
+	return $goods;
+
+    /* 分类信息 */
+    $sql = 'SELECT cat_name FROM ' . $GLOBALS['ecs']->table('category') . " WHERE cat_id = '$cat_id'";
+    $cat['name'] = $GLOBALS['db']->getOne($sql);
+    $cat['url']  = build_uri('category', array('cid' => $cat_id), $cat['name']);
+    $cat['id']   = $cat_id;
+
+    return $cat;
+}
 
 ?>
