@@ -164,12 +164,13 @@
     <!-- {/if} -->
    <!--用户红包结束-->
       <!--#订单列表界面 start-->
-       <!-- {if $action eq 'order_list'} -->
+       <!-- {if $action eq 'order_list' || $action eq 'order_list_c1' || $action eq 'order_list_c2'} -->
        <h5><span>{$lang.label_order}</span></h5>
        <div class="blank"></div>
        <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
           <tr align="center">
             <td bgcolor="#ffffff">{$lang.order_number}</td>
+            <td bgcolor="#ffffff">订单属性</td>
             <td bgcolor="#ffffff">{$lang.order_addtime}</td>
             <td bgcolor="#ffffff">{$lang.order_money}</td>
             <td bgcolor="#ffffff">{$lang.order_status}</td>
@@ -178,6 +179,7 @@
           <!--{foreach from=$orders item=item}-->
           <tr>
             <td align="center" bgcolor="#ffffff"><a href="user.php?act=order_detail&order_id={$item.order_id}" class="f6">{$item.order_sn}</a></td>
+            <td align="center" bgcolor="#ffffff" style="color:red; font-weight: bold">{if $item.change_status==1}采购单{/if}{if $item.change_status==2}报价单{/if}</td>
             <td align="center" bgcolor="#ffffff">{$item.order_time}</td>
             <td align="right" bgcolor="#ffffff">{$item.total_fee}</td>
             <td align="center" bgcolor="#ffffff">{$item.order_status}</td>
@@ -267,6 +269,7 @@
 					<a href="./exchange.php?act=view&id={$order.extension_id}" class="f6"><strong>{$lang.order_is_exchange}</strong></a>
 					<!--{/if}-->  
 					<a href="user.php?act=message_list&order_id={$order.order_id}" class="f6">[{$lang.business_message}]</a>
+                             <span style="color:red;font-weight: bold;"> {if $order.change_status==1}采购单{/if}{if $order.change_status==2}报价单{/if}</span>
 					</td>
         </tr>
         <tr>
@@ -275,7 +278,7 @@
         </tr>
         <tr>
           <td align="right" bgcolor="#ffffff">{$lang.detail_pay_status}：</td>
-          <td align="left" bgcolor="#ffffff">{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;{if $order.order_amount gt 0}{$order.pay_online}{/if}{$order.pay_time}</td>
+          <td align="left" bgcolor="#ffffff">{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;{if $order.order_amount gt 0 && $order.change_status==2}{$order.pay_online}{/if}{$order.pay_time}</td>
         </tr>
         <tr>
           <td align="right" bgcolor="#ffffff">{$lang.detail_shipping_status}：</td>
@@ -309,6 +312,7 @@
         </tr>
         <!--{/if}-->
       </table>
+      <td align="left" bgcolor="#ffffff">{$order.pay_status}&nbsp;&nbsp;&nbsp;&nbsp;{if $order.order_amount gt 0 && $order.change_status==2}{$order.pay_online}{/if}{$order.pay_time}</td>
         <div class="blank"></div>
         <h5><span>{$lang.goods_list}</span>
         <!-- {if $allow_to_cart} -->

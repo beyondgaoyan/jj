@@ -7,6 +7,8 @@
 			<dt>订单中心<b></b></dt>		
 				<dd>				
 				<div class="item{if $action eq 'order_list'} curr{/if}"><a rel="nofollow" href="user.php?act=order_list">{$lang.label_order}</a><img src="images/icon_new.png" style="position:absolute;margin-top:2px;margin-left:3px"></div>
+				<div class="item{if $action eq 'order_list_c1'} curr{/if}"><a rel="nofollow" href="user.php?act=order_list_c1">采购单</a></div>
+				<div class="item{if $action eq 'order_list_c2'} curr{/if}"><a rel="nofollow" href="user.php?act=order_list_c2">报价单</a></div>
 				<div class="item{if $action eq 'address_list'} curr{/if}"><a href="user.php?act=address_list"}>{$lang.label_address}</a></div>
 				<div class="item{if $action eq 'track_packages'} curr{/if}"><a href="user.php?act=track_packages">{$lang.label_track_packages}</a></div>
 				<div class="item{if $action eq 'collection_list'} curr{/if}"><a href="user.php?act=collection_list">{$lang.label_collection}</a></div>

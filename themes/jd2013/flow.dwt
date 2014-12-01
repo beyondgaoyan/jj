@@ -696,6 +696,14 @@
   <div class="blank"></div>
         <div class="flowBox" style="margin:0px auto 10px auto;padding-top:10px;">
          <h6 style="text-align:center; height:30px; line-height:30px;">{$lang.remember_order_number}: <font style="color:red">{$order.order_sn}</font></h6>
+         <!-- {if $change_status==1} by gaoyan-->
+          <table width="99%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" style="margin:20px auto;" >
+            <tr>
+              <td align="center" bgcolor="#FFFFFF">创建采购单成功，客服报价后会联系您。</td>
+            </tr>
+
+          </table>
+         <!-- {else} -->
           <table width="99%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" style="margin:20px auto;" >
             <tr>
               <td align="center" bgcolor="#FFFFFF">
@@ -735,6 +743,7 @@
           <!--{/foreach}-->
           </div>
           <!--{/if}-->
+          <!-- {/if} -->
           <p style="text-align:center; margin-bottom:20px;">{$order_submit_back}</p>
         </div>
         <!-- {/if} -->
