@@ -285,7 +285,12 @@ function get_user_orders($user_id, $num = 10, $start = 0,$change_status=0)
 {
     /* 取得订单列表 */
     $arr    = array();
-    $where = " change_status={$change_status}  AND " ;
+    if($change_status=='0'){
+        $where = " (change_status=0 or pay_status=2)  AND " ;
+    } else {
+        $where = "change_status={$change_status}  AND " ;
+    }
+    
     $sql = "SELECT order_id, order_sn, order_status, shipping_status, pay_status, add_time, " .
            "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount) AS total_fee,change_status ".
            " FROM " .$GLOBALS['ecs']->table('order_info') .
