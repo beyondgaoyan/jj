@@ -110,8 +110,8 @@
 
 /*virtuals*/
 #virtuals{position:relative;float:right;width:210px;padding-top:3px;}
-#virtuals .utab li{float:left;width:52px; overflow:hidden;text-align:center;height:22px; background:url(images/itab2.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer}
-#virtuals .utab .hover{width:54px;color:#E4393C; background:url(images/itab1.gif) center bottom no-repeat}
+#virtuals .utab li{float:left;width:52px; overflow:hidden;text-align:center;height:22px; background:url(images/itab2.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer;color: #777}
+#virtuals .utab .hover{width:54px;color:#000; background:url(images/itab1.gif) center bottom no-repeat}
 #virtuals .mc{display:none;width:208px;height:138px;border-style:solid;border-color:#F1F1F1;border-width:0 1px 1px;}
 #virtuals .loading-style1{margin-top:40px;}
 #virtuals .tab-arrow{width:52px;}
@@ -129,8 +129,8 @@
 
 /*hot*/
 #hot{position:relative;float:left;width:770px;padding-top:5px;}
-#hot .utab li{float:left;width:154px;overflow:hidden;text-align:center;height:22px; background:url(images/itab4.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer}
-#hot .utab .hover{width:154px;color:#E4393C; background:url(images/itab3.gif) center bottom no-repeat}
+#hot .utab li{float:left;width:154px;overflow:hidden;text-align:center;height:22px; background:url(images/itab4.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer;color: #777}
+#hot .utab .hover{width:154px;color:#000; background:url(images/itab3.gif) center bottom no-repeat}
 #hot .mc{display:none;width:770px;height:230px;border-bottom:1px solid #DDD;}
 #hot .mc li{width:142px;height:230px;padding:0 6px 0 5px;border-left:1px dotted #F1F1F1;}
 #hot .mc .fore1{padding-left:6px;border-left:none;}
