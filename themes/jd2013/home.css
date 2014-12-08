@@ -262,8 +262,8 @@
 	/*root61*/
 	.w1210 .plist .slide{width:473px;}
 
-.plist .utab li{float:left;width:156px;overflow:hidden;text-align:center;height:22px; background:url(images/itab6.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer}
-.plist .utab .hover{width:156px;color:#E4393C; background:url(images/itab5.gif) center bottom no-repeat}
+.plist .utab li{float:left;width:156px;overflow:hidden;text-align:center;height:22px; background:url(images/itab6.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:14px;font-weight:bold;cursor:pointer; color: #777}
+.plist .utab .hover{width:156px;color:#000; background:url(images/itab5.gif) center bottom no-repeat}
 .plist .sm{margin-bottom:0;}
 .plist .smt{width:156px;}
 .plist .fore1 .smt{left:0;}
