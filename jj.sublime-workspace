@@ -80,142 +80,40 @@
 	"buffers":
 	[
 		{
-			"file": "flow.php",
+			"file": "themes/jd2013/index.dwt",
 			"settings":
 			{
-				"buffer_size": 93148,
+				"buffer_size": 77181,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "includes/lib_common.php",
+			"file": "themes/jd2013/diyfile.php",
 			"settings":
 			{
-				"buffer_size": 81314,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "includes/modules/payment/alipay.php",
-			"settings":
-			{
-				"buffer_size": 5992,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "themes/jd2013/flow.dwt",
-			"settings":
-			{
-				"buffer_size": 44295,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "affiche.php",
-			"settings":
-			{
-				"buffer_size": 6365,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "includes/cls_mysql.php",
-			"settings":
-			{
-				"buffer_size": 25835,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "includes/lib_order.php",
-			"settings":
-			{
-				"buffer_size": 92325,
+				"buffer_size": 13562,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "user.php",
+			"file": "includes/modules/payment/ips.php",
 			"settings":
 			{
-				"buffer_size": 97398,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "themes/jd2013/user_transaction.dwt",
-			"settings":
-			{
-				"buffer_size": 54032,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "includes/lib_transaction.php",
-			"settings":
-			{
-				"buffer_size": 37309,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "includes/lib_main.php",
-			"settings":
-			{
-				"buffer_size": 65653,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "themes/jd2013/base.css",
-			"settings":
-			{
-				"buffer_size": 40265,
+				"buffer_size": 5060,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "themes/jd2013/home.css",
-			"settings":
-			{
-				"buffer_size": 28604,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "data/config.php",
-			"settings":
-			{
-				"buffer_size": 513,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 2832 files for \"affiliate\" (case sensitive)\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/affiliate.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   16  define('IN_ECS', true);\n   17  require(dirname(__FILE__) . '/includes/init.php');\n   18: admin_priv('affiliate');\n   19: $config = get_affiliate();\n   20  \n   21  /*------------------------------------------------------ */\n   ..\n   30      }\n   31  \n   32:     $smarty->assign('ur_here', $_LANG['affiliate']);\n   33      $smarty->assign('config', $config);\n   34:     $smarty->display('affiliate.htm');\n   35  }\n   36  elseif ($_REQUEST['act'] == 'query')\n   37  {\n   38:     $smarty->assign('ur_here', $_LANG['affiliate']);\n   39      $smarty->assign('config', $config);\n   40:     make_json_result($smarty->fetch('affiliate.htm'), '', null);\n   41  }\n   42  /*------------------------------------------------------ */\n   ..\n   67          }\n   68          $items = array('level_point'=>$_POST['level_point'],'level_money'=>$_POST['level_money']);\n   69:         $links[] = array('text' => $_LANG['affiliate'], 'href' => 'affiliate.php?act=list');\n   70          $config['item'][] = $items;\n   71          $config['on'] = 1;\n   72          $config['config']['separate_by'] = 0;\n   73  \n   74:         put_affiliate($config);\n   75      }\n   76      else\n   ..\n   79      }\n   80  \n   81:     ecs_header(\"Location: affiliate.php?act=query\\n\");\n   82      exit;\n   83  }\n   ..\n  117      $temp['item'] = $config['item'];\n  118      $temp['on'] = 1;\n  119:     put_affiliate($temp);\n  120:     $links[] = array('text' => $_LANG['affiliate'], 'href' => 'affiliate.php?act=list');\n  121      sys_msg($_LANG['edit_ok'], 0 ,$links);\n  122  }\n  ...\n  130  \n  131      $config['on'] = $on;\n  132:     put_affiliate($config);\n  133:     $links[] = array('text' => $_LANG['affiliate'], 'href' => 'affiliate.php?act=list');\n  134      sys_msg($_LANG['edit_ok'], 0 ,$links);\n  135  }\n  ...\n  158      $config['item'][$key]['level_point'] = $val;\n  159      $config['on'] = 1;\n  160:     put_affiliate($config);\n  161      make_json_result(stripcslashes($val));\n  162  }\n  ...\n  183      $config['item'][$key]['level_money'] = $val;\n  184      $config['on'] = 1;\n  185:     put_affiliate($config);\n  186      make_json_result(stripcslashes($val));\n  187  }\n  ...\n  201      $config['on'] = 1;\n  202      $config['config']['separate_by'] = 0;\n  203:     put_affiliate($config);\n  204:     ecs_header(\"Location: affiliate.php?act=list\\n\");\n  205      exit;\n  206  }\n  207  \n  208: function get_affiliate()\n  209  {\n  210:     $config = unserialize($GLOBALS['_CFG']['affiliate']);\n  211      empty($config) && $config = array();\n  212  \n  ...\n  214  }\n  215  \n  216: function put_affiliate($config)\n  217  {\n  218      $temp = serialize($config);\n  219      $sql = \"UPDATE \" . $GLOBALS['ecs']->table('shop_config') .\n  220             \"SET  value = '$temp'\" .\n  221:            \"WHERE code = 'affiliate'\";\n  222      $GLOBALS['db']->query($sql);\n  223      clear_all_files();\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/affiliate_ck.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate_ck.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   ..\n   17  require(dirname(__FILE__) . '/includes/init.php');\n   18  \n   19: admin_priv('affiliate_ck');\n   20  $timestamp = time();\n   21  \n   22: $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n   23: empty($affiliate) && $affiliate = array();\n   24: $separate_on = $affiliate['on'];\n   25  \n   26  /*------------------------------------------------------ */\n   ..\n   29  if ($_REQUEST['act'] == 'list')\n   30  {\n   31:     $logdb = get_affiliate_ck();\n   32      $smarty->assign('full_page',  1);\n   33:     $smarty->assign('ur_here', $_LANG['affiliate_ck']);\n   34      $smarty->assign('on', $separate_on);\n   35      $smarty->assign('logdb',        $logdb['logdb']);\n   ..\n   42      }\n   43      assign_query_info();\n   44:     $smarty->display('affiliate_ck_list.htm');\n   45  }\n   46  /*------------------------------------------------------ */\n   ..\n   49  elseif ($_REQUEST['act'] == 'query')\n   50  {\n   51:     $logdb = get_affiliate_ck();\n   52      $smarty->assign('logdb',        $logdb['logdb']);\n   53      $smarty->assign('on', $separate_on);\n   ..\n   59      $smarty->assign($sort_flag['tag'], $sort_flag['img']);\n   60  \n   61:     make_json_result($smarty->fetch('affiliate_ck_list.htm'), '', array('filter' => $logdb['filter'], 'page_count' => $logdb['page_count']));\n   62  }\n   63  /*\n   ..\n   75          $db->query($sql);\n   76      }\n   77:     $links[] = array('text' => $_LANG['affiliate_ck'], 'href' => 'affiliate_ck.php?act=list');\n   78      sys_msg($_LANG['edit_ok'], 0 ,$links);\n   79  }\n   ..\n   84  {\n   85      $logid = (int)$_REQUEST['logid'];\n   86:     $stat = $db->getRow(\"SELECT * FROM \" . $GLOBALS['ecs']->table('affiliate_log') . \" WHERE log_id = '$logid'\");\n   87      if (!empty($stat))\n   88      {\n   ..\n   98          }\n   99          log_account_change($stat['user_id'], -$stat['money'], 0, -$stat['point'], 0, $_LANG['loginfo']['cancel']);\n  100:         $sql = \"UPDATE \" . $GLOBALS['ecs']->table('affiliate_log') .\n  101                 \" SET separate_type = '$flag'\" .\n  102                 \" WHERE log_id = '$logid'\";\n  103          $db->query($sql);\n  104      }\n  105:     $links[] = array('text' => $_LANG['affiliate_ck'], 'href' => 'affiliate_ck.php?act=list');\n  106      sys_msg($_LANG['edit_ok'], 0 ,$links);\n  107  }\n  ...\n  112  {\n  113      include_once(ROOT_PATH . 'includes/lib_order.php');\n  114:     $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n  115:     empty($affiliate) && $affiliate = array();\n  116  \n  117:     $separate_by = $affiliate['config']['separate_by'];\n  118  \n  119      $oid = (int)$_REQUEST['oid'];\n  ...\n  127      if (empty($row['is_separate']))\n  128      {\n  129:         $affiliate['config']['level_point_all'] = (float)$affiliate['config']['level_point_all'];\n  130:         $affiliate['config']['level_money_all'] = (float)$affiliate['config']['level_money_all'];\n  131:         if ($affiliate['config']['level_point_all'])\n  132          {\n  133:             $affiliate['config']['level_point_all'] /= 100;\n  134          }\n  135:         if ($affiliate['config']['level_money_all'])\n  136          {\n  137:             $affiliate['config']['level_money_all'] /= 100;\n  138          }\n  139:         $money = round($affiliate['config']['level_money_all'] * $row['goods_amount'],2);\n  140          $integral = integral_to_give(array('order_id' => $oid, 'extension_code' => ''));\n  141:         $point = round($affiliate['config']['level_point_all'] * intval($integral['rank_points']), 0);\n  142  \n  143          if(empty($separate_by))\n  144          {\n  145              //推荐注册分成\n  146:             $num = count($affiliate['item']);\n  147              for ($i=0; $i < $num; $i++)\n  148              {\n  149:                 $affiliate['item'][$i]['level_point'] = (float)$affiliate['item'][$i]['level_point'];\n  150:                 $affiliate['item'][$i]['level_money'] = (float)$affiliate['item'][$i]['level_money'];\n  151:                 if ($affiliate['item'][$i]['level_point'])\n  152                  {\n  153:                     $affiliate['item'][$i]['level_point'] /= 100;\n  154                  }\n  155:                 if ($affiliate['item'][$i]['level_money'])\n  156                  {\n  157:                     $affiliate['item'][$i]['level_money'] /= 100;\n  158                  }\n  159:                 $setmoney = round($money * $affiliate['item'][$i]['level_money'], 2);\n  160:                 $setpoint = round($point * $affiliate['item'][$i]['level_point'], 0);\n  161                  $row = $db->getRow(\"SELECT o.parent_id as user_id,u.user_name FROM \" . $GLOBALS['ecs']->table('users') . \" o\" .\n  162                          \" LEFT JOIN\" . $GLOBALS['ecs']->table('users') . \" u ON o.parent_id = u.user_id\".\n  ...\n  172                      $info = sprintf($_LANG['separate_info'], $order_sn, $setmoney, $setpoint);\n  173                      log_account_change($up_uid, $setmoney, 0, $setpoint, 0, $info);\n  174:                     write_affiliate_log($oid, $up_uid, $row['user_name'], $setmoney, $setpoint, $separate_by);\n  175                  }\n  176              }\n  ...\n  188                  $info = sprintf($_LANG['separate_info'], $order_sn, $money, $point);\n  189                  log_account_change($up_uid, $money, 0, $point, 0, $info);\n  190:                 write_affiliate_log($oid, $up_uid, $row['user_name'], $money, $point, $separate_by);\n  191              }\n  192              else\n  193              {\n  194:                 $links[] = array('text' => $_LANG['affiliate_ck'], 'href' => 'affiliate_ck.php?act=list');\n  195                  sys_msg($_LANG['edit_fail'], 1 ,$links);\n  196              }\n  ...\n  201          $db->query($sql);\n  202      }\n  203:     $links[] = array('text' => $_LANG['affiliate_ck'], 'href' => 'affiliate_ck.php?act=list');\n  204      sys_msg($_LANG['edit_ok'], 0 ,$links);\n  205  }\n  206: function get_affiliate_ck()\n  207  {\n  208  \n  209:     $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n  210:     empty($affiliate) && $affiliate = array();\n  211:     $separate_by = $affiliate['config']['separate_by'];\n  212  \n  213      $sqladd = '';\n  ...\n  227      }\n  228  \n  229:     if(!empty($affiliate['on']))\n  230      {\n  231          if(empty($separate_by))\n  ...\n  234              $sql = \"SELECT COUNT(*) FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  235                      \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  236:                     \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  237                      \" WHERE o.user_id > 0 AND (u.parent_id > 0 AND o.is_separate = 0 OR o.is_separate > 0) $sqladd\";\n  238          }\n  ...\n  242              $sql = \"SELECT COUNT(*) FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  243                      \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  244:                     \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  245                      \" WHERE o.user_id > 0 AND (o.parent_id > 0 AND o.is_separate = 0 OR o.is_separate > 0) $sqladd\";\n  246          }\n  ...\n  250          $sql = \"SELECT COUNT(*) FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  251                  \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  252:                 \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  253                  \" WHERE o.user_id > 0 AND o.is_separate > 0 $sqladd\";\n  254      }\n  ...\n  260      $filter = page_and_size($filter);\n  261  \n  262:     if(!empty($affiliate['on']))\n  263      {\n  264          if(empty($separate_by))\n  ...\n  267              $sql = \"SELECT o.*, a.log_id, a.user_id as suid,  a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  268                      \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  269:                     \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  270                      \" WHERE o.user_id > 0 AND (u.parent_id > 0 AND o.is_separate = 0 OR o.is_separate > 0) $sqladd\".\n  271                      \" ORDER BY order_id DESC\" .\n  ...\n  288              $sql = \"SELECT o.*, a.log_id,a.user_id as suid, a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  289                      \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  290:                     \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  291                      \" WHERE o.user_id > 0 AND (o.parent_id > 0 AND o.is_separate = 0 OR o.is_separate > 0) $sqladd\" .\n  292                      \" ORDER BY order_id DESC\" .\n  ...\n  310          $sql = \"SELECT o.*, a.log_id,a.user_id as suid, a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM \" . $GLOBALS['ecs']->table('order_info') . \" o\".\n  311                  \" LEFT JOIN\".$GLOBALS['ecs']->table('users').\" u ON o.user_id = u.user_id\".\n  312:                 \" LEFT JOIN \" . $GLOBALS['ecs']->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n  313                  \" WHERE o.user_id > 0 AND o.is_separate > 0 $sqladd\" .\n  314                  \" ORDER BY order_id DESC\" .\n  ...\n  332          if(!empty($rt['suid']))\n  333          {\n  334:             //在affiliate_log有记录\n  335              $rt['info'] = sprintf($GLOBALS['_LANG']['separate_info2'], $rt['suid'], $rt['auser'], $rt['money'], $rt['point']);\n  336              if($rt['separate_type'] == -1 || $rt['separate_type'] == -2)\n  ...\n  347      return $arr;\n  348  }\n  349: function write_affiliate_log($oid, $uid, $username, $money, $point, $separate_by)\n  350  {\n  351      $time = gmtime();\n  352:     $sql = \"INSERT INTO \" . $GLOBALS['ecs']->table('affiliate_log') . \"( order_id, user_id, user_name, time, money, point, separate_type)\".\n  353                                                                \" VALUES ( '$oid', '$uid', '$username', '$time', '$money', '$point', $separate_by)\";\n  354      if ($oid)\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/ecshopfiles.md5:\n    1  60c78626c8042f5b0044884eea35e38c *./activity.php\n    2  5c22536108e82d9b5c5918082ae031cb *./affiche.php\n    3: 98b25b923ec53e2b120d987794c6dc0b *./affiliate.php\n    4  a5c026fc0f6cc7c47e26f934560fc984 *./api.php\n    5  25fc4c7f6c8d1d033d239259231113ba *./article.php\n    .\n   45  52000a33000f95884653c433f24101fc *admin/adsense.php\n   46  084695f48aa6a43360d1c170dea670b6 *admin/ad_position.php\n   47: d6c6fadb1bd0ca7d9024c91666eeda36 *admin/affiliate.php\n   48: 258fb1ff6fab3c53fdabc87aaaf27077 *admin/affiliate_ck.php\n   49  dbb6491eb7e6b1a08728e42734bf8803 *admin/agency.php\n   50  76ff8ccf26fbe15396899c8da7008bc4 *admin/area_manage.php\n   ..\n  167  401fb6c0445678d6d78abfd4de353025 *admin/templates/ad_position_info.htm\n  168  29cbb16bcf3b442f06bdb5c2ca4fdc0e *admin/templates/ad_position_list.htm\n  169: 6e7bb335a8b13e0e17b4483fa022b31c *admin/templates/affiliate.htm\n  170: 858eb1dbf4d8d470253faa2099456471 *admin/templates/affiliate_ck_list.htm\n  171: 88a071e07c7475dfd94ec2163e512da6 *admin/templates/affiliate_list.htm\n  172  aab35180beee73f17ff9d9b6472acd26 *admin/templates/agency_info.htm\n  173  acb21b1f80f2607c7c494a70083bc302 *admin/templates/agency_list.htm\n  ...\n  491  a4c9f324a2f7a26fa9e9cca65990bf6c *languages/en_us/admin/admin_logs.php\n  492  3e4fc4a657989b8f4a183ae77e47f3a2 *languages/en_us/admin/ads.php\n  493: 3e1ec34cd3df68f436e8a89455c21f81 *languages/en_us/admin/affiliate.php\n  494: 203a8121ae9af13b80034950281c3cea *languages/en_us/admin/affiliate_ck.php\n  495  2dbf30c706ce3c6200d31b1b64efbc39 *languages/en_us/admin/agency.php\n  496  f95ff7807f2bf56fbc5fbc9d8b8297d8 *languages/en_us/admin/area_manage.php\n  ...\n  621  d7ba83e38187ad34003386e3025e604b *languages/zh_cn/admin/admin_logs.php\n  622  3bfced67b5ab7d1c1ef33d39b8c344a1 *languages/zh_cn/admin/ads.php\n  623: 714e0094be0af7fb3cbc27963c9b7ad9 *languages/zh_cn/admin/affiliate.php\n  624: ef72d7db118753abf0cf98625456b10d *languages/zh_cn/admin/affiliate_ck.php\n  625  553964c7026a75dd6183b107345ed5c0 *languages/zh_cn/admin/agency.php\n  626  15a7795ef94697745d00b38f18171555 *languages/zh_cn/admin/area_manage.php\n  ...\n  752  63daab01bbbefa96bdf2e2f84b213d49 *languages/zh_tw/admin/admin_logs.php\n  753  cfa9b0b7eb4a4d633a3e9d5ba8f55441 *languages/zh_tw/admin/ads.php\n  754: cafb0273474e3fc620b148cf529f4c25 *languages/zh_tw/admin/affiliate.php\n  755: da24feab6903ba408d7d8d12fe6d3c1d *languages/zh_tw/admin/affiliate_ck.php\n  756  f31772fe50fab082b4c2016cda8369ef *languages/zh_tw/admin/agency.php\n  757  caa2fd1103021fce2762268288c0a2f5 *languages/zh_tw/admin/area_manage.php\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/includes/inc_menu.php:\n  140  //$modules['14_sms']['06_sms_charge_history']         = 'sms.php?act=display_charge_history_ui';\n  141  \n  142: $modules['15_rec']['affiliate']                     = 'affiliate.php?act=list';\n  143: $modules['15_rec']['affiliate_ck']                  = 'affiliate_ck.php?act=list';\n  144  \n  145  $modules['16_email_manage']['email_list']           = 'email_list.php?act=list';\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/includes/inc_priv.php:\n  142  \n  143  //推荐管理\n  144:     $purview['affiliate']            = 'affiliate';\n  145:     $purview['affiliate_ck']         = 'affiliate_ck';\n  146  \n  147  //邮件群发管理\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/integrate.php:\n  571  \n  572      //需要更新user_id的表\n  573:     $up_user_table = array('account_log', 'affiliate_log', 'booking_goods', 'collect_goods', 'comment', 'feedback', 'order_info', 'snatch_log', 'tag', 'users', 'user_account', 'user_address', 'user_bonus', 'reg_extend_info', 'user_feed', 'delivery_order', 'back_order');\n  574      // 清空的表\n  575      $truncate_user_table = array('cart', 'sessions', 'sessions_data');\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/templates/affiliate.htm:\n    4  {insert_scripts files=\"validator.js\"}\n    5  <div class=\"form-div\">\n    6: <form method=\"post\" action=\"affiliate.php\">\n    7  <input type=\"radio\" name=\"on\" value=\"1\" {if $config.on eq 1} checked=\"true\" {/if} onClick=\"javascript:actDiv('separate','');actDiv('btnon','none');\">{$lang.on}\n    8  <input type=\"radio\" name=\"on\" value=\"0\" {if !$config.on || $config.on eq 0} checked=\"true\" {/if} onClick=\"javascript:actDiv('separate','none');actDiv('btnon','');\">{$lang.off}\n    .\n   14  <div id=\"separate\">\n   15  <div class=\"form-div\">\n   16: <form method=\"post\" action=\"affiliate.php\">\n   17              <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"4\">\n   18                  <tr>\n   ..\n   75  	<td><span onclick=\"listTable.edit(this, 'edit_point', '{$smarty.foreach.nav.iteration}'); return false;\">{$val.level_point}</span></td>\n   76  	<td><span onclick=\"listTable.edit(this, 'edit_money', '{$smarty.foreach.nav.iteration}'); return false;\">{$val.level_money}</span></td>\n   77: 	<td ><a href=\"javascript:confirm_redirect(lang_removeconfirm, 'affiliate.php?act=del&id={$smarty.foreach.nav.iteration}')\"><img style=\"border:0px;\" src=\"images/no.gif\" /></a></td>\n   78  </tr>\n   79  {/foreach}\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/templates/affiliate_ck_list.htm:\n    4  <div class=\"form-div\">\n    5  {if $smarty.get.auid}\n    6: {$lang.show_affiliate_orders}\n    7  {else}\n    8: <form action=\"affiliate_ck.php?act=list\">\n    9    {$lang.sch_stats.info}\n   10:   <a href=\"affiliate_ck.php?act=list\">{$lang.sch_stats.all}</a>\n   11:   <a href=\"affiliate_ck.php?act=list&status=0\">{$lang.sch_stats.0}</a>\n   12:   <a href=\"affiliate_ck.php?act=list&status=1\">{$lang.sch_stats.1}</a>\n   13:   <a href=\"affiliate_ck.php?act=list&status=2\">{$lang.sch_stats.2}</a>\n   14  {$lang.sch_order}\n   15  \n   ..\n   40    <td>\n   41    <!-- {if $val.is_separate eq 0 && $val.separate_able eq 1 && $on eq 1} -->\n   42:   <a href=\"javascript:confirm_redirect(separate_confirm, 'affiliate_ck.php?act=separate&oid={$val.order_id}')\">{$lang.affiliate_separate}</a> | <a href=\"javascript:confirm_redirect(cancel_confirm, 'affiliate_ck.php?act=del&oid={$val.order_id}')\">{$lang.affiliate_cancel}</a>\n   43    <!-- {elseif $val.is_separate eq 1} -->\n   44: <a href=\"javascript:confirm_redirect(rollback_confirm, 'affiliate_ck.php?act=rollback&logid={$val.log_id}')\">{$lang.affiliate_rollback}</a>\n   45    <!-- {else} -->\n   46    -\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/templates/affiliate_list.htm:\n   18      <th>{$lang.record_id}</th>\n   19      <th>{$lang.username}</th>\n   20:     <th>{$lang.affiliate_level}{$lang.level}</th>\n   21      <th>{$lang.email}</th>\n   22      <th>{$lang.is_validated}</th>\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/templates/user_info.htm:\n   83    </tr>\n   84    {/if}\n   85:   {if $affiliate.on eq 1 && $affdb}\n   86    <tr>\n   87:     <td class=\"label\">{$lang.affiliate_user}:</td>\n   88:     <td>[<a href=\"users.php?act=aff_list&auid={$user.user_id}\">{$lang.show_affiliate_users}</a>][<a href=\"affiliate_ck.php?act=list&auid={$user.user_id}\">{$lang.show_affiliate_orders}</a>]</td>\n   89    </tr>\n   90    <tr>\n   ..\n   93      <table border=\"0\" cellspacing=\"1\" style=\"background: #dddddd; width:30%;\">\n   94      <tr>\n   95:     <td bgcolor=\"#ffffff\">{$lang.affiliate_lever}</td>\n   96      {foreach from=$affdb key=level item=val0}\n   97      <td bgcolor=\"#ffffff\">{$level}</td>\n   ..\n   99      </tr>\n  100      <tr>\n  101:     <td bgcolor=\"#ffffff\">{$lang.affiliate_num}</td>\n  102      {foreach from=$affdb item=val}\n  103      <td bgcolor=\"#ffffff\">{$val.num}</td>\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/users.php:\n  293  \n  294      /* 当前会员推荐信息 */\n  295:     $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n  296:     $smarty->assign('affiliate', $affiliate);\n  297  \n  298:     empty($affiliate) && $affiliate = array();\n  299  \n  300:     if(empty($affiliate['config']['separate_by']))\n  301      {\n  302          //推荐注册分成\n  303          $affdb = array();\n  304:         $num = count($affiliate['item']);\n  305          $up_uid = \"'$_GET[id]'\";\n  306          for ($i = 1 ; $i <=$num ;$i++)\n  ...\n  613      $user_list['user_list'] = array();\n  614  \n  615:     $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n  616:     $smarty->assign('affiliate', $affiliate);\n  617  \n  618:     empty($affiliate) && $affiliate = array();\n  619  \n  620:     $num = count($affiliate['item']);\n  621      $up_uid = \"'$auid'\";\n  622      $all_count = 0;\n  ...\n  660  \n  661      assign_query_info();\n  662:     $smarty->display('affiliate_list.htm');\n  663  }\n  664  \n\n/Users/gaoyan/站点/other/济南机件/jj/affiliate.php:\n   11   * ============================================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   ..\n   47  \n   48  \n   49: $tpl = ROOT_PATH . DATA_DIR . '/affiliate.html';\n   50  if (!$smarty->is_cached($tpl, $cache_id))\n   51  {\n\n/Users/gaoyan/站点/other/济南机件/jj/api/uc.php:\n  130          }\n  131          $this->db->query(\"UPDATE \" . $GLOBALS['ecs']->table(\"users\") . \" SET user_name='$usernamenew' WHERE user_id='$uid'\");\n  132:         $this->db->query(\"UPDATE \" . $GLOBALS['ecs']->table(\"affiliate_log\") . \" SET user_name='$usernamenew' WHERE user_name='$usernameold'\");\n  133          $this->db->query(\"UPDATE \" . $GLOBALS['ecs']->table(\"comment\") . \" SET user_name='$usernamenew' WHERE user_name='$usernameold'\");\n  134          $this->db->query(\"UPDATE \" . $GLOBALS['ecs']->table(\"feedback\") . \" SET user_name='$usernamenew' WHERE user_name='$usernameold'\");\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141118flkeqf.sql:\n  144  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('95', '2', 'article_auto', '');\n  145  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('96', '5', 'cron', '');\n  146: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('97', '5', 'affiliate', '');\n  147: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('98', '5', 'affiliate_ck', '');\n  148  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('99', '8', 'attention_list', '');\n  149  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('100', '8', 'email_list', '');\n  ...\n  708    KEY `from_ad` (`from_ad`)\n  709  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;\n  710: DROP TABLE IF EXISTS `ecs_affiliate_log`;\n  711: CREATE TABLE `ecs_affiliate_log` (\n  712    `log_id` mediumint(8) NOT NULL auto_increment,\n  713    `order_id` mediumint(8) NOT NULL,\n  ...\n 5691  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('613', '6', 'sms_balance', 'hidden', '', '', '', '1');\n 5692  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('614', '6', 'sms_last_request', 'hidden', '', '', '', '1');\n 5693: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('616', '6', 'affiliate', 'hidden', '', '', 'a:3:{s:6:\\\"config\\\";a:7:{s:6:\\\"expire\\\";d:24;s:11:\\\"expire_unit\\\";s:4:\\\"hour\\\";s:11:\\\"separate_by\\\";i:0;s:15:\\\"level_point_all\\\";s:2:\\\"5%\\\";s:15:\\\"level_money_all\\\";s:2:\\\"1%\\\";s:18:\\\"level_register_all\\\";i:2;s:17:\\\"level_register_up\\\";i:60;}s:4:\\\"item\\\";a:4:{i:0;a:2:{s:11:\\\"level_point\\\";s:3:\\\"60%\\\";s:11:\\\"level_money\\\";s:3:\\\"60%\\\";}i:1;a:2:{s:11:\\\"level_point\\\";s:3:\\\"30%\\\";s:11:\\\"level_money\\\";s:3:\\\"30%\\\";}i:2;a:2:{s:11:\\\"level_point\\\";s:2:\\\"7%\\\";s:11:\\\"level_money\\\";s:2:\\\"7%\\\";}i:3;a:2:{s:11:\\\"level_point\\\";s:2:\\\"3%\\\";s:11:\\\"level_money\\\";s:2:\\\"3%\\\";}}s:2:\\\"on\\\";i:1;}', '1');\n 5694  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('617', '6', 'captcha', 'hidden', '', '', '36', '1');\n 5695  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('618', '6', 'captcha_width', 'hidden', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141121jdmaqo.sql:\n 4547  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('613', '6', 'sms_balance', 'hidden', '', '', '', '1');\n 4548  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('614', '6', 'sms_last_request', 'hidden', '', '', '', '1');\n 4549: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('616', '6', 'affiliate', 'hidden', '', '', 'a:3:{s:6:\\\"config\\\";a:7:{s:6:\\\"expire\\\";d:24;s:11:\\\"expire_unit\\\";s:4:\\\"hour\\\";s:11:\\\"separate_by\\\";i:0;s:15:\\\"level_point_all\\\";s:2:\\\"5%\\\";s:15:\\\"level_money_all\\\";s:2:\\\"1%\\\";s:18:\\\"level_register_all\\\";i:2;s:17:\\\"level_register_up\\\";i:60;}s:4:\\\"item\\\";a:4:{i:0;a:2:{s:11:\\\"level_point\\\";s:3:\\\"60%\\\";s:11:\\\"level_money\\\";s:3:\\\"60%\\\";}i:1;a:2:{s:11:\\\"level_point\\\";s:3:\\\"30%\\\";s:11:\\\"level_money\\\";s:3:\\\"30%\\\";}i:2;a:2:{s:11:\\\"level_point\\\";s:2:\\\"7%\\\";s:11:\\\"level_money\\\";s:2:\\\"7%\\\";}i:3;a:2:{s:11:\\\"level_point\\\";s:2:\\\"3%\\\";s:11:\\\"level_money\\\";s:2:\\\"3%\\\";}}s:2:\\\"on\\\";i:1;}', '1');\n 4550  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('617', '6', 'captcha', 'hidden', '', '', '36', '1');\n 4551  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('618', '6', 'captcha_width', 'hidden', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201tjazbl.sql:\n  291  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('95', '2', 'article_auto', '');\n  292  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('96', '5', 'cron', '');\n  293: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('97', '5', 'affiliate', '');\n  294: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('98', '5', 'affiliate_ck', '');\n  295  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('99', '8', 'attention_list', '');\n  296  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('100', '8', 'email_list', '');\n  ...\n 1971  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('58', '本站', '2');\n 1972  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('59', '本站', '1');\n 1973: DROP TABLE IF EXISTS `ecs_affiliate_log`;\n 1974: CREATE TABLE `ecs_affiliate_log` (\n 1975    `log_id` mediumint(8) NOT NULL AUTO_INCREMENT,\n 1976    `order_id` mediumint(8) NOT NULL,\n ....\n 7289  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('613', '6', 'sms_balance', 'hidden', '', '', '', '1');\n 7290  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('614', '6', 'sms_last_request', 'hidden', '', '', '', '1');\n 7291: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('616', '6', 'affiliate', 'hidden', '', '', 'a:3:{s:6:\\\"config\\\";a:7:{s:6:\\\"expire\\\";d:24;s:11:\\\"expire_unit\\\";s:4:\\\"hour\\\";s:11:\\\"separate_by\\\";i:0;s:15:\\\"level_point_all\\\";s:2:\\\"5%\\\";s:15:\\\"level_money_all\\\";s:2:\\\"1%\\\";s:18:\\\"level_register_all\\\";i:2;s:17:\\\"level_register_up\\\";i:60;}s:4:\\\"item\\\";a:4:{i:0;a:2:{s:11:\\\"level_point\\\";s:3:\\\"60%\\\";s:11:\\\"level_money\\\";s:3:\\\"60%\\\";}i:1;a:2:{s:11:\\\"level_point\\\";s:3:\\\"30%\\\";s:11:\\\"level_money\\\";s:3:\\\"30%\\\";}i:2;a:2:{s:11:\\\"level_point\\\";s:2:\\\"7%\\\";s:11:\\\"level_money\\\";s:2:\\\"7%\\\";}i:3;a:2:{s:11:\\\"level_point\\\";s:2:\\\"3%\\\";s:11:\\\"level_money\\\";s:2:\\\"3%\\\";}}s:2:\\\"on\\\";i:1;}', '1');\n 7292  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('617', '6', 'captcha', 'hidden', '', '', '0', '1');\n 7293  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('618', '6', 'captcha_width', 'hidden', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201vefukg.sql:\n  291  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('95', '2', 'article_auto', '');\n  292  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('96', '5', 'cron', '');\n  293: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('97', '5', 'affiliate', '');\n  294: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('98', '5', 'affiliate_ck', '');\n  295  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('99', '8', 'attention_list', '');\n  296  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('100', '8', 'email_list', '');\n  ...\n 1985  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('58', '本站', '2');\n 1986  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('59', '本站', '1');\n 1987: DROP TABLE IF EXISTS `ecs_affiliate_log`;\n 1988: CREATE TABLE `ecs_affiliate_log` (\n 1989    `log_id` mediumint(8) NOT NULL AUTO_INCREMENT,\n 1990    `order_id` mediumint(8) NOT NULL,\n ....\n 7310  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('613', '6', 'sms_balance', 'hidden', '', '', '', '1');\n 7311  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('614', '6', 'sms_last_request', 'hidden', '', '', '', '1');\n 7312: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('616', '6', 'affiliate', 'hidden', '', '', 'a:3:{s:6:\\\"config\\\";a:7:{s:6:\\\"expire\\\";d:24;s:11:\\\"expire_unit\\\";s:4:\\\"hour\\\";s:11:\\\"separate_by\\\";i:0;s:15:\\\"level_point_all\\\";s:2:\\\"5%\\\";s:15:\\\"level_money_all\\\";s:2:\\\"1%\\\";s:18:\\\"level_register_all\\\";i:2;s:17:\\\"level_register_up\\\";i:60;}s:4:\\\"item\\\";a:4:{i:0;a:2:{s:11:\\\"level_point\\\";s:3:\\\"60%\\\";s:11:\\\"level_money\\\";s:3:\\\"60%\\\";}i:1;a:2:{s:11:\\\"level_point\\\";s:3:\\\"30%\\\";s:11:\\\"level_money\\\";s:3:\\\"30%\\\";}i:2;a:2:{s:11:\\\"level_point\\\";s:2:\\\"7%\\\";s:11:\\\"level_money\\\";s:2:\\\"7%\\\";}i:3;a:2:{s:11:\\\"level_point\\\";s:2:\\\"3%\\\";s:11:\\\"level_money\\\";s:2:\\\"3%\\\";}}s:2:\\\"on\\\";i:1;}', '1');\n 7313  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('617', '6', 'captcha', 'hidden', '', '', '0', '1');\n 7314  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('618', '6', 'captcha_width', 'hidden', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201wzxhia.sql:\n  291  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('95', '2', 'article_auto', '');\n  292  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('96', '5', 'cron', '');\n  293: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('97', '5', 'affiliate', '');\n  294: INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('98', '5', 'affiliate_ck', '');\n  295  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('99', '8', 'attention_list', '');\n  296  INSERT INTO `ecs_admin_action` ( `action_id`, `parent_id`, `action_code`, `relevance` ) VALUES  ('100', '8', 'email_list', '');\n  ...\n 1971  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('58', '本站', '2');\n 1972  INSERT INTO `ecs_adsense` ( `from_ad`, `referer`, `clicks` ) VALUES  ('59', '本站', '1');\n 1973: DROP TABLE IF EXISTS `ecs_affiliate_log`;\n 1974: CREATE TABLE `ecs_affiliate_log` (\n 1975    `log_id` mediumint(8) NOT NULL AUTO_INCREMENT,\n 1976    `order_id` mediumint(8) NOT NULL,\n ....\n 7294  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('613', '6', 'sms_balance', 'hidden', '', '', '', '1');\n 7295  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('614', '6', 'sms_last_request', 'hidden', '', '', '', '1');\n 7296: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('616', '6', 'affiliate', 'hidden', '', '', 'a:3:{s:6:\\\"config\\\";a:7:{s:6:\\\"expire\\\";d:24;s:11:\\\"expire_unit\\\";s:4:\\\"hour\\\";s:11:\\\"separate_by\\\";i:0;s:15:\\\"level_point_all\\\";s:2:\\\"5%\\\";s:15:\\\"level_money_all\\\";s:2:\\\"1%\\\";s:18:\\\"level_register_all\\\";i:2;s:17:\\\"level_register_up\\\";i:60;}s:4:\\\"item\\\";a:4:{i:0;a:2:{s:11:\\\"level_point\\\";s:3:\\\"60%\\\";s:11:\\\"level_money\\\";s:3:\\\"60%\\\";}i:1;a:2:{s:11:\\\"level_point\\\";s:3:\\\"30%\\\";s:11:\\\"level_money\\\";s:3:\\\"30%\\\";}i:2;a:2:{s:11:\\\"level_point\\\";s:2:\\\"7%\\\";s:11:\\\"level_money\\\";s:2:\\\"7%\\\";}i:3;a:2:{s:11:\\\"level_point\\\";s:2:\\\"3%\\\";s:11:\\\"level_money\\\";s:2:\\\"3%\\\";}}s:2:\\\"on\\\";i:1;}', '1');\n 7297  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('617', '6', 'captcha', 'hidden', '', '', '0', '1');\n 7298  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('618', '6', 'captcha_width', 'hidden', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/flow.php:\n 1633      }\n 1634  \n 1635:     $affiliate = unserialize($_CFG['affiliate']);\n 1636:     if(isset($affiliate['on']) && $affiliate['on'] == 1 && $affiliate['config']['separate_by'] == 1)\n 1637      {\n 1638          //推荐订单分成\n 1639:         $parent_id = get_affiliate();\n 1640          if($user_id == $parent_id)\n 1641          {\n ....\n 1643          }\n 1644      }\n 1645:     elseif(isset($affiliate['on']) && $affiliate['on'] == 1 && $affiliate['config']['separate_by'] == 0)\n 1646      {\n 1647          //推荐注册分成\n\n/Users/gaoyan/站点/other/济南机件/jj/goods.php:\n   23  }\n   24  \n   25: $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n   26: $smarty->assign('affiliate', $affiliate);\n   27  \n   28  /*------------------------------------------------------ */\n\n/Users/gaoyan/站点/other/济南机件/jj/includes/init.php:\n  248      if (isset($_GET['u']))\n  249      {\n  250:         set_affiliate();\n  251      }\n  252  \n\n/Users/gaoyan/站点/other/济南机件/jj/includes/lib_main.php:\n 1718   * @author xuanyan\n 1719   **/\n 1720: function set_affiliate()\n 1721  {\n 1722:     $config = unserialize($GLOBALS['_CFG']['affiliate']);\n 1723      if (!empty($_GET['u']) && $config['on'] == 1)\n 1724      {\n ....\n 1741                  $c = 1;\n 1742              }\n 1743:             setcookie('ecshop_affiliate_uid', intval($_GET['u']), gmtime() + 3600 * $config['config']['expire'] * $c);\n 1744          }\n 1745          else\n 1746          {\n 1747:             setcookie('ecshop_affiliate_uid', intval($_GET['u']), gmtime() + 3600 * 24); // 过期时间为 1 天\n 1748          }\n 1749      }\n ....\n 1759   * @author xuanyan\n 1760   **/\n 1761: function get_affiliate()\n 1762  {\n 1763:     if (!empty($_COOKIE['ecshop_affiliate_uid']))\n 1764      {\n 1765:         $uid = intval($_COOKIE['ecshop_affiliate_uid']);\n 1766          if ($GLOBALS['db']->getOne('SELECT user_id FROM ' . $GLOBALS['ecs']->table('users') . \"WHERE user_id = '$uid'\"))\n 1767          {\n ....\n 1770          else\n 1771          {\n 1772:             setcookie('ecshop_affiliate_uid', '', 1);\n 1773          }\n 1774      }\n\n/Users/gaoyan/站点/other/济南机件/jj/includes/lib_passport.php:\n  124  \n  125          /*推荐处理*/\n  126:         $affiliate  = unserialize($GLOBALS['_CFG']['affiliate']);\n  127:         if (isset($affiliate['on']) && $affiliate['on'] == 1)\n  128          {\n  129              // 推荐开关开启\n  130:             $up_uid     = get_affiliate();\n  131:             empty($affiliate) && $affiliate = array();\n  132:             $affiliate['config']['level_register_all'] = intval($affiliate['config']['level_register_all']);\n  133:             $affiliate['config']['level_register_up'] = intval($affiliate['config']['level_register_up']);\n  134              if ($up_uid)\n  135              {\n  136:                 if (!empty($affiliate['config']['level_register_all']))\n  137                  {\n  138:                     if (!empty($affiliate['config']['level_register_up']))\n  139                      {\n  140                          $rank_points = $GLOBALS['db']->getOne(\"SELECT rank_points FROM \" . $GLOBALS['ecs']->table('users') . \" WHERE user_id = '$up_uid'\");\n  141:                         if ($rank_points + $affiliate['config']['level_register_all'] <= $affiliate['config']['level_register_up'])\n  142                          {\n  143:                             log_account_change($up_uid, 0, 0, $affiliate['config']['level_register_all'], 0, sprintf($GLOBALS['_LANG']['register_affiliate'], $_SESSION['user_id'], $username));\n  144                          }\n  145                      }\n  146                      else\n  147                      {\n  148:                         log_account_change($up_uid, 0, 0, $affiliate['config']['level_register_all'], 0, $GLOBALS['_LANG']['register_affiliate']);\n  149                      }\n  150                  }\n\n/Users/gaoyan/站点/other/济南机件/jj/includes/user.php:\n   24  $action  = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'default';\n   25  \n   26: $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n   27: $smarty->assign('affiliate', $affiliate);\n   28  $back_act='';\n   29  \n   ..\n   36  $ui_arr = array('register', 'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list',\n   37  'message_list', 'tag_list', 'get_password', 'reset_password', 'booking_list', 'add_booking', 'account_raply',\n   38: 'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list','validate_email','track_packages', 'transform_points','qpassword_name', 'get_passwd_question', 'check_answer');\n   39  \n   40  /* 未登录处理 */\n   ..\n 2076  \n 2077  // 用户推荐页面\n 2078: elseif ($action == 'affiliate')\n 2079  {\n 2080      $goodsid = intval(isset($_REQUEST['goodsid']) ? $_REQUEST['goodsid'] : 0);\n ....\n 2086          $size       = !empty($_CFG['page_size']) && intval($_CFG['page_size']) > 0 ? intval($_CFG['page_size']) : 10;\n 2087  \n 2088:         empty($affiliate) && $affiliate = array();\n 2089  \n 2090:         if(empty($affiliate['config']['separate_by']))\n 2091          {\n 2092              //推荐注册分成\n 2093              $affdb = array();\n 2094:             $num = count($affiliate['item']);\n 2095              $up_uid = \"'$user_id'\";\n 2096              $all_uid = \"'$user_id'\";\n ....\n 2114                  }\n 2115                  $affdb[$i]['num'] = $count;\n 2116:                 $affdb[$i]['point'] = $affiliate['item'][$i-1]['level_point'];\n 2117:                 $affdb[$i]['money'] = $affiliate['item'][$i-1]['level_money'];\n 2118              }\n 2119              $smarty->assign('affdb', $affdb);\n ....\n 2121              $sqlcount = \"SELECT count(*) FROM \" . $ecs->table('order_info') . \" o\".\n 2122          \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2123:         \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2124          \" WHERE o.user_id > 0 AND (u.parent_id IN ($all_uid) AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\";\n 2125  \n 2126              $sql = \"SELECT o.*, a.log_id, a.user_id as suid,  a.user_name as auser, a.money, a.point, a.separate_type FROM \" . $ecs->table('order_info') . \" o\".\n 2127                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2128:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2129          \" WHERE o.user_id > 0 AND (u.parent_id IN ($all_uid) AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\".\n 2130                      \" ORDER BY order_id DESC\" ;\n ....\n 2144              */\n 2145  \n 2146:             $affiliate_intro = nl2br(sprintf($_LANG['affiliate_intro'][$affiliate['config']['separate_by']], $affiliate['config']['expire'], $_LANG['expire_unit'][$affiliate['config']['expire_unit']], $affiliate['config']['level_register_all'], $affiliate['config']['level_register_up'], $affiliate['config']['level_money_all'], $affiliate['config']['level_point_all']));\n 2147          }\n 2148          else\n ....\n 2151              $sqlcount = \"SELECT count(*) FROM \" . $ecs->table('order_info') . \" o\".\n 2152                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2153:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2154                      \" WHERE o.user_id > 0 AND (o.parent_id = '$user_id' AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\";\n 2155  \n ....\n 2157              $sql = \"SELECT o.*, a.log_id,a.user_id as suid, a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM \" . $ecs->table('order_info') . \" o\".\n 2158                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2159:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2160                      \" WHERE o.user_id > 0 AND (o.parent_id = '$user_id' AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\" .\n 2161                      \" ORDER BY order_id DESC\" ;\n ....\n 2174              */\n 2175  \n 2176:             $affiliate_intro = nl2br(sprintf($_LANG['affiliate_intro'][$affiliate['config']['separate_by']], $affiliate['config']['expire'], $_LANG['expire_unit'][$affiliate['config']['expire_unit']], $affiliate['config']['level_money_all'], $affiliate['config']['level_point_all']));\n 2177  \n 2178          }\n ....\n 2192              if(!empty($rt['suid']))\n 2193              {\n 2194:                 //在affiliate_log有记录\n 2195                  if($rt['separate_type'] == -1 || $rt['separate_type'] == -2)\n 2196                  {\n ....\n 2203          }\n 2204  \n 2205:         $url_format = \"user.php?act=affiliate&page=\";\n 2206  \n 2207          $pager = array(\n ....\n 2227  \n 2228  \n 2229:         $smarty->assign('affiliate_intro', $affiliate_intro);\n 2230:         $smarty->assign('affiliate_type', $affiliate['config']['separate_by']);\n 2231  \n 2232          $smarty->assign('logdb', $logdb);\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/affiliate.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/affiliate_ck.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate_ck.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   16  \n   17  $_LANG['order_id'] = 'Order No.';\n   18: $_LANG['affiliate_separate'] = 'Divided into';\n   19: $_LANG['affiliate_cancel'] = 'Cancel';\n   20: $_LANG['affiliate_rollback'] = 'Revocation';\n   21  $_LANG['log_info'] = 'Operation information';\n   22  $_LANG['edit_ok'] = 'Successful operation';\n   ..\n   53  $_LANG['separate_by'][-2] = 'Recommend orders into';\n   54  \n   55: $_LANG['show_affiliate_orders'] = 'This list shows the recommended order information for this user.';\n   56  $_LANG['back_note'] = 'Return to the user-edited page';\n   57  ?>\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/common.php:\n  292  $_LANG['06_sms_charge_history'] = 'Charge History';\n  293  \n  294: $_LANG['affiliate'] = 'Recommended settings';\n  295: $_LANG['affiliate_ck'] = 'Divided into management';\n  296  $_LANG['flashplay'] = 'Flash Player Management';\n  297  $_LANG['search_log'] = 'Search keywords';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/priv_action.php:\n   90  $_LANG['navigator'] = 'Navigation management';\n   91  $_LANG['cron'] = 'Plan tasks';\n   92: $_LANG['affiliate'] = 'Suggested set';\n   93: $_LANG['affiliate_ck'] = 'Allowances management';\n   94  $_LANG['sitemap'] = 'Site Map Management';\n   95  $_LANG['file_check'] = 'File checksums';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/users.php:\n   54  $_LANG['parent_user'] = 'Recommend people';\n   55  $_LANG['parent_remove'] = 'From relations recommend';\n   56: $_LANG['affiliate_user'] = 'Recommended Member';\n   57: $_LANG['show_affiliate_users'] = 'See a detailed list of recommended';\n   58: $_LANG['show_affiliate_orders'] = 'See Recommended Order Details';\n   59: $_LANG['affiliate_lever'] = 'Level';\n   60: $_LANG['affiliate_num'] = 'Number of user';\n   61  $_LANG['page_note'] = 'This list shows the user all the recommended membership information,';\n   62  $_LANG['how_many_user'] = 'users.';\n   63  $_LANG['back_note'] = 'Return to the user-edited page';\n   64: $_LANG['affiliate_level'] = 'Recommended Level';\n   65  \n   66  $_LANG['msn'] = 'MSN';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/user.php:\n   31  $_LANG['label_bonus'] = 'My Bonus';\n   32  $_LANG['label_comment'] = 'My comment';\n   33: $_LANG['label_affiliate'] = 'My recommendation';\n   34  $_LANG['label_group_buy'] = 'My Associates';\n   35  $_LANG['label_booking'] = 'Booking Records';\n   ..\n  542  \n  543  /* 用户推荐 */\n  544: $_LANG['affiliate_mode'] = 'Affiliate mode';\n  545: $_LANG['affiliate_detail'] = 'Affiliate Detail';\n  546: $_LANG['affiliate_member'] = 'Affiliate Member';\n  547: $_LANG['affiliate_code'] = 'Affiliate Code';\n  548  $_LANG['firefox_copy_alert'] = \"Your firefox security restrictions limit your clipboard to carry out the operation, open 'about: config' to signed.applets.codebase_principal_support 'is set to true' try again later\";\n  549: $_LANG['affiliate_type'][0] = 'Recommended registeration affiliate';\n  550: $_LANG['affiliate_type'][1] = 'Recommended order affiliate';\n  551: $_LANG['affiliate_type'][-1] = 'Recommended registeration affiliate';\n  552: $_LANG['affiliate_type'][-2] = 'Recommended order affiliate';\n  553  \n  554: $_LANG['affiliate_codetype'] = 'code type affiliate';\n  555  \n  556: $_LANG['affiliate_introduction'] = 'Affiliate introduction';\n  557: $_LANG['affiliate_intro'][0] = '　　We hold <b> recommended registeration affiliate </b> to encourage recommending new member to register. Flows are as following:\n  558  \n  559  　　1.  Send recommendation code offered by us to BBS and blog.\n  ...\n  563  　　5.  Deduction is checked and distribute by administrator, please wait.\n  564  　　6.  View your recommendation and affiliation on affiliation list.';\n  565: $_LANG['affiliate_intro'][1] = '　　We hold <b> Recommended order affiliate </b> to encourage recommending new member to register. Flows are as following:\n  566  \n  567  　　1.  Click Recommend the good to get recommendation code and send it to BBS and blog.\n  ...\n  572  　　6.  View your recommendation and affiliation on affiliation list.';\n  573  \n  574: $_LANG['level_point_all'] = 'level of all affiliated points';\n  575: $_LANG['level_money_all'] = 'level of all affiliated money';\n  576  $_LANG['level_register_all'] = 'level of registered points';\n  577  $_LANG['level_register_up'] = 'upper level of rank points';\n  578  \n  579: $_LANG['affiliate_stats'][0] = 'Waiting for processing';\n  580: $_LANG['affiliate_stats'][1] = 'Affiliated';\n  581: $_LANG['affiliate_stats'][2] = 'Cancel affiliate';\n  582: $_LANG['affiliate_stats'][3] = 'Canceled';\n  583: $_LANG['affiliate_stats'][4] = 'Buyers wait for payment';\n  584  \n  585  $_LANG['level_point'] = 'Level of points';\n  586  $_LANG['level_money'] = 'Level of money';\n  587  \n  588: $_LANG['affiliate_status'] = 'Affiliate status';\n  589  \n  590: $_LANG['affiliate_point'] = 'Point affiliate';\n  591: $_LANG['affiliate_money'] = 'Money affiliate';\n  592  \n  593: $_LANG['affiliate_expire'] = 'Time valid';\n  594  \n  595: $_LANG['affiliate_lever'] = 'Level';\n  596: $_LANG['affiliate_num'] = 'Number';\n  597  \n  598: $_LANG['affiliate_view'] = 'View';\n  599: $_LANG['affiliate_code'] = 'Code';\n  600  \n  601: $_LANG['register_affiliate'] = 'Points for recommended memberID %s ( %s ) registration';\n  602  $_LANG['register_points'] = 'Points for registeration';\n  603  \n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/affiliate.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/affiliate_ck.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate_ck.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   16  \n   17  $_LANG['order_id'] = '订单号';\n   18: $_LANG['affiliate_separate'] = '分成';\n   19: $_LANG['affiliate_cancel'] = '取消';\n   20: $_LANG['affiliate_rollback'] = '撤销';\n   21  $_LANG['log_info'] = '操作信息';\n   22  $_LANG['edit_ok'] = '操作成功';\n   ..\n   53  $_LANG['separate_by'][-2] = '推荐订单分成';\n   54  \n   55: $_LANG['show_affiliate_orders'] = '此列表显示此用户推荐的订单信息。';\n   56  $_LANG['back_note'] = '返回会员编辑页面';\n   57  ?>\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/common.php:\n  294  $_LANG['06_sms_charge_history'] = '充值记录';\n  295  \n  296: $_LANG['affiliate'] = '推荐设置';\n  297: $_LANG['affiliate_ck'] = '分成管理';\n  298  $_LANG['flashplay'] = '首页主广告管理';\n  299  $_LANG['search_log'] = '搜索关键字';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/priv_action.php:\n   88  $_LANG['navigator'] = '自定义导航栏';\n   89  $_LANG['cron'] = '计划任务';\n   90: $_LANG['affiliate'] = '推荐设置';\n   91: $_LANG['affiliate_ck'] = '分成管理';\n   92  $_LANG['sitemap'] = '站点地图管理';\n   93  $_LANG['file_check'] = '文件校验';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/users.php:\n   52  $_LANG['parent_user'] = '推荐人';\n   53  $_LANG['parent_remove'] = '脱离推荐关系';\n   54: $_LANG['affiliate_user'] = '推荐会员';\n   55: $_LANG['show_affiliate_users'] = '查看推荐详细名单';\n   56: $_LANG['show_affiliate_orders'] = '查看推荐订单详情';\n   57: $_LANG['affiliate_lever'] = '等级';\n   58: $_LANG['affiliate_num'] = '人数';\n   59  $_LANG['page_note'] = '此列表显示用户推荐的全部会员信息，';\n   60  $_LANG['how_many_user'] = '个会员。';\n   61  $_LANG['back_note'] = '返回会员编辑页面';\n   62: $_LANG['affiliate_level'] = '推荐等级';\n   63  \n   64  $_LANG['msn'] = 'MSN';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/user.php:\n   31  $_LANG['label_bonus'] = '我的红包';\n   32  $_LANG['label_comment'] = '我的评论';\n   33: $_LANG['label_affiliate'] = '我的推荐';\n   34  $_LANG['label_group_buy'] = '我的团购';\n   35  $_LANG['label_booking'] = '缺货登记';\n   ..\n  542  \n  543  /* 用户推荐 */\n  544: $_LANG['affiliate_mode'] = '分成模式';\n  545: $_LANG['affiliate_detail'] = '分成明细';\n  546: $_LANG['affiliate_member'] = '我推荐的会员';\n  547: $_LANG['affiliate_code'] = '推荐代码';\n  548  $_LANG['firefox_copy_alert'] = \"您的firefox安全限制限制您进行剪贴板操作，请打开’about:config’将signed.applets.codebase_principal_support’设置为true’之后重试\";\n  549: $_LANG['affiliate_type'][0] = '推荐注册分成';\n  550: $_LANG['affiliate_type'][1] = '推荐订单分成';\n  551: $_LANG['affiliate_type'][-1] = '推荐注册分成';\n  552: $_LANG['affiliate_type'][-2] = '推荐订单分成';\n  553  \n  554: $_LANG['affiliate_codetype'] = '格式';\n  555  \n  556: $_LANG['affiliate_introduction'] = '分成模式介绍';\n  557: $_LANG['affiliate_intro'][0] = '　　本网店为鼓励推荐新用户注册，现开展<b>推荐注册分成</b>活动，活动流程如下：\n  558  \n  559  　　１、将本站提供给您的推荐代码，发送到论坛、博客上。\n  ...\n  563  　　５、提成由管理员人工审核发放，请您耐心等待。\n  564  　　６、您可以通过分成明细来查看您的介绍、分成情况。';\n  565: $_LANG['affiliate_intro'][1] = '　　本网店为鼓励推荐新用户注册，现开展<b>推荐订单分成</b>活动，活动流程如下：\n  566  \n  567  　　１、在浏览商品时，点击推荐此商品，获得推荐代码，将其发送到论坛、博客上。\n  ...\n  577  $_LANG['level_register_up'] = '等级积分分成上限';\n  578  \n  579: $_LANG['affiliate_stats'][0] = '等待处理';\n  580: $_LANG['affiliate_stats'][1] = '已分成';\n  581: $_LANG['affiliate_stats'][2] = '取消分成';\n  582: $_LANG['affiliate_stats'][3] = '已撤销';\n  583: $_LANG['affiliate_stats'][4] = '等待买家付款';\n  584  \n  585  $_LANG['level_point'] = '积分分成百分比';\n  586  $_LANG['level_money'] = '现金分成百分比';\n  587  \n  588: $_LANG['affiliate_status'] = '分成状态';\n  589  \n  590: $_LANG['affiliate_point'] = '积分分成';\n  591: $_LANG['affiliate_money'] = '现金分成';\n  592  \n  593: $_LANG['affiliate_expire'] = '有效时间';\n  594  \n  595: $_LANG['affiliate_lever'] = '等级';\n  596: $_LANG['affiliate_num'] = '人数';\n  597  \n  598: $_LANG['affiliate_view'] = '效果';\n  599: $_LANG['affiliate_code'] = '代码';\n  600  \n  601: $_LANG['register_affiliate'] = '推荐会员ID %s ( %s ) 注册送积分';\n  602  $_LANG['register_points'] = '注册送积分';\n  603  \n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/affiliate.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/affiliate_ck.php:\n   11   * ==========================================================\n   12   * $Author: liubo $\n   13:  * $Id: affiliate_ck.php 17217 2011-01-19 06:29:08Z liubo $\n   14   */\n   15  \n   16  \n   17  $_LANG['order_id'] = '訂單號';\n   18: $_LANG['affiliate_separate'] = '分成';\n   19: $_LANG['affiliate_cancel'] = '取消';\n   20: $_LANG['affiliate_rollback'] = '撤銷';\n   21  $_LANG['log_info'] = '操作信息';\n   22  $_LANG['edit_ok'] = '操作成功';\n   ..\n   53  $_LANG['separate_by'][-2] = '推薦訂單分成';\n   54  \n   55: $_LANG['show_affiliate_orders'] = '此列表顯示此用戶推薦的訂單信息。';\n   56  $_LANG['back_note'] = '返回會員編輯頁面';\n   57  ?>\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/common.php:\n  294  $_LANG['06_sms_charge_history'] = '充值記錄';\n  295  \n  296: $_LANG['affiliate'] = '推薦設置';\n  297: $_LANG['affiliate_ck'] = '分成管理';\n  298  $_LANG['flashplay'] = '首页主广告管理';\n  299  $_LANG['search_log'] = '搜索關鍵字';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/priv_action.php:\n   87  $_LANG['navigator'] = '自定義導航欄';\n   88  $_LANG['cron'] = '計劃任務';\n   89: $_LANG['affiliate'] = '推薦設置';\n   90: $_LANG['affiliate_ck'] = '分成管理';\n   91  $_LANG['sitemap'] = '站點地圖管理';\n   92  $_LANG['file_check'] = '文件校驗';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/users.php:\n   52  $_LANG['parent_user'] = '推薦人';\n   53  $_LANG['parent_remove'] = '脫離推薦關係';\n   54: $_LANG['affiliate_user'] = '推薦會員';\n   55: $_LANG['show_affiliate_users'] = '查看推薦詳細名單';\n   56: $_LANG['show_affiliate_orders'] = '查看推薦訂單詳情';\n   57: $_LANG['affiliate_lever'] = '等級';\n   58: $_LANG['affiliate_num'] = '人數';\n   59  $_LANG['page_note'] = '此列表顯示用戶推薦的全部信息，';\n   60  $_LANG['how_many_user'] = '個會員。';\n   61  $_LANG['back_note'] = '返回會員編輯頁面';\n   62: $_LANG['affiliate_level'] = '推薦等級';\n   63  \n   64  $_LANG['msn'] = 'MSN';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/user.php:\n   31  $_LANG['label_bonus'] = '我的紅包';\n   32  $_LANG['label_comment'] = '我的評論';\n   33: $_LANG['label_affiliate'] = '我的推薦';\n   34  $_LANG['label_group_buy'] = '我的團購';\n   35  $_LANG['label_booking'] = '缺貨登記';\n   ..\n  542  \n  543  /* 用戶推薦 */\n  544: $_LANG['affiliate_mode'] = '分成模式';\n  545: $_LANG['affiliate_detail'] = '分成明細';\n  546: $_LANG['affiliate_member'] = '我推薦的會員';\n  547: $_LANG['affiliate_code'] = '推薦代碼';\n  548  $_LANG['firefox_copy_alert'] = \"您的firefox安全限制限制您進行剪貼板操作，請打開』about:config』將signed.applets.codebase_principal_support』設置為true』之後重試\";\n  549: $_LANG['affiliate_type'][0] = '推薦註冊分成';\n  550: $_LANG['affiliate_type'][1] = '推薦訂單分成';\n  551: $_LANG['affiliate_type'][-1] = '推薦註冊分成';\n  552: $_LANG['affiliate_type'][-2] = '推薦訂單分成';\n  553  \n  554: $_LANG['affiliate_codetype'] = '格式';\n  555  \n  556: $_LANG['affiliate_introduction'] = '分成模式介紹';\n  557: $_LANG['affiliate_intro'][0] = '　　本網店為鼓勵推薦新用戶註冊，現開展<b>推薦註冊分成</b>活動，活動流程如下：\n  558  \n  559  　　１、將本站提供給您的推薦代碼，發送到論壇、博客上。\n  ...\n  563  　　５、提成由管理員人工審核發放，請您耐心等待。\n  564  　　６、您可以通過分成明細來查看您的介紹、分成情況。';\n  565: $_LANG['affiliate_intro'][1] = '　　本網店為鼓勵推薦新用戶註冊，現開展<b>推薦訂單分成</b>活動，活動流程如下：\n  566  \n  567  　　１、在瀏覽商品時，點擊推薦此商品，獲得推薦代碼，將其發送到論壇、博客上。\n  ...\n  577  $_LANG['level_register_up'] = '等級積分分成上限';\n  578  \n  579: $_LANG['affiliate_stats'][0] = '等待處理';\n  580: $_LANG['affiliate_stats'][1] = '已分成';\n  581: $_LANG['affiliate_stats'][2] = '取消分成';\n  582: $_LANG['affiliate_stats'][3] = '已撤銷';\n  583: $_LANG['affiliate_stats'][4] = '等待買家付款';\n  584  \n  585  $_LANG['level_point'] = '積分分成百分比';\n  586  $_LANG['level_money'] = '現金分成百分比';\n  587  \n  588: $_LANG['affiliate_status'] = '分成狀態';\n  589  \n  590: $_LANG['affiliate_point'] = '積分分成';\n  591: $_LANG['affiliate_money'] = '現金分成';\n  592  \n  593: $_LANG['affiliate_expire'] = '有效時間';\n  594  \n  595: $_LANG['affiliate_lever'] = '等級';\n  596: $_LANG['affiliate_num'] = '人數';\n  597  \n  598: $_LANG['affiliate_view'] = '效果';\n  599: $_LANG['affiliate_code'] = '代碼';\n  600  \n  601: $_LANG['register_affiliate'] = '推薦會員ID %s ( %s ) 註冊送積分';\n  602  $_LANG['register_points'] = '註冊送積分';\n  603  \n\n/Users/gaoyan/站点/other/济南机件/jj/mobile/order.php:\n  479      }\n  480  \n  481:     $affiliate = unserialize($_CFG['affiliate']);\n  482  \n  483  \n\n/Users/gaoyan/站点/other/济南机件/jj/temp/static_caches/shop_config.php:\n  154    'sms_balance' => '',\n  155    'sms_last_request' => '',\n  156:   'affiliate' => 'a:3:{s:6:\"config\";a:7:{s:6:\"expire\";d:24;s:11:\"expire_unit\";s:4:\"hour\";s:11:\"separate_by\";i:0;s:15:\"level_point_all\";s:2:\"5%\";s:15:\"level_money_all\";s:2:\"1%\";s:18:\"level_register_all\";i:2;s:17:\"level_register_up\";i:60;}s:4:\"item\";a:4:{i:0;a:2:{s:11:\"level_point\";s:3:\"60%\";s:11:\"level_money\";s:3:\"60%\";}i:1;a:2:{s:11:\"level_point\";s:3:\"30%\";s:11:\"level_money\";s:3:\"30%\";}i:2;a:2:{s:11:\"level_point\";s:2:\"7%\";s:11:\"level_money\";s:2:\"7%\";}i:3;a:2:{s:11:\"level_point\";s:2:\"3%\";s:11:\"level_money\";s:2:\"3%\";}}s:2:\"on\";i:1;}',\n  157    'captcha' => '0',\n  158    'captcha_width' => '100',\n\n/Users/gaoyan/站点/other/济南机件/jj/themes/default/goods.dwt:\n  393        <a href=\"javascript:addToCart({$goods.goods_id})\"><img src=\"images/bnt_cat.gif\" /></a>\n  394        <a href=\"javascript:collect({$goods.goods_id})\"><img src=\"images/bnt_colles.gif\" /></a>\n  395:       <!-- {if $affiliate.on} -->\n  396:       <a href=\"user.php?act=affiliate&goodsid={$goods.goods_id}\"><img src='images/bnt_recommend.gif'></a>\n  397        <!-- {/if} -->\n  398        </li>\n\n/Users/gaoyan/站点/other/济南机件/jj/themes/default/library/user_menu.lbi:\n   12  <a href=\"user.php?act=booking_list\"{if $action eq 'booking_list'}class=\"curs\"{/if}><img src=\"../images/u8.gif\"> {$lang.label_booking}</a>\n   13  <a href=\"user.php?act=bonus\"{if $action eq 'bonus'}class=\"curs\"{/if}><img src=\"../images/u9.gif\"> {$lang.label_bonus}</a>\n   14: <!-- {if $affiliate.on eq 1} --><a href=\"user.php?act=affiliate\"{if $action eq 'affiliate'}class=\"curs\"{/if}><img src=\"../images/u10.gif\"> {$lang.label_affiliate}</a><!-- {/if} -->\n   15  <a href=\"user.php?act=comment_list\"{if $action eq 'comment_list'}class=\"curs\"{/if}><img src=\"../images/u11.gif\"> {$lang.label_comment}</a>\n   16  <!--<a href=\"user.php?act=group_buy\">{$lang.label_group_buy}</a>-->\n\n/Users/gaoyan/站点/other/济南机件/jj/themes/default/user_clips.dwt:\n  240       <div class=\"blank5\"></div>\n  241  \n  242:     <h5><span>{$lang.label_affiliate}</span></h5>\n  243      <div class=\"blank\"></div>\n  244       <form name=\"theForm\" method=\"post\" action=\"\">\n  ...\n  411      <!-- {/if} -->\n  412      <!-- *我的推荐 -->\n  413:     <!-- {if $affiliate.on eq 1} -->\n  414:      <!-- {if $action eq 'affiliate'} -->\n  415        <!-- {if !$goodsid || $goodsid eq 0} -->\n  416:       <h5><span>{$lang.affiliate_detail}</span></h5>\n  417        <div class=\"blank\"></div>\n  418:      {$affiliate_intro}\n  419:     <!-- {if $affiliate.config.separate_by eq 0} -->\n  420      <!-- 下线人数、分成 -->\n  421      <div class=\"blank\"></div>\n  422:     <h5><span><a name=\"myrecommend\">{$lang.affiliate_member}</a></span></h5>\n  423      <div class=\"blank\"></div>\n  424     <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  425      <tr align=\"center\">\n  426:       <td bgcolor=\"#ffffff\">{$lang.affiliate_lever}</td>\n  427:       <td bgcolor=\"#ffffff\">{$lang.affiliate_num}</td>\n  428        <td bgcolor=\"#ffffff\">{$lang.level_point}</td>\n  429        <td bgcolor=\"#ffffff\">{$lang.level_money}</td>\n  ...\n  450      <tr align=\"center\">\n  451        <td bgcolor=\"#ffffff\">{$lang.order_number}</td>\n  452:       <td bgcolor=\"#ffffff\">{$lang.affiliate_money}</td>\n  453:       <td bgcolor=\"#ffffff\">{$lang.affiliate_point}</td>\n  454:       <td bgcolor=\"#ffffff\">{$lang.affiliate_mode}</td>\n  455:       <td bgcolor=\"#ffffff\">{$lang.affiliate_status}</td>\n  456      </tr>\n  457      <!-- {foreach from=$logdb item=val name=logdb} -->\n  ...\n  460        <td bgcolor=\"#ffffff\">{$val.money}</td>\n  461        <td bgcolor=\"#ffffff\">{$val.point}</td>\n  462:       <td bgcolor=\"#ffffff\"><!-- {if $val.separate_type == 1 || $val.separate_type === 0} -->{$lang.affiliate_type.$val.separate_type}<!-- {else} -->{$lang.affiliate_type.$affiliate_type}<!-- {/if} --></td>\n  463:       <td bgcolor=\"#ffffff\">{$lang.affiliate_stats[$val.is_separate]}</td>\n  464      </tr>\n  465      {foreachelse}\n  ...\n  475      {html_options options=$pager.array selected=$pager.page}\n  476      </select>\n  477:     <input type=\"hidden\" name=\"act\" value=\"affiliate\" />\n  478    </div>\n  479  </form>\n  ...\n  494  <!-- /我的推荐清单 -->\n  495  <div class=\"blank\"></div>\n  496: <h5><span>{$lang.affiliate_code}</span></h5>\n  497  <div class=\"blank\"></div>\n  498  <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  ...\n  520          .types a{ text-decoration:none; color:#006bd0;}\n  521          </style>\n  522:     <h5><span>{$lang.affiliate_code}</span></h5>\n  523      <div class=\"blank\"></div>\n  524    <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  525      <tr align=\"center\">\n  526:       <td bgcolor=\"#ffffff\">{$lang.affiliate_view}</td>\n  527:       <td bgcolor=\"#ffffff\">{$lang.affiliate_code}</td>\n  528      </tr>\n  529      <!-- {foreach from=$types item=val name=types} -->\n  530      <tr align=\"center\">\n  531:       <td bgcolor=\"#ffffff\" class=\"types\"><script src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}\"></script></td>\n  532:       <td bgcolor=\"#ffffff\">javascript {$lang.affiliate_codetype}<br>\n  533:         <textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}\" style=\"border:1px solid #ccc;\"><script src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}\"></script></textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]\n  534: <br>iframe {$lang.affiliate_codetype}<br><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_iframe\"  style=\"border:1px solid #ccc;\"><iframe width=\"250\" height=\"270\" src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}&display_mode=iframe\" frameborder=\"0\" scrolling=\"no\"></iframe></textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_iframe').value);alert('{$lang.copy_to_clipboard}');\" class=\"f6\">{$lang.code_copy}</a>]\n  535: <br />{$lang.bbs}UBB {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_ubb\"  style=\"border:1px solid #ccc;\">{if $val != 5}[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][img]{if $val < 3}{$goods.goods_thumb}{else}{$goods.goods_img}{/if}[/img][/url]{/if}\n  536  \n  537  [url={$shopurl}goods.php?id={$goodsid}&u={$userid}][b]{$goods.goods_name}[/b][/url]\n  538  {if $val != 1 && $val != 3}[s]{$goods.market_price}[/s]{/if} [color=red]{$goods.shop_price}[/color]</textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_ubb').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]\n  539: {if $val == 5}<br />{$lang.im_code} {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_txt\"  style=\"border:1px solid #ccc;\">{$lang.show_good_to_you} {$goods.goods_name}\n  540  \n  541  {$shopurl}goods.php?id={$goodsid}&u={$userid}</textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_txt').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]{/if}</td>\n\n/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/user_menu.lbi:\n   28  					  <!--{/if}-->					\n   29  					  <div class=\"item {if $action eq 'bonus'} curr{/if}\"><a href=\"user.php?act=bonus\">{$lang.label_bonus}</a></div>\n   30: 				<!-- {if $affiliate.on eq 1} --><div class=\"item {if $action eq 'affiliate'} curr{/if}\"><a href=\"user.php?act=affiliate\">{$lang.label_affiliate}</a></div><!-- {/if} -->\n   31  			</dd>\n   32  		</dl>	\n\n/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/user_clips.dwt:\n  229       <div class=\"blank5\"></div>\n  230  \n  231:     <h5><span>{$lang.label_affiliate}</span></h5>\n  232      <div class=\"blank\"></div>\n  233       <form name=\"theForm\" method=\"post\" action=\"\">\n  ...\n  400      <!-- {/if} -->\n  401      <!-- *我的推荐 -->\n  402:     <!-- {if $affiliate.on eq 1} -->\n  403:      <!-- {if $action eq 'affiliate'} -->\n  404        <!-- {if !$goodsid || $goodsid eq 0} -->\n  405:       <h5><span>{$lang.affiliate_detail}</span></h5>\n  406        <div class=\"blank\"></div>\n  407:      {$affiliate_intro}\n  408:     <!-- {if $affiliate.config.separate_by eq 0} -->\n  409      <!-- 下线人数、分成 -->\n  410      <div class=\"blank\"></div>\n  411:     <h5><span><a name=\"myrecommend\">{$lang.affiliate_member}</a></span></h5>\n  412      <div class=\"blank\"></div>\n  413     <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  414      <tr align=\"center\">\n  415:       <td bgcolor=\"#ffffff\">{$lang.affiliate_lever}</td>\n  416:       <td bgcolor=\"#ffffff\">{$lang.affiliate_num}</td>\n  417        <td bgcolor=\"#ffffff\">{$lang.level_point}</td>\n  418        <td bgcolor=\"#ffffff\">{$lang.level_money}</td>\n  ...\n  439      <tr align=\"center\">\n  440        <td bgcolor=\"#ffffff\">{$lang.order_number}</td>\n  441:       <td bgcolor=\"#ffffff\">{$lang.affiliate_money}</td>\n  442:       <td bgcolor=\"#ffffff\">{$lang.affiliate_point}</td>\n  443:       <td bgcolor=\"#ffffff\">{$lang.affiliate_mode}</td>\n  444:       <td bgcolor=\"#ffffff\">{$lang.affiliate_status}</td>\n  445      </tr>\n  446      <!-- {foreach from=$logdb item=val name=logdb} -->\n  ...\n  449        <td bgcolor=\"#ffffff\">{$val.money}</td>\n  450        <td bgcolor=\"#ffffff\">{$val.point}</td>\n  451:       <td bgcolor=\"#ffffff\"><!-- {if $val.separate_type == 1 || $val.separate_type === 0} -->{$lang.affiliate_type.$val.separate_type}<!-- {else} -->{$lang.affiliate_type.$affiliate_type}<!-- {/if} --></td>\n  452:       <td bgcolor=\"#ffffff\">{$lang.affiliate_stats[$val.is_separate]}</td>\n  453      </tr>\n  454      {foreachelse}\n  ...\n  464      {html_options options=$pager.array selected=$pager.page}\n  465      </select>\n  466:     <input type=\"hidden\" name=\"act\" value=\"affiliate\" />\n  467    </div>\n  468  </form>\n  ...\n  483  <!-- /我的推荐清单 -->\n  484  <div class=\"blank\"></div>\n  485: <h5><span>{$lang.affiliate_code}</span></h5>\n  486  <div class=\"blank\"></div>\n  487  <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  ...\n  509          .types a{ text-decoration:none; color:#006bd0;}\n  510          </style>\n  511:     <h5><span>{$lang.affiliate_code}</span></h5>\n  512      <div class=\"blank\"></div>\n  513    <table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\" bgcolor=\"#dddddd\">\n  514      <tr align=\"center\">\n  515:       <td bgcolor=\"#ffffff\">{$lang.affiliate_view}</td>\n  516:       <td bgcolor=\"#ffffff\">{$lang.affiliate_code}</td>\n  517      </tr>\n  518      <!-- {foreach from=$types item=val name=types} -->\n  519      <tr align=\"center\">\n  520:       <td bgcolor=\"#ffffff\" class=\"types\"><script src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}\"></script></td>\n  521:       <td bgcolor=\"#ffffff\">javascript {$lang.affiliate_codetype}<br>\n  522:         <textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}\" style=\"border:1px solid #ccc;\"><script src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}\"></script></textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]\n  523: <br>iframe {$lang.affiliate_codetype}<br><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_iframe\"  style=\"border:1px solid #ccc;\"><iframe width=\"250\" height=\"270\" src=\"{$shopurl}affiliate.php?charset={$ecs_charset}&gid={$goodsid}&u={$userid}&type={$val}&display_mode=iframe\" frameborder=\"0\" scrolling=\"no\"></iframe></textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_iframe').value);alert('{$lang.copy_to_clipboard}');\" class=\"f6\">{$lang.code_copy}</a>]\n  524: <br />{$lang.bbs}UBB {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_ubb\"  style=\"border:1px solid #ccc;\">{if $val != 5}[url={$shopurl}goods.php?id={$goodsid}&u={$userid}][img]{if $val < 3}{$goods.goods_thumb}{else}{$goods.goods_img}{/if}[/img][/url]{/if}\n  525  \n  526  [url={$shopurl}goods.php?id={$goodsid}&u={$userid}][b]{$goods.goods_name}[/b][/url]\n  527  {if $val != 1 && $val != 3}[s]{$goods.market_price}[/s]{/if} [color=red]{$goods.shop_price}[/color]</textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_ubb').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]\n  528: {if $val == 5}<br />{$lang.im_code} {$lang.affiliate_codetype}<br /><textarea cols=30 rows=2 id=\"txt{$smarty.foreach.types.iteration}_txt\"  style=\"border:1px solid #ccc;\">{$lang.show_good_to_you} {$goods.goods_name}\n  529  \n  530  {$shopurl}goods.php?id={$goodsid}&u={$userid}</textarea>[<a href=\"#\" title=\"Copy To Clipboard\" onClick=\"Javascript:copyToClipboard(document.getElementById('txt{$smarty.foreach.types.iteration}_txt').value);alert('{$lang.copy_to_clipboard}');\"  class=\"f6\">{$lang.code_copy}</a>]{/if}</td>\n\n/Users/gaoyan/站点/other/济南机件/jj/user.php:\n   24  $action  = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'default';\n   25  \n   26: $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);\n   27: $smarty->assign('affiliate', $affiliate);\n   28  $back_act='';\n   29  \n   ..\n   36  $ui_arr = array('register', 'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list',\n   37  'message_list', 'tag_list', 'get_password', 'reset_password', 'booking_list', 'add_booking', 'account_raply',\n   38: 'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list','validate_email','track_packages', 'transform_points','qpassword_name', 'get_passwd_question', 'check_answer','order_list_c1','order_list_c2');\n   39  \n   40  /* 未登录处理 */\n   ..\n 2113  \n 2114  // 用户推荐页面\n 2115: elseif ($action == 'affiliate')\n 2116  {\n 2117      $goodsid = intval(isset($_REQUEST['goodsid']) ? $_REQUEST['goodsid'] : 0);\n ....\n 2123          $size       = !empty($_CFG['page_size']) && intval($_CFG['page_size']) > 0 ? intval($_CFG['page_size']) : 10;\n 2124  \n 2125:         empty($affiliate) && $affiliate = array();\n 2126  \n 2127:         if(empty($affiliate['config']['separate_by']))\n 2128          {\n 2129              //推荐注册分成\n 2130              $affdb = array();\n 2131:             $num = count($affiliate['item']);\n 2132              $up_uid = \"'$user_id'\";\n 2133              $all_uid = \"'$user_id'\";\n ....\n 2151                  }\n 2152                  $affdb[$i]['num'] = $count;\n 2153:                 $affdb[$i]['point'] = $affiliate['item'][$i-1]['level_point'];\n 2154:                 $affdb[$i]['money'] = $affiliate['item'][$i-1]['level_money'];\n 2155              }\n 2156              $smarty->assign('affdb', $affdb);\n ....\n 2158              $sqlcount = \"SELECT count(*) FROM \" . $ecs->table('order_info') . \" o\".\n 2159          \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2160:         \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2161          \" WHERE o.user_id > 0 AND (u.parent_id IN ($all_uid) AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\";\n 2162  \n 2163              $sql = \"SELECT o.*, a.log_id, a.user_id as suid,  a.user_name as auser, a.money, a.point, a.separate_type FROM \" . $ecs->table('order_info') . \" o\".\n 2164                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2165:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2166          \" WHERE o.user_id > 0 AND (u.parent_id IN ($all_uid) AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\".\n 2167                      \" ORDER BY order_id DESC\" ;\n ....\n 2181              */\n 2182  \n 2183:             $affiliate_intro = nl2br(sprintf($_LANG['affiliate_intro'][$affiliate['config']['separate_by']], $affiliate['config']['expire'], $_LANG['expire_unit'][$affiliate['config']['expire_unit']], $affiliate['config']['level_register_all'], $affiliate['config']['level_register_up'], $affiliate['config']['level_money_all'], $affiliate['config']['level_point_all']));\n 2184          }\n 2185          else\n ....\n 2188              $sqlcount = \"SELECT count(*) FROM \" . $ecs->table('order_info') . \" o\".\n 2189                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2190:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2191                      \" WHERE o.user_id > 0 AND (o.parent_id = '$user_id' AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\";\n 2192  \n ....\n 2194              $sql = \"SELECT o.*, a.log_id,a.user_id as suid, a.user_name as auser, a.money, a.point, a.separate_type,u.parent_id as up FROM \" . $ecs->table('order_info') . \" o\".\n 2195                      \" LEFT JOIN\".$ecs->table('users').\" u ON o.user_id = u.user_id\".\n 2196:                     \" LEFT JOIN \" . $ecs->table('affiliate_log') . \" a ON o.order_id = a.order_id\" .\n 2197                      \" WHERE o.user_id > 0 AND (o.parent_id = '$user_id' AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)\" .\n 2198                      \" ORDER BY order_id DESC\" ;\n ....\n 2211              */\n 2212  \n 2213:             $affiliate_intro = nl2br(sprintf($_LANG['affiliate_intro'][$affiliate['config']['separate_by']], $affiliate['config']['expire'], $_LANG['expire_unit'][$affiliate['config']['expire_unit']], $affiliate['config']['level_money_all'], $affiliate['config']['level_point_all']));\n 2214  \n 2215          }\n ....\n 2229              if(!empty($rt['suid']))\n 2230              {\n 2231:                 //在affiliate_log有记录\n 2232                  if($rt['separate_type'] == -1 || $rt['separate_type'] == -2)\n 2233                  {\n ....\n 2240          }\n 2241  \n 2242:         $url_format = \"user.php?act=affiliate&page=\";\n 2243  \n 2244          $pager = array(\n ....\n 2264  \n 2265  \n 2266:         $smarty->assign('affiliate_intro', $affiliate_intro);\n 2267:         $smarty->assign('affiliate_type', $affiliate['config']['separate_by']);\n 2268  \n 2269          $smarty->assign('logdb', $logdb);\n\n505 matches across 50 files\n\n\nSearching 2810 files for \"currency_format\" (case sensitive)\n\n/Users/gaoyan/站点/other/济南机件/jj/admin/includes/lib_main.php:\n  233      while ($row = $GLOBALS['db']->fetchRow($res))\n  234      {\n  235:         $bonus[$row['type_id']] = $row['type_name'].' [' .sprintf($GLOBALS['_CFG']['currency_format'], $row['type_money']).']';\n  236      }\n  237  \n\n/Users/gaoyan/站点/other/济南机件/jj/api/goods.php:\n   74          $sql = \"SELECT `value` FROM \" . $ecs->table('shop_config') . \" WHERE code='shop_name'\";\n   75          $shop_name = $db->getOne($sql);\n   76:         $sql = \"SELECT `value` FROM \" . $ecs->table('shop_config') . \" WHERE code='currency_format'\";\n   77:         $currency_format = $db->getOne($sql);\n   78          $sql = \"SELECT r.region_name, sc.value FROM \" . $ecs->table('region') . \" AS r INNER JOIN \" . $ecs->table('shop_config') . \" AS sc ON r.`region_id`=sc.`value` WHERE sc.`code`='shop_country' OR sc.`code`='shop_province' OR sc.`code`='shop_city' ORDER BY sc.`id` ASC\";\n   79  \n   ..\n   84              'domain' => 'http://' . $_SERVER['SERVER_NAME'] . '/',\n   85              'shop_region' => $shop_region[0]['region_name'] . ' ' . $shop_region[1]['region_name'] . ' ' . $shop_region[2]['region_name'],\n   86:             'currency_format' => $currency_format\n   87          );\n   88          exit($json->encode($results));\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141118flkeqf.sql:\n 5612  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('301', '3', 'date_format', 'hidden', '', '', 'Y-m-d', '1');\n 5613  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('302', '3', 'time_format', 'text', '', '', 'Y-m-d H:i:s', '1');\n 5614: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('303', '3', 'currency_format', 'text', '', '', '￥%s元', '1');\n 5615  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('304', '3', 'thumb_width', 'text', '', '', '100', '1');\n 5616  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('305', '3', 'thumb_height', 'text', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141121jdmaqo.sql:\n 4468  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('301', '3', 'date_format', 'hidden', '', '', 'Y-m-d', '1');\n 4469  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('302', '3', 'time_format', 'text', '', '', 'Y-m-d H:i:s', '1');\n 4470: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('303', '3', 'currency_format', 'text', '', '', '￥%s元', '1');\n 4471  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('304', '3', 'thumb_width', 'text', '', '', '100', '1');\n 4472  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('305', '3', 'thumb_height', 'text', '', '', '100', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201tjazbl.sql:\n 7210  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('301', '3', 'date_format', 'hidden', '', '', 'Y-m-d', '1');\n 7211  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('302', '3', 'time_format', 'text', '', '', 'Y-m-d H:i:s', '1');\n 7212: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('303', '3', 'currency_format', 'text', '', '', '￥%s', '1');\n 7213  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('304', '3', 'thumb_width', 'text', '', '', '200', '1');\n 7214  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('305', '3', 'thumb_height', 'text', '', '', '200', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201vefukg.sql:\n 7231  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('301', '3', 'date_format', 'hidden', '', '', 'Y-m-d', '1');\n 7232  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('302', '3', 'time_format', 'text', '', '', 'Y-m-d H:i:s', '1');\n 7233: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('303', '3', 'currency_format', 'text', '', '', '￥%s', '1');\n 7234  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('304', '3', 'thumb_width', 'text', '', '', '200', '1');\n 7235  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('305', '3', 'thumb_height', 'text', '', '', '200', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141201wzxhia.sql:\n 7215  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('301', '3', 'date_format', 'hidden', '', '', 'Y-m-d', '1');\n 7216  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('302', '3', 'time_format', 'text', '', '', 'Y-m-d H:i:s', '1');\n 7217: INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('303', '3', 'currency_format', 'text', '', '', '￥%s', '1');\n 7218  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('304', '3', 'thumb_width', 'text', '', '', '200', '1');\n 7219  INSERT INTO `ecs_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('305', '3', 'thumb_height', 'text', '', '', '200', '1');\n\n/Users/gaoyan/站点/other/济南机件/jj/flow.php:\n 2187  }\n 2188  \n 2189: $smarty->assign('currency_format', $_CFG['currency_format']);\n 2190  $smarty->assign('integral_scale',  $_CFG['integral_scale']);\n 2191  $smarty->assign('step',            $_REQUEST['step']);\n\n/Users/gaoyan/站点/other/济南机件/jj/includes/lib_common.php:\n  964      }\n  965  \n  966:     return sprintf($GLOBALS['_CFG']['currency_format'], $price);\n  967  }\n  968  \n\n/Users/gaoyan/站点/other/济南机件/jj/includes/user.php:\n  955      $smarty->assign('city_list',        $city_list);\n  956      $smarty->assign('district_list',    $district_list);\n  957:     $smarty->assign('currency_format',  $_CFG['currency_format']);\n  958      $smarty->assign('integral_scale',   $_CFG['integral_scale']);\n  959      $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/admin/shop_config.php:\n   37  $_LANG['cfg_name']['date_format'] = 'Date format';\n   38  $_LANG['cfg_name']['time_format'] = 'Time format';\n   39: $_LANG['cfg_name']['currency_format'] = 'Currency format';\n   40  $_LANG['cfg_name']['thumb_width'] = 'Thumbuail width';\n   41  $_LANG['cfg_name']['thumb_height'] = 'Thumbuail height';\n   ..\n  174  $_LANG['cfg_desc']['smtp_user'] = 'Send out attestation number for mails, it is blank while have no the number.';\n  175  $_LANG['cfg_desc']['bought_goods'] = 'How many records are displayed, that customers who bought this item also bought products?';\n  176: $_LANG['cfg_desc']['currency_format'] = 'Display product price format, the %s will be replaced corresponding price figure.';\n  177  $_LANG['cfg_desc']['image_height'] = 'If your server support GD, the system will auto appointed picture size when you upload the picture.';\n  178  $_LANG['cfg_desc']['watermark'] = 'Gif format, watermark documents should be support for the transparency settings.';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_cn/admin/shop_config.php:\n   35  $_LANG['cfg_name']['date_format'] = '日期格式';\n   36  $_LANG['cfg_name']['time_format'] = '时间格式';\n   37: $_LANG['cfg_name']['currency_format'] = '货币格式';\n   38  $_LANG['cfg_name']['thumb_width'] = '缩略图宽度';\n   39  $_LANG['cfg_name']['thumb_height'] = '缩略图高度';\n   ..\n  172  $_LANG['cfg_desc']['smtp_user'] = '发送邮件所需的认证帐号，如果没有就为空着';\n  173  $_LANG['cfg_desc']['bought_goods'] = '显示多少个购买此商品的人还买过哪些商品';\n  174: $_LANG['cfg_desc']['currency_format'] = '显示商品价格的格式，%s将被替换为相应的价格数字。';\n  175  $_LANG['cfg_desc']['image_height'] = '如果您的服务器支持GD，在您上传商品图片的时候将自动将图片缩小到指定的尺寸。';\n  176  $_LANG['cfg_desc']['watermark'] = '水印文件须为gif格式才可支持透明度设置。';\n\n/Users/gaoyan/站点/other/济南机件/jj/languages/zh_tw/admin/shop_config.php:\n   35  $_LANG['cfg_name']['date_format'] = '日期格式';\n   36  $_LANG['cfg_name']['time_format'] = '時間格式';\n   37: $_LANG['cfg_name']['currency_format'] = '貨幣格式';\n   38  $_LANG['cfg_name']['thumb_width'] = '縮略圖寬度';\n   39  $_LANG['cfg_name']['thumb_height'] = '縮略圖高度';\n   ..\n  172  $_LANG['cfg_desc']['smtp_user'] = '發送郵件所需的認證帳號，如果沒有就為空著';\n  173  $_LANG['cfg_desc']['bought_goods'] = '顯示多少個購買此商品的人還買過哪些商品';\n  174: $_LANG['cfg_desc']['currency_format'] = '顯示商品價格的格式，%s將被替換為相應的價格數字。';\n  175  $_LANG['cfg_desc']['image_height'] = '如果您的服務器支持GD，在您上傳商品圖片的時候將自動將圖片縮小到指定的尺寸。';\n  176  $_LANG['cfg_desc']['watermark'] = '水印文件須為gif格式才可支持透明度設置。';\n\n/Users/gaoyan/站点/other/济南机件/jj/temp/static_caches/shop_config.php:\n   61    'date_format' => 'Y-m-d',\n   62    'time_format' => 'Y-m-d H:i:s',\n   63:   'currency_format' => '￥%s',\n   64    'thumb_width' => 200,\n   65    'thumb_height' => 200,\n\n/Users/gaoyan/站点/other/济南机件/jj/user.php:\n  992      $smarty->assign('city_list',        $city_list);\n  993      $smarty->assign('district_list',    $district_list);\n  994:     $smarty->assign('currency_format',  $_CFG['currency_format']);\n  995      $smarty->assign('integral_scale',   $_CFG['integral_scale']);\n  996      $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));\n\n24 matches across 15 files\n",
-			"settings":
-			{
-				"buffer_size": 88809,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "api/goods.php",
-			"settings":
-			{
-				"buffer_size": 6332,
-				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 71.0,
+		"height": 27.0,
 		"selected_items":
 		[
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
 			[
 				"sql",
 				"Set Syntax: SQL"
@@ -227,10 +125,6 @@
 			[
 				"in",
 				"Package Control: Install Package"
-			],
-			[
-				"php",
-				"Set Syntax: PHP"
 			],
 			[
 				"find",
@@ -393,7 +287,7 @@
 				"Set Syntax: Markdown"
 			]
 		],
-		"width": 448.0
+		"width": 570.0
 	},
 	"console":
 	{
@@ -428,7 +322,38 @@
 	],
 	"file_history":
 	[
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/includes/inc_priv.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/integrate_sync.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/start.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/index.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/goods.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/goods_list.lbi",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/page_header.lbi",
 		"/Users/gaoyan/站点/other/济南机件/jj/category.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/library/goods_list.lbi",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/goods_info.htm",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/index_header.lbi",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/flow.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_common.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/modules/payment/alipay.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/flow.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/api/goods.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/data/config.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/home.css",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/base.css",
+		"/Users/gaoyan/站点/other/济南机件/jj/user.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_order.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/cls_mysql.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/goods.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_main.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_transaction.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/user_transaction.dwt",
+		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/library/page_header.lbi",
+		"/Users/gaoyan/站点/other/济南机件/jj/temp/compiled/index_header.lbi.php",
+		"/Users/gaoyan/站点/other/济南机件/jj/admin/help.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/htaccess.txt",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/navigator.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/navigator_add.htm",
@@ -444,22 +369,13 @@
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/language_list.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_article.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/user_transaction.dwt",
-		"/Users/gaoyan/站点/other/济南机件/jj/user.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/index.dwt",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/diyfile.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/flow.dwt",
-		"/Users/gaoyan/站点/other/济南机件/jj/index.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/library/user_menu.lbi",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/user_menu.lbi",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/user_transaction.dwt",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/user_account.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/index_header.lbi",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/page_header.lbi",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/library/page_footer.lbi",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_main.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/base.css",
 		"/Users/gaoyan/站点/other/济南机件/jj/data/sqldata/20141118flkeqf.sql",
-		"/Users/gaoyan/站点/other/济南机件/jj/flow.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/goods_batch_add.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/brand.dwt",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/index.dwt",
@@ -475,24 +391,15 @@
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/delivery_info.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/delete_cart_goods.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/temp/caches/4/article_5912117.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/data/config.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_goods.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/temp/backup/library/jd2013-index_header.lbi",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/style.css",
 		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/libs.xml",
 		"/Users/gaoyan/站点/other/济南机件/jj/sftp-config.json",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/order.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/default/goods.dwt",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_transaction.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/sql.txt",
 		"/Users/gaoyan/站点/other/济南机件/jj/activity.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/cls_mysql.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_order.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/includes/init.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/includes/lib_common.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/includes/inc_constant.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/themes/jd2013/goods.dwt",
-		"/Users/gaoyan/站点/other/济南机件/jj/admin/goods.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/.tags",
 		"/Users/gaoyan/站点/other/济南机件/jj/languages/en_us/payment/express.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/includes/cls_template.php",
@@ -523,9 +430,7 @@
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/article_auto.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/virtual_card_change.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/sms_charge_history.htm",
-		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/goods_info.htm",
 		"/Users/gaoyan/站点/other/济南机件/jj/js/calendar.php",
-		"/Users/gaoyan/站点/other/济南机件/jj/goods.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/goods_script.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/gallery.php",
 		"/Users/gaoyan/站点/other/济南机件/jj/admin/templates/order_query.htm",
@@ -544,22 +449,11 @@
 		"/Users/gaoyan/站点/other/济南机件/jj/topic.php",
 		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/Path Tools/Default (OSX).sublime-keymap",
 		"/Users/gaoyan/Library/Application Support/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
-		"/Users/gaoyan/站点/other/济南机件/jj/data/feedbackimg/index.htm",
-		"/Users/gaoyan/站点/other/济南机件/jj/alipay.html",
-		"/Users/gaoyan/站点/other/济南机件/jj/jj.sublime-project",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Lib/Action/AwardAction.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Lib/Core/Model.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/boc/Runtime/Logs/14_11_18.log",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Lib/Driver/Db/DbMysql.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Driver/Db/DbMongo.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/Extend/Library/ORG/Util/ArrayList.class.php",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/Public/css/login.css",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/ThinkPHP/LICENSE.txt",
-		"/Users/gaoyan/站点/微信海/中国银行独立项目/web/bocp/Tpl/gejin/office.html"
+		"/Users/gaoyan/站点/other/济南机件/jj/data/feedbackimg/index.htm"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -590,6 +484,17 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"lilist",
+			"Searching",
+			"最新补丁",
+			"团购",
+			"进入团购",
+			"goodsimg",
+			"shop_price_formated",
+			"ECS_SHOPPRICE",
+			"images/jd2013/rad.jpg",
+			"ECS_SHOPPRICE",
+			"d2013/rad.jp",
 			"currency_format",
 			".plist .utab .hover",
 			"#virtuals .utab li",
@@ -706,18 +611,7 @@
 			"'change'",
 			">",
 			"'change'",
-			"upload_article_file",
-			"allow_file_types",
-			"'change'",
-			"goods_img",
-			"\"change\"",
-			"UPDATE",
-			"order_id",
-			"UPDATE \" . $ecs->table('goods_info') .",
-			"region",
-			".js",
-			"calendar.css",
-			"calendar.php"
+			"upload_article_file"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -749,24 +643,24 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "flow.php",
+					"file": "themes/jd2013/index.dwt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 93148,
+						"buffer_size": 77181,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								50721,
-								50730
+								10444,
+								10444
 							]
 						],
 						"settings":
@@ -774,11 +668,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -794,429 +683,31 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 1534,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1418099925.23,
-							"tabs_extra_last_activated_sheet_index": 0,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 33637.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "includes/lib_common.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 81314,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								31716,
-								31723
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 965,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1418104945.88,
-							"tabs_extra_last_activated_sheet_index": 1,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 20735.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "includes/modules/payment/alipay.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3330,
-								3330
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1227,108 +718,11 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"function_name_status_row": 132,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1417961047.49,
-							"tabs_extra_last_activated_sheet_index": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "themes/jd2013/flow.dwt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 44295,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								37632,
-								37632
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_default_content"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1433,163 +827,39 @@
 								"Python Django": "Python"
 							},
 							"codeintel_tooltips": "popup",
-							"function_name_status_row": 718,
+							"function_name_status_row": 265,
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"side_bar_folders_auto_load_folder": 1,
 							"sublime_auto_complete": true,
 							"synced": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1418099684.35,
-							"tabs_extra_last_activated_sheet_index": 3,
-							"translate_tabs_to_spaces": true
+							"tabs_extra_last_activated": 1421114605.8,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "affiche.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 6365,
-						"regions":
-						{
-							"TagLint":
-							{
-								"flags": 2356,
-								"icon": "dot",
-								"regions":
-								[
-									[
-										3240,
-										3245
-									]
-								],
-								"scope": "variable.parameter"
-							}
-						},
-						"selection":
-						[
-							[
-								69,
-								69
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"function_name_status_row": 4,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1418104957.17,
-							"tabs_extra_last_activated_sheet_index": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7342.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "includes/cls_mysql.php",
+					"buffer": 1,
+					"file": "themes/jd2013/diyfile.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25835,
+						"buffer_size": 13562,
 						"regions":
 						{
-							"TagLint":
-							{
-								"flags": 2356,
-								"icon": "dot",
-								"regions":
-								[
-									[
-										11329,
-										11330
-									]
-								],
-								"scope": "variable.parameter"
-							}
 						},
 						"selection":
 						[
 							[
-								4451,
-								4458
+								3285,
+								3285
 							]
 						],
 						"settings":
@@ -1597,11 +867,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1617,138 +882,46 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"function_name_status_row": 144,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1417961047.81,
-							"tabs_extra_last_activated_sheet_index": 7,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 45.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "includes/lib_order.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 92325,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18114,
-								18126
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"codeintel": true,
 							"codeintel_config":
@@ -1853,7 +1026,7 @@
 								"Python Django": "Python"
 							},
 							"codeintel_tooltips": "popup",
-							"function_name_status_row": 638,
+							"function_name_status_row": 101,
 							"incomplete_sync": null,
 							"is_xml": false,
 							"remote_loading": false,
@@ -1861,33 +1034,32 @@
 							"sublime_auto_complete": true,
 							"synced": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1418099768.5,
-							"tabs_extra_last_activated_sheet_index": 8,
-							"translate_tabs_to_spaces": true
+							"tabs_extra_last_activated": 1421117446.38,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 13616.0,
+						"translation.x": 21.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "user.php",
+					"buffer": 2,
+					"file": "includes/modules/payment/ips.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 97398,
+						"buffer_size": 5060,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								507,
-								507
+								2020,
+								2020
 							]
 						],
 						"settings":
@@ -1895,11 +1067,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1910,21 +1082,36 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1934,24 +1121,9 @@
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content"
+								"bh_c_define_content"
 							],
-							"function_name_status_row": 15,
+							"function_name_status_row": 92,
 							"incomplete_sync": null,
 							"is_xml": false,
 							"remote_loading": false,
@@ -1959,3540 +1131,17 @@
 							"synced": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
-							"tabs_extra_last_activated": 1418200730.16,
-							"tabs_extra_last_activated_sheet_index": 7,
+							"tabs_extra_last_activated": 1421212841.7,
+							"tabs_extra_last_activated_sheet_index": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 6.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 1912.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "themes/jd2013/user_transaction.dwt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 54032,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9647,
-								9647
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 184,
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1417961048.3,
-							"tabs_extra_last_activated_sheet_index": 11,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "includes/lib_transaction.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 37309,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8634,
-								8634
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 290,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1417961048.44,
-							"tabs_extra_last_activated_sheet_index": 12,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "includes/lib_main.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 65653,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2,
-								2
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"function_name_status_row": 10,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1417961051.92,
-							"tabs_extra_last_activated_sheet_index": 13,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "themes/jd2013/base.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 40265,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27048,
-								27048
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 1611,
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"tabs_extra_last_activated": 1417962247.85,
-							"tabs_extra_last_activated_sheet_index": 14,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 35056.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "themes/jd2013/home.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13428,
-								13428
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 264,
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 1424.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "data/config.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 513,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								86,
-								105
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"function_name_status_row": 5,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tabs_extra_last_activated": 1418007699.65,
-							"tabs_extra_last_activated_sheet_index": 16
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 88809,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										218,
-										227
-									],
-									[
-										394,
-										403
-									],
-									[
-										428,
-										437
-									],
-									[
-										589,
-										598
-									],
-									[
-										679,
-										688
-									],
-									[
-										804,
-										813
-									],
-									[
-										909,
-										918
-									],
-									[
-										1192,
-										1201
-									],
-									[
-										1216,
-										1225
-									],
-									[
-										1399,
-										1408
-									],
-									[
-										1508,
-										1517
-									],
-									[
-										1656,
-										1665
-									],
-									[
-										1720,
-										1729
-									],
-									[
-										1744,
-										1753
-									],
-									[
-										1890,
-										1899
-									],
-									[
-										1956,
-										1965
-									],
-									[
-										1980,
-										1989
-									],
-									[
-										2172,
-										2181
-									],
-									[
-										2358,
-										2367
-									],
-									[
-										2537,
-										2546
-									],
-									[
-										2590,
-										2599
-									],
-									[
-										2672,
-										2681
-									],
-									[
-										2744,
-										2753
-									],
-									[
-										2857,
-										2866
-									],
-									[
-										3070,
-										3079
-									],
-									[
-										3320,
-										3329
-									],
-									[
-										3482,
-										3491
-									],
-									[
-										3542,
-										3551
-									],
-									[
-										3584,
-										3593
-									],
-									[
-										3612,
-										3621
-									],
-									[
-										3627,
-										3636
-									],
-									[
-										3671,
-										3680
-									],
-									[
-										3841,
-										3850
-									],
-									[
-										3948,
-										3957
-									],
-									[
-										4154,
-										4163
-									],
-									[
-										4338,
-										4347
-									],
-									[
-										4587,
-										4596
-									],
-									[
-										4809,
-										4818
-									],
-									[
-										4836,
-										4845
-									],
-									[
-										5058,
-										5067
-									],
-									[
-										5351,
-										5360
-									],
-									[
-										5566,
-										5575
-									],
-									[
-										5593,
-										5602
-									],
-									[
-										5771,
-										5780
-									],
-									[
-										5813,
-										5822
-									],
-									[
-										5845,
-										5854
-									],
-									[
-										5860,
-										5869
-									],
-									[
-										5916,
-										5925
-									],
-									[
-										6079,
-										6088
-									],
-									[
-										6128,
-										6137
-									],
-									[
-										6184,
-										6193
-									],
-									[
-										6233,
-										6242
-									],
-									[
-										6293,
-										6302
-									],
-									[
-										6370,
-										6379
-									],
-									[
-										6454,
-										6463
-									],
-									[
-										6531,
-										6540
-									],
-									[
-										6626,
-										6635
-									],
-									[
-										6819,
-										6828
-									],
-									[
-										7023,
-										7032
-									],
-									[
-										7135,
-										7144
-									],
-									[
-										7182,
-										7191
-									],
-									[
-										7244,
-										7253
-									],
-									[
-										7291,
-										7300
-									],
-									[
-										7357,
-										7366
-									],
-									[
-										7448,
-										7457
-									],
-									[
-										7546,
-										7555
-									],
-									[
-										7637,
-										7646
-									],
-									[
-										7758,
-										7767
-									],
-									[
-										7851,
-										7860
-									],
-									[
-										8373,
-										8382
-									],
-									[
-										8712,
-										8721
-									],
-									[
-										8915,
-										8924
-									],
-									[
-										8942,
-										8951
-									],
-									[
-										9154,
-										9163
-									],
-									[
-										9181,
-										9190
-									],
-									[
-										9289,
-										9298
-									],
-									[
-										9333,
-										9342
-									],
-									[
-										9375,
-										9384
-									],
-									[
-										9407,
-										9416
-									],
-									[
-										9422,
-										9431
-									],
-									[
-										9470,
-										9479
-									],
-									[
-										9588,
-										9597
-									],
-									[
-										9931,
-										9940
-									],
-									[
-										10397,
-										10406
-									],
-									[
-										10851,
-										10860
-									],
-									[
-										11074,
-										11083
-									],
-									[
-										11517,
-										11526
-									],
-									[
-										12119,
-										12128
-									],
-									[
-										12710,
-										12719
-									],
-									[
-										12975,
-										12984
-									],
-									[
-										13267,
-										13276
-									],
-									[
-										13431,
-										13440
-									],
-									[
-										13903,
-										13912
-									],
-									[
-										14198,
-										14207
-									],
-									[
-										14259,
-										14268
-									],
-									[
-										14616,
-										14625
-									],
-									[
-										14687,
-										14696
-									],
-									[
-										14766,
-										14775
-									],
-									[
-										15149,
-										15158
-									],
-									[
-										15226,
-										15235
-									],
-									[
-										15614,
-										15623
-									],
-									[
-										15691,
-										15700
-									],
-									[
-										16079,
-										16088
-									],
-									[
-										16156,
-										16165
-									],
-									[
-										16526,
-										16535
-									],
-									[
-										16561,
-										16570
-									],
-									[
-										16613,
-										16622
-									],
-									[
-										16648,
-										16657
-									],
-									[
-										16876,
-										16885
-									],
-									[
-										16902,
-										16911
-									],
-									[
-										16935,
-										16944
-									],
-									[
-										16961,
-										16970
-									],
-									[
-										17138,
-										17147
-									],
-									[
-										17636,
-										17645
-									],
-									[
-										18100,
-										18109
-									],
-									[
-										18592,
-										18601
-									],
-									[
-										18889,
-										18898
-									],
-									[
-										18942,
-										18951
-									],
-									[
-										19020,
-										19029
-									],
-									[
-										19091,
-										19100
-									],
-									[
-										19169,
-										19178
-									],
-									[
-										19247,
-										19256
-									],
-									[
-										19509,
-										19518
-									],
-									[
-										19569,
-										19578
-									],
-									[
-										19649,
-										19658
-									],
-									[
-										19704,
-										19713
-									],
-									[
-										19838,
-										19847
-									],
-									[
-										19898,
-										19907
-									],
-									[
-										20123,
-										20132
-									],
-									[
-										20340,
-										20349
-									],
-									[
-										20419,
-										20428
-									],
-									[
-										20523,
-										20532
-									],
-									[
-										20554,
-										20563
-									],
-									[
-										20614,
-										20623
-									],
-									[
-										20819,
-										20828
-									],
-									[
-										21020,
-										21029
-									],
-									[
-										21226,
-										21235
-									],
-									[
-										21268,
-										21277
-									],
-									[
-										21310,
-										21319
-									],
-									[
-										21323,
-										21332
-									],
-									[
-										21361,
-										21370
-									],
-									[
-										21376,
-										21385
-									],
-									[
-										21426,
-										21435
-									],
-									[
-										21562,
-										21571
-									],
-									[
-										21740,
-										21749
-									],
-									[
-										21782,
-										21791
-									],
-									[
-										21824,
-										21833
-									],
-									[
-										21837,
-										21846
-									],
-									[
-										21875,
-										21884
-									],
-									[
-										21890,
-										21899
-									],
-									[
-										21944,
-										21953
-									],
-									[
-										22098,
-										22107
-									],
-									[
-										22313,
-										22322
-									],
-									[
-										22442,
-										22451
-									],
-									[
-										22779,
-										22788
-									],
-									[
-										23598,
-										23607
-									],
-									[
-										23731,
-										23740
-									],
-									[
-										24143,
-										24152
-									],
-									[
-										24184,
-										24193
-									],
-									[
-										24839,
-										24848
-									],
-									[
-										26436,
-										26445
-									],
-									[
-										27880,
-										27889
-									],
-									[
-										28013,
-										28022
-									],
-									[
-										28535,
-										28544
-									],
-									[
-										28576,
-										28585
-									],
-									[
-										29231,
-										29240
-									],
-									[
-										30674,
-										30683
-									],
-									[
-										30807,
-										30816
-									],
-									[
-										31329,
-										31338
-									],
-									[
-										31370,
-										31379
-									],
-									[
-										32025,
-										32034
-									],
-									[
-										33468,
-										33477
-									],
-									[
-										33601,
-										33610
-									],
-									[
-										34123,
-										34132
-									],
-									[
-										34164,
-										34173
-									],
-									[
-										34819,
-										34828
-									],
-									[
-										35892,
-										35901
-									],
-									[
-										35923,
-										35932
-									],
-									[
-										35958,
-										35967
-									],
-									[
-										35979,
-										35988
-									],
-									[
-										36004,
-										36013
-									],
-									[
-										36114,
-										36123
-									],
-									[
-										36247,
-										36256
-									],
-									[
-										36268,
-										36277
-									],
-									[
-										36293,
-										36302
-									],
-									[
-										36439,
-										36448
-									],
-									[
-										36481,
-										36490
-									],
-									[
-										36519,
-										36528
-									],
-									[
-										36532,
-										36541
-									],
-									[
-										36736,
-										36745
-									],
-									[
-										36883,
-										36892
-									],
-									[
-										36955,
-										36964
-									],
-									[
-										37134,
-										37143
-									],
-									[
-										37314,
-										37323
-									],
-									[
-										37480,
-										37489
-									],
-									[
-										37540,
-										37549
-									],
-									[
-										37617,
-										37626
-									],
-									[
-										37860,
-										37869
-									],
-									[
-										38021,
-										38030
-									],
-									[
-										38064,
-										38073
-									],
-									[
-										38104,
-										38113
-									],
-									[
-										38125,
-										38134
-									],
-									[
-										38230,
-										38239
-									],
-									[
-										38269,
-										38278
-									],
-									[
-										38284,
-										38293
-									],
-									[
-										38325,
-										38334
-									],
-									[
-										38377,
-										38386
-									],
-									[
-										38441,
-										38450
-									],
-									[
-										38492,
-										38501
-									],
-									[
-										38623,
-										38632
-									],
-									[
-										38731,
-										38740
-									],
-									[
-										39017,
-										39026
-									],
-									[
-										39063,
-										39072
-									],
-									[
-										39208,
-										39217
-									],
-									[
-										39290,
-										39299
-									],
-									[
-										39527,
-										39536
-									],
-									[
-										39601,
-										39610
-									],
-									[
-										39816,
-										39825
-									],
-									[
-										39858,
-										39867
-									],
-									[
-										39896,
-										39905
-									],
-									[
-										39909,
-										39918
-									],
-									[
-										40328,
-										40337
-									],
-									[
-										40552,
-										40561
-									],
-									[
-										40820,
-										40829
-									],
-									[
-										40835,
-										40844
-									],
-									[
-										40889,
-										40898
-									],
-									[
-										41041,
-										41050
-									],
-									[
-										41276,
-										41285
-									],
-									[
-										41362,
-										41371
-									],
-									[
-										41697,
-										41706
-									],
-									[
-										42214,
-										42223
-									],
-									[
-										42518,
-										42527
-									],
-									[
-										42558,
-										42567
-									],
-									[
-										42577,
-										42586
-									],
-									[
-										42615,
-										42624
-									],
-									[
-										42669,
-										42678
-									],
-									[
-										42707,
-										42716
-									],
-									[
-										42751,
-										42760
-									],
-									[
-										42794,
-										42803
-									],
-									[
-										42835,
-										42844
-									],
-									[
-										43159,
-										43168
-									],
-									[
-										43709,
-										43718
-									],
-									[
-										44025,
-										44034
-									],
-									[
-										44065,
-										44074
-									],
-									[
-										44084,
-										44093
-									],
-									[
-										44122,
-										44131
-									],
-									[
-										44176,
-										44185
-									],
-									[
-										44214,
-										44223
-									],
-									[
-										44255,
-										44264
-									],
-									[
-										44418,
-										44427
-									],
-									[
-										44618,
-										44627
-									],
-									[
-										44729,
-										44738
-									],
-									[
-										44748,
-										44757
-									],
-									[
-										44798,
-										44807
-									],
-									[
-										44816,
-										44825
-									],
-									[
-										45090,
-										45099
-									],
-									[
-										45341,
-										45350
-									],
-									[
-										45476,
-										45485
-									],
-									[
-										45530,
-										45539
-									],
-									[
-										45576,
-										45585
-									],
-									[
-										45811,
-										45820
-									],
-									[
-										46121,
-										46130
-									],
-									[
-										46174,
-										46183
-									],
-									[
-										46501,
-										46510
-									],
-									[
-										46547,
-										46556
-									],
-									[
-										46879,
-										46888
-									],
-									[
-										46940,
-										46949
-									],
-									[
-										47018,
-										47027
-									],
-									[
-										47087,
-										47096
-									],
-									[
-										47131,
-										47140
-									],
-									[
-										47389,
-										47398
-									],
-									[
-										47637,
-										47646
-									],
-									[
-										47823,
-										47832
-									],
-									[
-										47875,
-										47884
-									],
-									[
-										47931,
-										47940
-									],
-									[
-										47987,
-										47996
-									],
-									[
-										48263,
-										48272
-									],
-									[
-										48312,
-										48321
-									],
-									[
-										48339,
-										48348
-									],
-									[
-										48380,
-										48389
-									],
-									[
-										48407,
-										48416
-									],
-									[
-										48457,
-										48466
-									],
-									[
-										48484,
-										48493
-									],
-									[
-										48526,
-										48535
-									],
-									[
-										48561,
-										48570
-									],
-									[
-										48595,
-										48604
-									],
-									[
-										48630,
-										48639
-									],
-									[
-										48698,
-										48707
-									],
-									[
-										48762,
-										48771
-									],
-									[
-										49106,
-										49115
-									],
-									[
-										49162,
-										49171
-									],
-									[
-										49493,
-										49502
-									],
-									[
-										49562,
-										49571
-									],
-									[
-										49739,
-										49748
-									],
-									[
-										49803,
-										49812
-									],
-									[
-										49855,
-										49864
-									],
-									[
-										49886,
-										49895
-									],
-									[
-										49913,
-										49922
-									],
-									[
-										49963,
-										49972
-									],
-									[
-										50143,
-										50152
-									],
-									[
-										50207,
-										50216
-									],
-									[
-										50234,
-										50243
-									],
-									[
-										50261,
-										50270
-									],
-									[
-										50288,
-										50297
-									],
-									[
-										50323,
-										50332
-									],
-									[
-										50381,
-										50390
-									],
-									[
-										50425,
-										50434
-									],
-									[
-										50476,
-										50485
-									],
-									[
-										50518,
-										50527
-									],
-									[
-										50577,
-										50586
-									],
-									[
-										50900,
-										50909
-									],
-									[
-										51151,
-										51160
-									],
-									[
-										51280,
-										51289
-									],
-									[
-										51324,
-										51333
-									],
-									[
-										51366,
-										51375
-									],
-									[
-										51545,
-										51554
-									],
-									[
-										51775,
-										51784
-									],
-									[
-										51812,
-										51821
-									],
-									[
-										52073,
-										52082
-									],
-									[
-										52110,
-										52119
-									],
-									[
-										52371,
-										52380
-									],
-									[
-										52418,
-										52427
-									],
-									[
-										52470,
-										52479
-									],
-									[
-										52518,
-										52527
-									],
-									[
-										52559,
-										52568
-									],
-									[
-										52730,
-										52739
-									],
-									[
-										52955,
-										52964
-									],
-									[
-										53108,
-										53117
-									],
-									[
-										53150,
-										53159
-									],
-									[
-										53194,
-										53203
-									],
-									[
-										53240,
-										53249
-									],
-									[
-										53420,
-										53429
-									],
-									[
-										53467,
-										53476
-									],
-									[
-										53514,
-										53523
-									],
-									[
-										53562,
-										53571
-									],
-									[
-										53618,
-										53627
-									],
-									[
-										53670,
-										53679
-									],
-									[
-										53722,
-										53731
-									],
-									[
-										53921,
-										53930
-									],
-									[
-										54120,
-										54129
-									],
-									[
-										54166,
-										54175
-									],
-									[
-										54211,
-										54220
-									],
-									[
-										54257,
-										54266
-									],
-									[
-										54302,
-										54311
-									],
-									[
-										54450,
-										54459
-									],
-									[
-										54502,
-										54511
-									],
-									[
-										54545,
-										54554
-									],
-									[
-										54596,
-										54605
-									],
-									[
-										54648,
-										54657
-									],
-									[
-										54689,
-										54698
-									],
-									[
-										54736,
-										54745
-									],
-									[
-										54776,
-										54785
-									],
-									[
-										54833,
-										54842
-									],
-									[
-										55105,
-										55114
-									],
-									[
-										55356,
-										55365
-									],
-									[
-										55485,
-										55494
-									],
-									[
-										55529,
-										55538
-									],
-									[
-										55571,
-										55580
-									],
-									[
-										55750,
-										55759
-									],
-									[
-										55980,
-										55989
-									],
-									[
-										56017,
-										56026
-									],
-									[
-										56278,
-										56287
-									],
-									[
-										56315,
-										56324
-									],
-									[
-										56576,
-										56585
-									],
-									[
-										56623,
-										56632
-									],
-									[
-										56675,
-										56684
-									],
-									[
-										56723,
-										56732
-									],
-									[
-										56764,
-										56773
-									],
-									[
-										56933,
-										56942
-									],
-									[
-										57158,
-										57167
-									],
-									[
-										57311,
-										57320
-									],
-									[
-										57353,
-										57362
-									],
-									[
-										57397,
-										57406
-									],
-									[
-										57443,
-										57452
-									],
-									[
-										57623,
-										57632
-									],
-									[
-										57670,
-										57679
-									],
-									[
-										57717,
-										57726
-									],
-									[
-										57765,
-										57774
-									],
-									[
-										57821,
-										57830
-									],
-									[
-										57873,
-										57882
-									],
-									[
-										57925,
-										57934
-									],
-									[
-										58124,
-										58133
-									],
-									[
-										58323,
-										58332
-									],
-									[
-										58369,
-										58378
-									],
-									[
-										58414,
-										58423
-									],
-									[
-										58460,
-										58469
-									],
-									[
-										58505,
-										58514
-									],
-									[
-										58653,
-										58662
-									],
-									[
-										58705,
-										58714
-									],
-									[
-										58748,
-										58757
-									],
-									[
-										58799,
-										58808
-									],
-									[
-										58851,
-										58860
-									],
-									[
-										58892,
-										58901
-									],
-									[
-										58939,
-										58948
-									],
-									[
-										58979,
-										58988
-									],
-									[
-										59036,
-										59045
-									],
-									[
-										59211,
-										59220
-									],
-									[
-										59242,
-										59251
-									],
-									[
-										59415,
-										59424
-									],
-									[
-										60295,
-										60304
-									],
-									[
-										60348,
-										60357
-									],
-									[
-										60834,
-										60843
-									],
-									[
-										60878,
-										60887
-									],
-									[
-										60904,
-										60913
-									],
-									[
-										60976,
-										60985
-									],
-									[
-										61370,
-										61379
-									],
-									[
-										61567,
-										61576
-									],
-									[
-										61623,
-										61632
-									],
-									[
-										61723,
-										61732
-									],
-									[
-										61806,
-										61815
-									],
-									[
-										61844,
-										61853
-									],
-									[
-										61998,
-										62007
-									],
-									[
-										62234,
-										62243
-									],
-									[
-										62298,
-										62307
-									],
-									[
-										62578,
-										62587
-									],
-									[
-										62642,
-										62651
-									],
-									[
-										62706,
-										62715
-									],
-									[
-										62769,
-										62778
-									],
-									[
-										63090,
-										63099
-									],
-									[
-										63146,
-										63155
-									],
-									[
-										63162,
-										63171
-									],
-									[
-										63239,
-										63248
-									],
-									[
-										63466,
-										63475
-									],
-									[
-										63598,
-										63607
-									],
-									[
-										63869,
-										63878
-									],
-									[
-										64098,
-										64107
-									],
-									[
-										64161,
-										64170
-									],
-									[
-										64364,
-										64373
-									],
-									[
-										64509,
-										64518
-									],
-									[
-										64669,
-										64678
-									],
-									[
-										65009,
-										65018
-									],
-									[
-										65186,
-										65195
-									],
-									[
-										65593,
-										65602
-									],
-									[
-										66359,
-										66368
-									],
-									[
-										67082,
-										67091
-									],
-									[
-										67137,
-										67146
-									],
-									[
-										67182,
-										67191
-									],
-									[
-										67206,
-										67215
-									],
-									[
-										67416,
-										67425
-									],
-									[
-										67613,
-										67622
-									],
-									[
-										67669,
-										67678
-									],
-									[
-										67769,
-										67778
-									],
-									[
-										67852,
-										67861
-									],
-									[
-										67890,
-										67899
-									],
-									[
-										68044,
-										68053
-									],
-									[
-										68280,
-										68289
-									],
-									[
-										68344,
-										68353
-									],
-									[
-										68624,
-										68633
-									],
-									[
-										68688,
-										68697
-									],
-									[
-										68752,
-										68761
-									],
-									[
-										68815,
-										68824
-									],
-									[
-										69136,
-										69145
-									],
-									[
-										69192,
-										69201
-									],
-									[
-										69208,
-										69217
-									],
-									[
-										69285,
-										69294
-									],
-									[
-										69512,
-										69521
-									],
-									[
-										69644,
-										69653
-									],
-									[
-										69915,
-										69924
-									],
-									[
-										70144,
-										70153
-									],
-									[
-										70207,
-										70216
-									],
-									[
-										70410,
-										70419
-									],
-									[
-										70555,
-										70564
-									],
-									[
-										70715,
-										70724
-									],
-									[
-										71055,
-										71064
-									],
-									[
-										71232,
-										71241
-									],
-									[
-										71639,
-										71648
-									],
-									[
-										72405,
-										72414
-									],
-									[
-										73019,
-										73028
-									],
-									[
-										73061,
-										73070
-									],
-									[
-										73099,
-										73108
-									],
-									[
-										73112,
-										73121
-									],
-									[
-										73531,
-										73540
-									],
-									[
-										73787,
-										73796
-									],
-									[
-										74055,
-										74064
-									],
-									[
-										74070,
-										74079
-									],
-									[
-										74124,
-										74133
-									],
-									[
-										74276,
-										74285
-									],
-									[
-										74511,
-										74520
-									],
-									[
-										74597,
-										74606
-									],
-									[
-										74932,
-										74941
-									],
-									[
-										75449,
-										75458
-									],
-									[
-										75753,
-										75762
-									],
-									[
-										75793,
-										75802
-									],
-									[
-										75812,
-										75821
-									],
-									[
-										75850,
-										75859
-									],
-									[
-										75904,
-										75913
-									],
-									[
-										75942,
-										75951
-									],
-									[
-										75986,
-										75995
-									],
-									[
-										76029,
-										76038
-									],
-									[
-										76070,
-										76079
-									],
-									[
-										76394,
-										76403
-									],
-									[
-										76944,
-										76953
-									],
-									[
-										77260,
-										77269
-									],
-									[
-										77300,
-										77309
-									],
-									[
-										77319,
-										77328
-									],
-									[
-										77357,
-										77366
-									],
-									[
-										77411,
-										77420
-									],
-									[
-										77449,
-										77458
-									],
-									[
-										77490,
-										77499
-									],
-									[
-										77653,
-										77662
-									],
-									[
-										77853,
-										77862
-									],
-									[
-										77964,
-										77973
-									],
-									[
-										77983,
-										77992
-									],
-									[
-										78033,
-										78042
-									],
-									[
-										78051,
-										78060
-									],
-									[
-										78458,
-										78473
-									],
-									[
-										78810,
-										78825
-									],
-									[
-										78845,
-										78860
-									],
-									[
-										79418,
-										79433
-									],
-									[
-										79439,
-										79454
-									],
-									[
-										80126,
-										80141
-									],
-									[
-										81164,
-										81179
-									],
-									[
-										82202,
-										82217
-									],
-									[
-										83239,
-										83254
-									],
-									[
-										84276,
-										84291
-									],
-									[
-										84789,
-										84804
-									],
-									[
-										84814,
-										84829
-									],
-									[
-										85086,
-										85101
-									],
-									[
-										85334,
-										85349
-									],
-									[
-										85360,
-										85375
-									],
-									[
-										85830,
-										85845
-									],
-									[
-										86286,
-										86301
-									],
-									[
-										86863,
-										86878
-									],
-									[
-										87161,
-										87176
-									],
-									[
-										87562,
-										87577
-									],
-									[
-										87860,
-										87875
-									],
-									[
-										88215,
-										88230
-									],
-									[
-										88499,
-										88514
-									],
-									[
-										88525,
-										88540
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								78816,
-								78816
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"detect_indentation": false,
-							"function_name_status_row": 1430,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 2,
-							"remote_loading": false,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"sublime_auto_complete": true,
-							"synced": false,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"tabs_extra_last_activated": 1418099913.01,
-							"tabs_extra_last_activated_sheet_index": 17
-						},
-						"translation.x": 0.0,
-						"translation.y": 31405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "api/goods.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6332,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3027,
-								3042
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"function_name_status_row": 75,
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"side_bar_folders_auto_load_folder": 1,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"tabs_extra_last_activated": 1418099897.75,
-							"tabs_extra_last_activated_sheet_index": 18,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -5513,18 +1162,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.708725450082,
 			1.0
 		],
 		"rows":
@@ -5553,6 +1195,34 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"ips.",
+				"includes/modules/payment/ips.php"
+			],
+			[
+				"index.dw",
+				"themes/jd2013/index.dwt"
+			],
+			[
+				"catego",
+				"category.php"
+			],
+			[
+				"goods_li",
+				"themes/jd2013/library/goods_list.lbi"
+			],
+			[
+				"head",
+				"themes/jd2013/library/index_header.lbi"
+			],
+			[
+				"goods.php",
+				"goods.php"
+			],
+			[
+				"goods.d",
+				"themes/jd2013/goods.dwt"
+			],
 			[
 				"config",
 				"data/config.php"
@@ -5630,10 +1300,6 @@
 				"includes/lib_main.php"
 			],
 			[
-				"index.dw",
-				"themes/jd2013/index.dwt"
-			],
-			[
 				"goods.dw",
 				"themes/default/goods.dwt"
 			],
@@ -5664,10 +1330,6 @@
 			[
 				"admin/artic",
 				"admin/article.php"
-			],
-			[
-				"goods.php",
-				"admin/goods.php"
 			],
 			[
 				"goods_info",
@@ -5906,6 +1568,22 @@
 		"selected_items":
 		[
 			[
+				"get_advimg",
+				"get_advimg"
+			],
+			[
+				"get_cat_brands",
+				"get_cat_brands"
+			],
+			[
+				"category_get_goods",
+				"category_get_goods"
+			],
+			[
+				"get_goods_info",
+				"get_goods_info"
+			],
+			[
 				"price_format",
 				"price_format"
 			],
@@ -5936,10 +1614,6 @@
 			[
 				"get_pager",
 				"get_pager"
-			],
-			[
-				"get_advimg",
-				"get_advimg"
 			],
 			[
 				"get_cat_bran",
@@ -6012,7 +1686,7 @@
 	"settings":
 	{
 		"fss_on_distraction_free": false,
-		"fss_on_full_screen": false
+		"fss_on_full_screen": true
 	},
 	"show_minimap": true,
 	"show_open_files": true,

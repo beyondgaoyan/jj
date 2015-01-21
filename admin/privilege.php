@@ -212,11 +212,11 @@ elseif ($_REQUEST['act'] == 'insert')
     /* 判断管理员是否已经存在 */
     if (!empty($_POST['user_name']))
     {
-        $is_only = $exc->is_only('user_name', stripslashes($_POST['user_name']));
+        $is_only = $exc->is_only('user_name', $_POST['user_name']);
 
         if (!$is_only)
         {
-            sys_msg(sprintf($_LANG['user_name_exist'], stripslashes($_POST['user_name'])), 1);
+            sys_msg(sprintf($_LANG['user_name_exist'], $_POST['user_name']), 1);
         }
     }
 

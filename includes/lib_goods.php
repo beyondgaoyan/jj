@@ -569,7 +569,7 @@ function get_goods_info($goods_id)
 
         /* 获得商品的销售价格 */
         $row['market_price']        = price_format($row['market_price']);
-        $row['shop_price_formated'] = price_format($row['shop_price']);
+        $row['shop_price_formated'] = $row['shop_price']>0 ?  price_format($row['shop_price']) : '询价';//by gaoyan
 
         /* 修正促销价格 */
         if ($row['promote_price'] > 0)
