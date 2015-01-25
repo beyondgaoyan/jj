@@ -206,7 +206,7 @@ function get_cat_brands($cat, $app = 'brand')
     {
         $row[$key]['url'] = build_uri($app, array('cid' => $cat, 'bid' => $val['brand_id']), $val['brand_name']);
 		$row[$key]['brand_name']=$val['brand_name'];
-		$row[$key]['brand_logo']=$val['brand_logo'];
+		//$row[$key]['brand_logo']=$val['brand_logo'];
     }
     return $row;
 

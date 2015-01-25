@@ -306,8 +306,8 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 
 	<div class="m m1" id="group">
 		<div class="mt">
-			<h2>今日团购</h2>
-			<div class="extra"><a href="group_buy.php" target="_blank">更多团购&nbsp;&gt;</a></div>
+			<h2>推荐品牌</h2>
+			<div class="extra"><a href="brand.php" target="_blank">更多品牌&nbsp;&gt;</a></div>
 		</div>
 		<div class="jscroll mc" id="gscroll">
 			<div class="ctrl" id="gscroll-ctrl-prev"></div>
@@ -357,7 +357,7 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 	<div class="m m1 catalogue">
         <div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height:34px;display: block;" class="fixpng b b2"></b><b class="b b3">1F</b><b class="fixpng b4"></b></div>
-			<h2>家电通讯</h2>
+			<h2>徐工配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -528,7 +528,7 @@ new Marquee(
 	<div class="sm sm1 brands">
 		<div class="smt">
 			<h3>品牌旗舰店</h3>
-			<div class="extra"><a href="#" target="_blank">合约计划说明<b></b></a><a href="#" target="_blank">大家电配送<b></b></a></div>
+			
 		</div>
 		<div class="smc">
 			<ul class="lh">
@@ -580,7 +580,7 @@ new Marquee(
 	<div class="m m1 catalogue">
       <div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">2F</b><b class="fixpng b4"></b></div>
-			<h2>电脑数码</h2>
+			<h2>潍柴配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -750,7 +750,7 @@ new Marquee(
 	<div class="sm sm1 brands" id="digitals-brands">
 		<div class="smt">
 			<h3>品牌旗舰店</h3>
-			<div class="extra"><a href="#" target="_blank">办公直通车<b></b></a><a href="#" target="_blank">DIY装机大师<b></b></a></div>
+			
 		</div>
 		<div class="smc">
 			<ul class="lh">
@@ -804,7 +804,7 @@ new Marquee(
 	<div class="m m1 catalogue" data-lazyload="1">
       <div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">3F</b><b class="fixpng b4"></b></div>
-			<h2>服饰鞋包</h2>
+			<h2>五十铃配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style2">
@@ -976,7 +976,7 @@ new Marquee(
 	<div class="m m1 catalogue" data-lazyload="1">
 		<div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">4F</b><b class="fixpng b4"></b></div>
-			<h2>美容珠宝</h2>
+			<h2>北奔配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -1191,7 +1191,7 @@ new Marquee(
 	<div class="m m1 catalogue">
 		<div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">5F</b><b class="fixpng b4"></b></div>
-			<h2>居家生活</h2>
+			<h2>重汽配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -1405,7 +1405,7 @@ new Marquee(
 	<div class="m m1 catalogue" data-lazyload="1">
 		<div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">6F</b><b class="fixpng b4"></b></div>
-			<h2>母婴玩具</h2>
+			<h2>工程机械配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -1600,7 +1600,7 @@ new Marquee(
 	<div class="m m1 catalogue" data-lazyload="1">
 		<div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">7F</b><b class="fixpng b4"></b></div>
-			<h2>食品保健</h2>
+			<h2>重卡配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
@@ -1791,7 +1791,7 @@ new Marquee(
 	<div class="m m1 catalogue">
 		<div class="mt ld">
 			<div class="floor"><b class="fixpng b b1"></b><b style="height: 34px; display: block;" class="fixpng b b2"></b><b class="b b3">8F</b><b class="fixpng b4"></b></div>
-			<h2>图书音像</h2>
+			<h2>发动机配件</h2>
 		</div>
 		<div class="mc">
 			<div class="style1">
