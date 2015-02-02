@@ -379,11 +379,11 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 	<div class="m plist">
 		<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="three1" onmousemove="setTab('three',1,5)">传动</a></li>
-					<li id="three2" onmousemove="setTab('three',2,5)">电器</li>
-					<li id="three3" onmousemove="setTab('three',3,5)">上装</li>
-					<li id="three4" onmousemove="setTab('three',4,5)">液压</li>
-					<li id="three5" onmousemove="setTab('three',5,5)">架构件</li>
+					<li class="hover" id="three1" onmousemove="setTab('three',1,5)">特价商品</a></li>
+					<li id="three2" onmousemove="setTab('three',2,5)">大家电</li>
+					<li id="three3" onmousemove="setTab('three',3,5)">小家电</li>
+					<li id="three4" onmousemove="setTab('three',4,5)">手机通讯</li>
+					<li id="three5" onmousemove="setTab('three',5,5)">汽车五金</li>
 			</ul>
 		</div>
 	
@@ -442,8 +442,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->   
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->   
 				</ul>
 			</div>
 		
@@ -463,8 +462,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->    
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->    
 	 </ul>
   </div>
 
@@ -483,8 +481,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -503,8 +500,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -523,8 +519,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -607,11 +602,11 @@ new Marquee(
 
 		<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="four1" onmousemove="setTab('four',1,5)">发动机系统</a></li>
-					<li id="four2" onmousemove="setTab('four',2,5)">传动系统</li>
-					<li id="four3" onmousemove="setTab('four',3,5)">行走系统</li>
-					<li id="four4" onmousemove="setTab('four',4,5)">制动系统</li>
-					<li id="four5" onmousemove="setTab('four',5,5)">转向系统</li>
+					<li class="hover" id="four1" onmousemove="setTab('four',1,5)">特价商品</a></li>
+					<li id="four2" onmousemove="setTab('four',2,5)">大家电</li>
+					<li id="four3" onmousemove="setTab('four',3,5)">小家电</li>
+					<li id="four4" onmousemove="setTab('four',4,5)">手机通讯</li>
+					<li id="four5" onmousemove="setTab('four',5,5)">汽车五金</li>
 			</ul>
 		</div>
 
@@ -670,8 +665,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 				</ul>
 			</div>
 
@@ -690,8 +684,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -710,8 +703,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -730,8 +722,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -750,8 +741,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 </div>
@@ -834,11 +824,11 @@ new Marquee(
 	<div class="m plist">
 			<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="five1" onmousemove="setTab('five',1,5)">曲柄连杆机构</a></li>
-					<li id="five2" onmousemove="setTab('five',2,5)">配气机构</li>
-					<li id="five3" onmousemove="setTab('five',3,5)">进排气系统</li>
-					<li id="five4" onmousemove="setTab('five',4,5)">润滑系统</li>
-					<li id="five5" onmousemove="setTab('five',5,5)">冷却系统</li>
+					<li class="hover" id="five1" onmousemove="setTab('five',1,5)">特价商品</a></li>
+					<li id="five2" onmousemove="setTab('five',2,5)">大家电</li>
+					<li id="five3" onmousemove="setTab('five',3,5)">小家电</li>
+					<li id="five4" onmousemove="setTab('five',4,5)">手机通讯</li>
+					<li id="five5" onmousemove="setTab('five',5,5)">汽车五金</li>
 			</ul>
 		</div>
 		
@@ -872,8 +862,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   <div class="smc" id="con_five_3">
@@ -891,8 +880,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   <div class="smc" id="con_five_4">
@@ -910,8 +898,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -930,8 +917,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -1011,11 +997,11 @@ new Marquee(
 	<div class="m plist">
 			<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="six1" onmousemove="setTab('six',1,5)">发动机系统</a></li>
-					<li id="six2" onmousemove="setTab('six',2,5)">传动系统</li>
-					<li id="six3" onmousemove="setTab('six',3,5)">行走系统</li>
-					<li id="six4" onmousemove="setTab('six',4,5)">制动系统</li>
-					<li id="six5" onmousemove="setTab('six',5,5)">转向系统</li>
+					<li class="hover" id="six1" onmousemove="setTab('six',1,5)">特价商品</a></li>
+					<li id="six2" onmousemove="setTab('six',2,5)">大家电</li>
+					<li id="six3" onmousemove="setTab('six',3,5)">小家电</li>
+					<li id="six4" onmousemove="setTab('six',4,5)">手机通讯</li>
+					<li id="six5" onmousemove="setTab('six',5,5)">汽车五金</li>
 			</ul>
 		</div>
 			<div class="smc" id="con_six_1" style="display:block">
@@ -1072,8 +1058,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 				</ul>
 			</div>
 		
@@ -1092,8 +1077,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1112,8 +1096,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1132,8 +1115,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   
@@ -1152,8 +1134,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -1231,11 +1212,11 @@ new Marquee(
 	<div class="m plist">
 		<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="seven1" onmousemove="setTab('seven',1,5)">发动机系统</a></li>
-					<li id="seven2" onmousemove="setTab('seven',2,5)"> 传动系统</li>
-					<li id="seven3" onmousemove="setTab('seven',3,5)">行走系统</li>
-					<li id="seven4" onmousemove="setTab('seven',4,5)">制动系统</li>
-					<li id="seven5" onmousemove="setTab('seven',5,5)">转向系统</li>
+					<li class="hover" id="seven1" onmousemove="setTab('seven',1,5)">特价商品</a></li>
+					<li id="seven2" onmousemove="setTab('seven',2,5)">大家电</li>
+					<li id="seven3" onmousemove="setTab('seven',3,5)">小家电</li>
+					<li id="seven4" onmousemove="setTab('seven',4,5)">手机通讯</li>
+					<li id="seven5" onmousemove="setTab('seven',5,5)">汽车五金</li>
 			</ul>
 		</div>
 		
@@ -1293,8 +1274,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 				</ul>
 			</div>
 		
@@ -1313,8 +1293,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1333,8 +1312,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1353,8 +1331,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   <div class="smc" id="con_seven_5">
@@ -1372,8 +1349,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -1450,11 +1426,11 @@ new Marquee(
 	<div class="m plist">
 			<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="eight1" onmousemove="setTab('eight',1,5)">传动</a></li>
-					<li id="eight2" onmousemove="setTab('eight',2,5)">电器</li>
-					<li id="eight3" onmousemove="setTab('eight',3,5)">上装</li>
-					<li id="eight4" onmousemove="setTab('eight',4,5)">液压</li>
-					<li id="eight5" onmousemove="setTab('eight',5,5)">架构件</li>
+					<li class="hover" id="eight1" onmousemove="setTab('eight',1,5)">特价商品</a></li>
+					<li id="eight2" onmousemove="setTab('eight',2,5)">大家电</li>
+					<li id="eight3" onmousemove="setTab('eight',3,5)">小家电</li>
+					<li id="eight4" onmousemove="setTab('eight',4,5)">手机通讯</li>
+					<li id="eight5" onmousemove="setTab('eight',5,5)">汽车五金</li>
 			</ul>
 		</div>
 		
@@ -1511,8 +1487,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 				</ul>
 			</div>
 		
@@ -1531,8 +1506,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   <div class="smc" id="con_eight_3">
@@ -1550,8 +1524,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1570,8 +1543,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1590,8 +1562,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -1650,11 +1621,11 @@ new Marquee(
 	<div class="m plist">
 		<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="nine1" onmousemove="setTab('nine',1,5)">发动机系统</a></li>
-					<li id="nine2" onmousemove="setTab('nine',2,5)">传动系统</li>
-					<li id="nine3" onmousemove="setTab('nine',3,5)">行走系统</li>
-					<li id="nine4" onmousemove="setTab('nine',4,5)">制动系统</li>
-					<li id="nine5" onmousemove="setTab('nine',5,5)">转向系统</li>
+					<li class="hover" id="nine1" onmousemove="setTab('nine',1,5)">特价商品</a></li>
+					<li id="nine2" onmousemove="setTab('nine',2,5)">大家电</li>
+					<li id="nine3" onmousemove="setTab('nine',3,5)">小家电</li>
+					<li id="nine4" onmousemove="setTab('nine',4,5)">手机通讯</li>
+					<li id="nine5" onmousemove="setTab('nine',5,5)">汽车五金</li>
 			</ul>
 		</div>
 		
@@ -1712,8 +1683,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 				</ul>
 			</div>
 	
@@ -1732,8 +1702,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1752,8 +1721,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   <div class="smc" id="con_nine_4">
@@ -1771,8 +1739,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1791,8 +1758,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
@@ -1846,11 +1812,11 @@ new Marquee(
 	<div class="m plist">
 			<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="ten1" onmousemove="setTab('ten',1,5)">曲柄连杆机构</a></li>
-					<li id="ten2" onmousemove="setTab('ten',2,5)">配气机构</li>
-					<li id="ten3" onmousemove="setTab('ten',3,5)">进排气系统</li>
-					<li id="ten4" onmousemove="setTab('ten',4,5)">润滑系统</li>
-					<li id="ten5" onmousemove="setTab('ten',5,5)">冷却系统</li>
+					<li class="hover" id="ten1" onmousemove="setTab('ten',1,5)">特价商品</a></li>
+					<li id="ten2" onmousemove="setTab('ten',2,5)">大家电</li>
+					<li id="ten3" onmousemove="setTab('ten',3,5)">小家电</li>
+					<li id="ten4" onmousemove="setTab('ten',4,5)">手机通讯</li>
+					<li id="ten5" onmousemove="setTab('ten',5,5)">汽车五金</li>
 			</ul>
 		</div>
 		
@@ -1908,8 +1874,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable --> 
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable --> 
 				</ul>
 			</div>
 		
@@ -1928,8 +1893,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1948,8 +1912,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
   
@@ -1968,8 +1931,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
   </div>
 
@@ -1988,8 +1950,7 @@ new Marquee(
   </div>
 </li>
    <!--{/foreach}-->
- <!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->  
+ <!-- #EndLibraryItem --><!-- TemplateEndEditable -->  
 </ul>
 </div>	
 	</div>
