@@ -316,13 +316,13 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 				<div style="position: relative; width: 292px; height: 155px; overflow: hidden;" class="list" id="rollphoto2">
 				<ul class="lh">    
 				 <li class="item">  
-				 <a href="<?php echo get_advurl('首页_今日团购',1);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',1);?>" style="background:url(<?php echo get_advimg('首页_今日团购',1);?>) no-repeat 0 0;" class="thumb"></a>  <div class="p-detail">  <a target="_blank" class="btn-tuan" href="<?php echo get_advurl('首页_今日团购',1);?>">参团</a>                <span>团购价：</span><strong><?php echo get_advtit('首页_今日团购',1);?></strong>    </div> 
+				 <a href="<?php echo get_advurl('首页_今日团购',1);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',1);?>" style="background:url(<?php echo get_advimg('首页_今日团购',1);?>) no-repeat 0 0;" class="thumb"></a>  
 				 </li>     
 				 <li class="item">  
-				 <a href="<?php echo get_advurl('首页_今日团购',2);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',2);?>" style="background:url(<?php echo get_advimg('首页_今日团购',2);?>) no-repeat 0 0;" class="thumb"></a>  <div class="p-detail">  <a target="_blank" class="btn-tuan" href="<?php echo get_advurl('首页_今日团购',2);?>">参团</a>                <span>团购价：</span><strong><?php echo get_advtit('首页_今日团购',2);?></strong>    </div> 
+				 <a href="<?php echo get_advurl('首页_今日团购',2);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',2);?>" style="background:url(<?php echo get_advimg('首页_今日团购',2);?>) no-repeat 0 0;" class="thumb"></a>  
 				 </li>     
 				 <li class="item">  
-				 <a href="<?php echo get_advurl('首页_今日团购',3);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',3);?>" style="background:url(<?php echo get_advimg('首页_今日团购',3);?>) no-repeat 0 0;" class="thumb"></a>  <div class="p-detail">  <a target="_blank" class="btn-tuan" href="<?php echo get_advurl('首页_今日团购',3);?>">参团</a>                <span>团购价：</span><strong><?php echo get_advtit('首页_今日团购',3);?></strong>    </div> 
+				 <a href="<?php echo get_advurl('首页_今日团购',3);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',3);?>" style="background:url(<?php echo get_advimg('首页_今日团购',3);?>) no-repeat 0 0;" class="thumb"></a>  
 				 </li>   
 				 <li class="item">  
 				 <a href="<?php echo get_advurl('首页_今日团购',4);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',4);?>" style="background:url(<?php echo get_advimg('首页_今日团购',4);?>) no-repeat 0 0;" class="thumb"></a>  <div class="p-detail">  <a target="_blank" class="btn-tuan" href="<?php echo get_advurl('首页_今日团购',3);?>">参团</a>                <span>团购价：</span><strong><?php echo get_advtit('首页_今日团购',4);?></strong>    </div> 
