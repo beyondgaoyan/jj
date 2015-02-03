@@ -373,7 +373,7 @@ function build_urhere($arr, $type = 'category')
  */
 function assign_dynamic($tmp)
 {
-    $sql = 'SELECT id, number, type FROM ' . $GLOBALS['ecs']->table('template') .
+    $sql = 'SELECT id, number, type,brand_id FROM ' . $GLOBALS['ecs']->table('template') .
         " WHERE filename = '$tmp' AND type > 0 AND remarks ='' AND theme='" . $GLOBALS['_CFG']['template'] . "'";
     $res = $GLOBALS['db']->getAll($sql);
 
@@ -383,7 +383,7 @@ function assign_dynamic($tmp)
         {
             case 1:
                 /* 分类下的商品 */
-                $GLOBALS['smarty']->assign('goods_cat_' . $row['id'], assign_cat_goods($row['id'], $row['number']));
+                $GLOBALS['smarty']->assign('goods_cat_' . $row['id'], assign_cat_goods($row['id'], $row['number'],'index','',$row['brand_id']));
             break;
             case 2:
                 /* 品牌的商品 */

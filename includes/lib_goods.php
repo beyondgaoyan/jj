@@ -806,10 +806,14 @@ function get_goods_gallery($goods_id)
  * @param   string      $order_rule 指定商品排序规则
  * @return  array
  */
-function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '')
+function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$brand_id='')
 {
     $children = get_children($cat_id);
-
+    if($from == 'index' && empty($brand_id)){
+        $brand_where = ' and g.brand_id not in (8,15,1,12,13)';
+    } else {
+        $brand_where = ' and g.brand_id='.$brand_id;
+    }
     $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img ' .
@@ -817,9 +821,13 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '')
             "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
                     "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
             'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND '.
-                'g.is_delete = 0 AND (' . $children . 'OR ' . get_extension_goods($children) . ') ';
-
+                'g.is_delete = 0 AND (' . $children . 'OR ' . get_extension_goods($children) . ') '.$brand_where.' ';
     $order_rule = empty($order_rule) ? 'ORDER BY g.sort_order, g.goods_id DESC' : $order_rule;
+//     if($cat_id==6){
+//         echo $brand_id;
+//     echo $sql;echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+
+// }
     $sql .= $order_rule;
     if ($num > 0)
     {
@@ -852,7 +860,7 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '')
         $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
     }
 
-    if ($from == 'web')
+    if ($from == 'web' || $from == 'index')
     {
         $GLOBALS['smarty']->assign('cat_goods_' . $cat_id, $goods);
     }

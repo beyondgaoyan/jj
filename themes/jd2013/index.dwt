@@ -325,7 +325,7 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 				 <a href="<?php echo get_advurl('首页_今日团购',3);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',3);?>" style="background:url(<?php echo get_advimg('首页_今日团购',3);?>) no-repeat 0 0;" class="thumb"></a>  
 				 </li>   
 				 <li class="item">  
-				 <a href="<?php echo get_advurl('首页_今日团购',4);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',4);?>" style="background:url(<?php echo get_advimg('首页_今日团购',4);?>) no-repeat 0 0;" class="thumb"></a>  <div class="p-detail">  <a target="_blank" class="btn-tuan" href="<?php echo get_advurl('首页_今日团购',3);?>">参团</a>                <span>团购价：</span><strong><?php echo get_advtit('首页_今日团购',4);?></strong>    </div> 
+				 <a href="<?php echo get_advurl('首页_今日团购',4);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',4);?>" style="background:url(<?php echo get_advimg('首页_今日团购',4);?>) no-repeat 0 0;" class="thumb"></a>  
 				 </li>    
 				 </ul></div>
 			</div>
@@ -607,11 +607,11 @@ new Marquee(
 
 		<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="four1" onmousemove="setTab('four',1,5)">发动机系统</a></li>
-					<li id="four2" onmousemove="setTab('four',2,5)">传动系统</li>
-					<li id="four3" onmousemove="setTab('four',3,5)">行走系统</li>
-					<li id="four4" onmousemove="setTab('four',4,5)">制动系统</li>
-					<li id="four5" onmousemove="setTab('four',5,5)">转向系统</li>
+					<li class="hover" id="four1" onmousemove="setTab('four',1,5)">曲柄连杆机构</a></li>
+					<li id="four2" onmousemove="setTab('four',2,5)">配气机构</li>
+					<li id="four3" onmousemove="setTab('four',3,5)">进排气系统</li>
+					<li id="four4" onmousemove="setTab('four',4,5)">润滑系统</li>
+					<li id="four5" onmousemove="setTab('four',5,5)">冷却系统</li>
 			</ul>
 		</div>
 
@@ -834,11 +834,11 @@ new Marquee(
 	<div class="m plist">
 			<div class="utab clearfix">
 			<ul>
-					<li class="hover" id="five1" onmousemove="setTab('five',1,5)">曲柄连杆机构</a></li>
-					<li id="five2" onmousemove="setTab('five',2,5)">配气机构</li>
-					<li id="five3" onmousemove="setTab('five',3,5)">进排气系统</li>
-					<li id="five4" onmousemove="setTab('five',4,5)">润滑系统</li>
-					<li id="five5" onmousemove="setTab('five',5,5)">冷却系统</li>
+					<li class="hover" id="five1" onmousemove="setTab('five',1,5)">发动机系统</a></li>
+					<li id="five2" onmousemove="setTab('five',2,5)">传动系统</li>
+					<li id="five3" onmousemove="setTab('five',3,5)">行走系统</li>
+					<li id="five4" onmousemove="setTab('five',4,5)">制动系统</li>
+					<li id="five5" onmousemove="setTab('five',5,5)">转向系统</li>
 			</ul>
 		</div>
 		
