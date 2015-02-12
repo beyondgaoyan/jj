@@ -156,6 +156,8 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
 
     /* 页面中的动态内容 */
     assign_dynamic('index');
+    /*调用指定分类下的品牌商品 by gaoyan*/
+    assign_cat_brand_goods(266,10,'web','',12);
 }
 
 $smarty->display('index.dwt', $cache_id);

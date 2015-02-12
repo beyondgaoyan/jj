@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
  <?php
-	$GLOBALS['smarty']->assign('child_cat',get_hot_cat_tree(39, 3));
+	$GLOBALS['smarty']->assign('child_cat',get_hot_cat_tree(104, 3));
 ?>
  <!--{foreach from=$child_cat item=cat1 name=catspan1}--> 
       <!-- {if $cat1.name} -->

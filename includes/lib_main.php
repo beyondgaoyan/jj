@@ -383,6 +383,9 @@ function assign_dynamic($tmp)
         {
             case 1:
                 /* 分类下的商品 */
+                if(!empty($row['brand_id'])){
+                echo $row['brand_id'].'+'.$row['id'];echo "<br><br><br>";
+            }
                 $GLOBALS['smarty']->assign('goods_cat_' . $row['id'], assign_cat_goods($row['id'], $row['number'],'web','',$row['brand_id']));
             break;
             case 2:

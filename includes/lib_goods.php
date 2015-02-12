@@ -812,6 +812,7 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$br
     if ($brand_id){
         $brand_where = ' and g.brand_id='.$brand_id;
     }
+
     $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img ' .
@@ -871,6 +872,81 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$br
     return $cat;
 }
 
+/**
+ * 获得指定分类下品牌的商品
+ *
+ * @access  public
+ * @param   integer     $cat_id     分类ID
+ * @param   integer     $num        数量
+ * @param   string      $from       来自web/wap的调用
+ * @param   string      $order_rule 指定商品排序规则
+ * @return  array
+ */
+function assign_cat_brand_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$brand_id='')
+{
+    $children = get_children($cat_id);
+    if ($brand_id){
+        $brand_where = ' and g.brand_id='.$brand_id;
+    }
+
+    $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
+                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
+               'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img ' .
+            "FROM " . $GLOBALS['ecs']->table('goods') . ' AS g '.
+            "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
+                    "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
+            'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND '.
+                'g.is_delete = 0 AND (' . $children . 'OR ' . get_extension_goods($children) . ') '.$brand_where.' ';
+    $order_rule = empty($order_rule) ? 'ORDER BY g.sort_order, g.goods_id DESC' : $order_rule;
+    $sql .= $order_rule;
+    if ($num > 0)
+    {
+        $sql .= ' LIMIT ' . $num;
+    }
+    $res = $GLOBALS['db']->getAll($sql);
+
+    $goods = array();
+    foreach ($res AS $idx => $row)
+    {
+        if ($row['promote_price'] > 0)
+        {
+            $promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
+            $goods[$idx]['promote_price'] = $promote_price > 0 ? price_format($promote_price) : '';
+        }
+        else
+        {
+            $goods[$idx]['promote_price'] = '';
+        }
+
+        $goods[$idx]['id']           = $row['goods_id'];
+        $goods[$idx]['name']         = $row['goods_name'];
+        $goods[$idx]['brief']        = $row['goods_brief'];
+        $goods[$idx]['market_price'] = price_format($row['market_price']);
+        $goods[$idx]['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
+                                        sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+        $goods[$idx]['shop_price']   = price_format($row['shop_price']);
+        $goods[$idx]['thumb']        = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+        $goods[$idx]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
+        $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+    }
+
+    if ($from == 'web')
+    {
+        $GLOBALS['smarty']->assign('cat_goods_' . $cat_id.'_'.$brand_id, $goods);
+    }
+    elseif ($from == 'wap')
+    {
+        $cat['goods'] = $goods;
+    }
+
+    /* 分类信息 */
+    $sql = 'SELECT cat_name FROM ' . $GLOBALS['ecs']->table('category') . " WHERE cat_id = '$cat_id'";
+    $cat['name'] = $GLOBALS['db']->getOne($sql);
+    $cat['url']  = build_uri('category', array('cid' => $cat_id), $cat['name']);
+    $cat['id']   = $cat_id;
+
+    return $cat;
+}
 /**
  * 获得指定的品牌下的商品
  *
