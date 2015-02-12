@@ -423,8 +423,8 @@
 /*ranking*/
 .ranking .smc span{background-image:url(images/jd2013/20130330B.png);background-repeat:no-repeat;}
 .ranking{display:none;position:relative;float:right;width:210px;padding-top:5px;}
-.ranking .utab li{float:left;width:42px;overflow:hidden;text-align:center;height:22px; background:url(images/itab8.gif) center bottom no-repeat; padding-bottom:5px; font-family:Microsoft YaHei;font-size:13px;font-weight:bold;cursor:pointer}
-.ranking .utab .hover{width:42px;color:#E4393C; background:url(images/itab7.gif) center bottom no-repeat}
+.ranking .utab li{float:left;width:52.5px;overflow:hidden;text-align:center;height:22px; background:url(images/itab8.gif) center bottom repeat-x; padding-bottom:5px; font-family:Microsoft YaHei;font-size:13px;font-weight:bold;cursor:pointer}
+.ranking .utab .hover{width:52.5px;color:#E4393C; background:url(images/itab7.gif) center bottom repeat-x}
 .ranking .sm{margin-bottom:0;}
 .ranking .smt{width:40px;}
 .ranking .smt h3{font-weight:normal;font-size:12px;}

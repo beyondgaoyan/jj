@@ -383,7 +383,7 @@ function assign_dynamic($tmp)
         {
             case 1:
                 /* 分类下的商品 */
-                $GLOBALS['smarty']->assign('goods_cat_' . $row['id'], assign_cat_goods($row['id'], $row['number'],'index','',$row['brand_id']));
+                $GLOBALS['smarty']->assign('goods_cat_' . $row['id'], assign_cat_goods($row['id'], $row['number'],'web','',$row['brand_id']));
             break;
             case 2:
                 /* 品牌的商品 */

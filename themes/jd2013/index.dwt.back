@@ -291,6 +291,68 @@ if (isWidescreen){document.getElementsByTagName("body")[0].className="w1210";}
 <!-- 单品促销 栏 end -->
 
 
+<div class="w ">
+	<div class="m m1" id="timed">
+		<div class="mt">
+			<h2>限时抢购</h2>
+			<div class="extra"></div>
+		</div>
+		<div class="mc">
+			<ul class="lh">
+			   <!-- #BeginLibraryItem "/library/recommend_promotion.lbi" --><!-- #EndLibraryItem -->
+			</ul>
+		</div>
+	</div><!--timed end-->
+
+	<div class="m m1" id="group">
+		<div class="mt">
+			<h2>推荐品牌</h2>
+			<div class="extra"><a href="brand.php" target="_blank">更多品牌&nbsp;&gt;</a></div>
+		</div>
+		<div class="jscroll mc" id="gscroll">
+			<div class="ctrl" id="gscroll-ctrl-prev"></div>
+			<div class="ctrl" id="gscroll-ctrl-next"></div>
+		<div class="o-list">
+				<div style="position: relative; width: 292px; height: 155px; overflow: hidden;" class="list" id="rollphoto2">
+				<ul class="lh">    
+				 <li class="item">  
+				 <a href="<?php echo get_advurl('首页_今日团购',1);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',1);?>" style="background:url(<?php echo get_advimg('首页_今日团购',1);?>) no-repeat 0 0;" class="thumb"></a>  
+				 </li>     
+				 <li class="item">  
+				 <a href="<?php echo get_advurl('首页_今日团购',2);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',2);?>" style="background:url(<?php echo get_advimg('首页_今日团购',2);?>) no-repeat 0 0;" class="thumb"></a>  
+				 </li>     
+				 <li class="item">  
+				 <a href="<?php echo get_advurl('首页_今日团购',3);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',3);?>" style="background:url(<?php echo get_advimg('首页_今日团购',3);?>) no-repeat 0 0;" class="thumb"></a>  
+				 </li>   
+				 <li class="item">  
+				 <a href="<?php echo get_advurl('首页_今日团购',4);?>" target="_blank"><img src="<?php echo get_advimg('首页_今日团购',4);?>" style="background:url(<?php echo get_advimg('首页_今日团购',4);?>) no-repeat 0 0;" class="thumb"></a>  
+				 </li>    
+				 </ul></div>
+			</div>
+		</div>
+	</div>
+	
+		<SCRIPT language=javascript type=text/javascript>
+					var scrollPic_02 = new ScrollPic();
+					scrollPic_02.scrollContId   = "rollphoto2"; //内容容器ID
+					scrollPic_02.arrLeftId      = "gscroll-ctrl-prev";//左箭头ID
+					scrollPic_02.arrRightId     = "gscroll-ctrl-next"; //右箭头ID
+					if (screen.width >= 1280){scrollPic_02.frameWidth     = 292;}else{scrollPic_02.frameWidth     = 192;}
+					if (screen.width >= 1280){scrollPic_02.pageWidth      = 292;}else{scrollPic_02.pageWidth      = 192;}
+					scrollPic_02.speed          = 10; //移动速度(单位毫秒，越小越快)
+					scrollPic_02.space          = 10; //每次移动像素(单位px，越大越快)
+					scrollPic_02.autoPlay       = true; //自动播放
+					scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+					scrollPic_02.initialize(); //初始化
+		</SCRIPT>
+		<div class="m fr da0x100">
+		<script language=javascript>if (screen.width >= 1280){ document.write('{insert name="ads" id=8 num=1}') }   else {document.write('{insert name="ads" id=9 num=1}')}</script>
+	    </div>
+	</div>
+	<span class="clr"></span>
+</div>
+<!-- 限时抢购 栏 end -->
+
 <div class="w w1" id="electronics">
 	<div class="m m1 catalogue">
         <div class="mt ld">

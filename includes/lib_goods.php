@@ -809,9 +809,7 @@ function get_goods_gallery($goods_id)
 function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$brand_id='')
 {
     $children = get_children($cat_id);
-    if($from == 'index' && empty($brand_id)){
-        $brand_where = ' and g.brand_id not in (8,15,1,12,13)';
-    } else {
+    if ($brand_id){
         $brand_where = ' and g.brand_id='.$brand_id;
     }
     $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
@@ -823,11 +821,6 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$br
             'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND '.
                 'g.is_delete = 0 AND (' . $children . 'OR ' . get_extension_goods($children) . ') '.$brand_where.' ';
     $order_rule = empty($order_rule) ? 'ORDER BY g.sort_order, g.goods_id DESC' : $order_rule;
-//     if($cat_id==6){
-//         echo $brand_id;
-//     echo $sql;echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-
-// }
     $sql .= $order_rule;
     if ($num > 0)
     {
@@ -860,7 +853,7 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '',$br
         $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
     }
 
-    if ($from == 'web' || $from == 'index')
+    if ($from == 'web')
     {
         $GLOBALS['smarty']->assign('cat_goods_' . $cat_id, $goods);
     }

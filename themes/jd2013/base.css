@@ -501,7 +501,8 @@
 /*logo*/
 #logo-2013 {
   float: left;
-  width: 330px;
+  width: 320px;
+  margin: -6px 0 0 10px;
 }
 #logo-2013 a:link b,
 #logo-2013 a:visited b {

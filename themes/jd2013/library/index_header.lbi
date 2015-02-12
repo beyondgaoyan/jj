@@ -73,7 +73,7 @@ var process_request = "{$lang.process_request}";
 </div><!--shortcut end--><!--shortcut end-->
 <div id="o-header-2013">
 	<div class="w" id="header-2013">
-		<div id="logo-2013" class="ld"><a href="../index.php"><b></b><img src="../images/logo.gif" width="260" ></a></div>
+		<div id="logo-2013" class="ld"><a href="../index.php"><b></b><img src="../images/logo.gif" width="210" ></a></div>
 		<div id="search-2013">
 			<div class="i-search ld">
 				<ul id="shelper" class="hide">
